@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "154eed03f1653862",
+        "id": "9e6c57de25228bf3",
         "type": "leaf",
         "state": {
           "type": "empty",
@@ -100,23 +100,23 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "154eed03f1653862",
+  "active": "9e6c57de25228bf3",
   "lastOpenFiles": [
-    "未命名.md",
-    "T.FE.前端/多媒体/Media.md.md",
+    "Day Planners/Day Planner-20211011.md",
+    "SE.服务器/Docker.md.md",
+    "SE.服务器/Seafile.md.md",
+    "README.md.md",
     "T.FE.前端/多媒体/录音.md.md",
-    "T.FE.前端/多媒体/录音.md",
-    "Wave_format.png",
-    "Wave_format 1.png",
-    "T.FE.前端/多媒体/未命名.md",
-    "OS.系统/Linux/未命名.md",
+    "T.FE.前端/多媒体/Media.md.md",
     "T.FE.前端/基础/WebWorker.md.md",
-    "T.FE.前端/基础/未命名.md"
+    "OS.系统/Linux/文件操作.md.md",
+    "未命名.md",
+    "T.FE.前端/多媒体/录音.md"
   ]
 }
