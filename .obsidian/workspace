@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "9e6c57de25228bf3",
+        "id": "a6b49a02b4ba7ddb",
         "type": "leaf",
         "state": {
           "type": "empty",
@@ -106,9 +106,10 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "9e6c57de25228bf3",
+  "active": "a6b49a02b4ba7ddb",
   "lastOpenFiles": [
     "Day Planners/Day Planner-20211011.md",
+    "README.md",
     "SE.服务器/Docker.md.md",
     "SE.服务器/Seafile.md.md",
     "README.md.md",
@@ -116,7 +117,6 @@
     "T.FE.前端/多媒体/Media.md.md",
     "T.FE.前端/基础/WebWorker.md.md",
     "OS.系统/Linux/文件操作.md.md",
-    "未命名.md",
-    "T.FE.前端/多媒体/录音.md"
+    "未命名.md"
   ]
 }
