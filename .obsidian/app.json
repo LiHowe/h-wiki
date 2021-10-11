@@ -1,0 +1,12 @@
+{
+  "attachmentFolderPath": "附件",
+  "spellcheck": false,
+  "foldIndent": true,
+  "foldHeading": true,
+  "showLineNumber": true,
+  "tabSize": 2,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "newLinkFormat": "absolute",
+  "useMarkdownLinks": true
+}
