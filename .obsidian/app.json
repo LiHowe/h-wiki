@@ -1,5 +1,5 @@
 {
-  "attachmentFolderPath": "附件",
+  "attachmentFolderPath": "./__附件__",
   "spellcheck": false,
   "foldIndent": true,
   "foldHeading": true,
@@ -7,6 +7,6 @@
   "tabSize": 2,
   "alwaysUpdateLinks": true,
   "newFileLocation": "current",
-  "newLinkFormat": "absolute",
+  "newLinkFormat": "relative",
   "useMarkdownLinks": true
 }
