@@ -112,11 +112,31 @@ async function getMedia() {
 
 
 
-### 媒体设备支持指定的属性
+### 媒体设备约束参数
+
+
+
+#### 通用属性 - common
+
++ `deviceId`: 用于指定请求特定设备
++ `groupId`: 请求特定组设备
 
 #### 视频设备 - Video
 
 + [`aspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/aspectRatio): 
 + [`facingMode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/facingMode): 前置 | 后置摄像头
-+ 
++ `frameRate`: 视频帧率
++ `height`: 视频高度
++ `width`: 视频宽度
+
+#### 音频设备 - Audio
+
++ `autoGainControl`: 声音自动增强
++ `channelCount`: 声道数量
++ `echoCancellation`: 回声消除
++ `latency`: 延迟
++ `noiseSuppression`: 噪音抑制
++ `sampleRate`: 音频采样率
++ `sampleSize`: 音频位深
++ `volume`: 音量
 
