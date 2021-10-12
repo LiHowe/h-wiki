@@ -114,8 +114,6 @@ async function getMedia() {
 
 ### 媒体设备约束参数
 
-
-
 #### 通用属性 - common
 
 + `deviceId`: 用于指定请求特定设备
