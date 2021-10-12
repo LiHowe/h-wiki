@@ -2,7 +2,7 @@
 
 WebMedia主要指使用WebAPI来通过浏览器获取用户的摄像头、麦克风以及屏幕展示的权限，主要使用场景有
 1.  屏幕录制或共享（如有些面试的笔试链接）
-2. 音视频通话（如视频会议）
+2. 音视频通话（如视频会议, 需要[WebRTC](T.FE.前端/WebRTC/WebRTC.md)）
 3. 音视频录制
 
 ## 使用
@@ -137,4 +137,6 @@ async function getMedia() {
 + `sampleRate`: 音频采样率
 + `sampleSize`: 音频位深
 + `volume`: 音量
+
+
 
