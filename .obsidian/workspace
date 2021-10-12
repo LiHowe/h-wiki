@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "84964b065a5794af",
+        "id": "3cb6130d68b7ac05",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "T.FE.前端/多媒体/录音.md",
+            "file": "T.FE.前端/多媒体/Web Audio API.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "T.FE.前端/多媒体/录音.md",
+                "file": "T.FE.前端/多媒体/Web Audio API.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "T.FE.前端/多媒体/录音.md"
+                "file": "T.FE.前端/多媒体/Web Audio API.md"
               }
             }
           }
@@ -111,17 +111,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "84964b065a5794af",
+  "active": "3cb6130d68b7ac05",
   "lastOpenFiles": [
-    "T.FE.前端/多媒体/录音.md",
+    "T.FE.前端/多媒体/Web Audio API.md",
     "T.FE.前端/多媒体/Media.md",
+    "T.FE.前端/多媒体/录音.md",
+    "T.FE.前端/多媒体/未命名.md",
     "T.FE.前端/WebRTC/WebRTC.md",
     "T.FE.前端/WebRTC/未命名.md",
     "Day Planners/Day Planner-20211011.md",
     "README.md",
     "SE.服务器/Docker.md.md",
-    "SE.服务器/Seafile.md.md",
-    "README.md.md",
-    "T.FE.前端/多媒体/录音.md.md"
+    "SE.服务器/Seafile.md.md"
   ]
 }

@@ -7,7 +7,7 @@ WebMedia主要指使用WebAPI来通过浏览器获取用户的摄像头、麦克
 
 ## 使用
 
-### 获取媒体权限
+### 1. 获取媒体权限
 
 通过使用 `navigator.mediaDevices.getUserMedia(设备约束)` API来向用户请求媒体设备权限, 返回一个`Promise`, 请求成功则会返回一个包含所请求设备约束的媒体流对象-`MediaStream`, 请求失败(如用户拒绝、设备不存在)则会返回`DOMException`类型错误
 
@@ -112,7 +112,7 @@ async function getMedia() {
 
 
 
-### 媒体设备约束参数
+### 2. 媒体设备约束参数
 
 #### 通用属性 - common
 
@@ -139,4 +139,14 @@ async function getMedia() {
 + `volume`: 音量
 
 
+
+### 3. 使用媒体流
+
+通过上面的操作我们可以拿到用户音视频设备的数据流, 这样我们就可以使用这些数据进行加工, 录制和传输了.
+
+```javascript
+// getMedia方法来自[1. 获取媒体权限]
+const stream = await getMedia()
+
+```
 
