@@ -7,8 +7,11 @@
         "id": "a6b49a02b4ba7ddb",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "T.FE.前端/多媒体/Media.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "T.FE.前端/多媒体/Media.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,11 +100,13 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "T.FE.前端/多媒体/Media.md"
+              }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -108,6 +114,8 @@
   },
   "active": "a6b49a02b4ba7ddb",
   "lastOpenFiles": [
+    "T.FE.前端/多媒体/Media.md",
+    "T.FE.前端/多媒体/录音.md",
     "Day Planners/Day Planner-20211011.md",
     "README.md",
     "SE.服务器/Docker.md.md",
@@ -115,8 +123,6 @@
     "README.md.md",
     "T.FE.前端/多媒体/录音.md.md",
     "T.FE.前端/多媒体/Media.md.md",
-    "T.FE.前端/基础/WebWorker.md.md",
-    "OS.系统/Linux/文件操作.md.md",
-    "未命名.md"
+    "T.FE.前端/基础/WebWorker.md.md"
   ]
 }
