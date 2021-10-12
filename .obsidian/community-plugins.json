@@ -3,5 +3,7 @@
   "obsidian-git",
   "obsidian-image-auto-upload-plugin",
   "calendar",
-  "table-editor-obsidian"
+  "table-editor-obsidian",
+  "sliding-panes-obsidian",
+  "obsidian-admonition"
 ]
