@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "T.FE.前端/多媒体/Web Audio API.md",
+            "file": "T.FE.前端/多媒体/录音.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "T.FE.前端/多媒体/Web Audio API.md",
+                "file": "T.FE.前端/多媒体/录音.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "T.FE.前端/多媒体/Web Audio API.md"
+                "file": "T.FE.前端/多媒体/录音.md"
               }
             }
           }
@@ -113,11 +113,11 @@
   },
   "active": "98204646f1b8748b",
   "lastOpenFiles": [
+    "T.FE.前端/多媒体/录音.md",
     "T.FE.前端/多媒体/Web Audio API.md",
     "T.FE.前端/多媒体/AudioContext.md",
     "T.FE.前端/多媒体/Media.md",
     "T.FE.前端/多媒体/音频上下文(AudioContext).md",
-    "T.FE.前端/多媒体/录音.md",
     "T.FE.前端/多媒体/未命名.md",
     "T.FE.前端/WebRTC/WebRTC.md",
     "T.FE.前端/WebRTC/未命名.md",
