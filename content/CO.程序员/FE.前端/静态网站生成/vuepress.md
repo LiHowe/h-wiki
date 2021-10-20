@@ -1,6 +1,4 @@
-# 使用VuePress生成静态网站
-
-
+# 使用VuePress构建个人博客
 
 ## 1.x
 
@@ -11,8 +9,6 @@
    ```shell	
    yarn add vuepress -D
    ```
-
-   
 
 2. 在`package.json`中添加脚本命令
 
@@ -92,10 +88,59 @@
 页面滚动的时候自动高亮TOC对应链接
 
 
-
-
-
 ## 2.x
 
-### 开始使用
+### 为什么要升级2.x
 
+1. 想要使用Vue3语法和TypeScript的话
+2. 单纯想尝鲜，拥抱变化
+3. 想使用`webpack`或者`vite`来作为打包工具
+
+### 基本使用
+
+1. 创建并初始化项目
+
+```shell
+mkdir vuepress-demo
+cd vuepress-demo
+git init
+yarn init
+```
+
+2. 安装Vuepress
+   
+```shell
+  yarn add -D vuepress@next
+```
+
+3. 创建一篇markdown文档
+  
+这里我们在`docs`文件夹下进行创建（可以自行命名文件夹）, 可以手动进行创建， 也可以使用下面命令快速创建
+
+```shell
+echo '# Hello VuePress' >> docs/README.md
+```
+
+4. 在`package.json`的`scripts`中添加启动以及打包命令配置
+
+> 这里 docs 对应第3步你所创建的文件夹名称
+
+```json
+{
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
+```
+
+5. 启动本地服务进行测试
+   
+```shell
+yarn docs:dev
+```
+
+VuePress会在 http://localhost:8080 启动一个开发服务器， 支持热重载。
+
+### 主题的使用及开发
+### 插件的使用及开发

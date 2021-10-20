@@ -197,7 +197,6 @@ divEl.attachShadow({ mode: 'open' })
   Web Components Demo</a> by Howe (<a href="https://codepen.io/lihowe">@lihowe</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 1. 模板`template`
 
