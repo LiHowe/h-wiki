@@ -4,8 +4,8 @@
   "description": "My Blog build with VuePress",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev .",
-    "docs:build": "vuepress build ."
+    "dev": "vuepress dev . --debug",
+    "build": "vuepress build ."
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,17 @@
   },
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
+    "@vuepress/bundler-vite": "next",
+    "autoprefixer": "latest",
     "fs-extra": "^10.0.0",
     "klaw-sync": "^6.0.0",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
+    "postcss": "latest",
+    "postcss-nested": "latest",
+    "tailwindcss": "latest",
     "vuepress": "next"
   },
   "packageManager": "yarn@3.0.2"

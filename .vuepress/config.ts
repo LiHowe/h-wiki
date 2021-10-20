@@ -1,10 +1,25 @@
-const definitions = require('./config/definitions')
-const themeConfig = require('./config/themeConfig')
+import definitions from './config/definitions'
+import themeConfig from './config/themeConfig'
+import { path } from '@vuepress/utils'
 
-module.exports = {
+export default {
   title: 'H-Wiki',
   description: 'This is my blog',
   lang: 'zh-CN',
+  bundler: '@vuepress/bundler-vite',
+  bundlerConfig: {
+    viteOptions: {
+      css: {
+        postcss: {
+          plugins: [
+            require('tailwindcss'),
+            require('autoprefixer'),
+            require('postcss-nested')
+          ]
+        }
+      },
+    }
+  },
   // 使用的是markdown-it来渲染的, 所以支持markdown-it的插件
   markdown: {
     lineNumbers: true, // 配置显示行号
@@ -16,15 +31,19 @@ module.exports = {
       md.use(require('markdown-it-katex'))
     }
   },
+  theme: path.resolve(__dirname, './theme/index.ts'),
   // 主题配置
   themeConfig,
   // <head>配置
   head: [
     ['link', {rel: 'icon', href: '/images/icon.png'}],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
-    ['script', { href: '//at.alicdn.com/t/font_2339230_gyuxqs79usf.js' }]
+    ['script', { href: '//at.alicdn.com/t/font_2339230_gyuxqs79usf.js' }],
+    ['script', { href: 'https://cpwebassets.codepen.io/assets/embed/ei.js' }], // codepen
   ],
   // vuepress插件
-  plugins: [],
+  plugins: [
+    [require('./plugins/initPages.ts'), {}]
+  ],
   define: definitions
 }
