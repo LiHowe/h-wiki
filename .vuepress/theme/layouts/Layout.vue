@@ -9,5 +9,5 @@ import Footer from './Footer.vue'
 import Page from './Page.vue'
 </script>
 <style lang="scss">
-@import '../styles/index.scss'
+@import '../styles/index.scss';
 </style>

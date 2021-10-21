@@ -31,7 +31,7 @@ export default {
       md.use(require('markdown-it-katex'))
     }
   },
-  theme: path.resolve(__dirname, './theme/index.ts'),
+  // theme: path.resolve(__dirname, './theme/index.ts'),
   // 主题配置
   themeConfig,
   // <head>配置
