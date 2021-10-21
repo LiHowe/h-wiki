@@ -603,19 +603,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-debug@npm:next":
-  version: 2.0.0-beta.26
-  resolution: "@vuepress/plugin-debug@npm:2.0.0-beta.26"
-  dependencies:
-    "@vuepress/client": 2.0.0-beta.26
-    "@vuepress/core": 2.0.0-beta.26
-    "@vuepress/utils": 2.0.0-beta.25
-    vue: ^3.2.3
-    vue-router: ^4.0.10
-  checksum: 8e8b72c5224a8157ee5c5645c9f423596964557c9940ca06d05e304a6ba5f01525013efd09d296bf980b552061aaab0d614f42390e6a636810672cfa1eec28ef
-  languageName: node
-  linkType: hard
-
 "@vuepress/plugin-git@npm:2.0.0-beta.26":
   version: 2.0.0-beta.26
   resolution: "@vuepress/plugin-git@npm:2.0.0-beta.26"
@@ -1197,6 +1184,15 @@ __metadata:
   bin:
     autoprefixer: bin/autoprefixer
   checksum: e5b0a8ca75164cb1aa688dd5a4210b0e3720abb94910eed7f32790aeff352ed26adc47bed145cd22c83fe03d059d903b62baa7130ed2785990e7e42a8b952704
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "axios@npm:0.23.0"
+  dependencies:
+    follow-redirects: ^1.14.4
+  checksum: 879f61022bd825da2a7ebb72410bc528683ba54c140436baa0b924b7cab02ec0919fe64a04a546f482a75f5fd570b77884f9826764a95f2fd88265e61dcb70db
   languageName: node
   linkType: hard
 
@@ -2633,7 +2629,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.4":
   version: 1.14.4
   resolution: "follow-redirects@npm:1.14.4"
   peerDependenciesMeta:
@@ -2834,8 +2830,8 @@ fsevents@~2.3.2:
   resolution: "h-wiki@workspace:."
   dependencies:
     "@vuepress/bundler-vite": next
-    "@vuepress/plugin-debug": next
     autoprefixer: latest
+    axios: ^0.23.0
     fs-extra: ^10.0.0
     klaw-sync: ^6.0.0
     markdown-it-footnote: ^3.0.3

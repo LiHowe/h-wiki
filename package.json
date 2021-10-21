@@ -35,5 +35,8 @@
     "tailwindcss": "latest",
     "vuepress": "next"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.0.2",
+  "dependencies": {
+    "axios": "^0.23.0"
+  }
 }
