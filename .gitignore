@@ -2,3 +2,6 @@
 .vscode
 .idea
 node_modules
+.cache
+.temp
+.yarn

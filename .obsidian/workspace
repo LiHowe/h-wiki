@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CO.程序员/FE.前端/多媒体/录音.md",
+            "file": "CO.程序员/FE.前端/多媒体/MediaStream.md",
             "mode": "preview"
           }
         }
@@ -52,7 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 237
   },
   "right": {
     "id": "68f281e88cbfa16b",
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CO.程序员/FE.前端/多媒体/录音.md",
+                "file": "CO.程序员/FE.前端/多媒体/MediaStream.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CO.程序员/FE.前端/多媒体/录音.md"
+                "file": "CO.程序员/FE.前端/多媒体/MediaStream.md"
               }
             }
           }
@@ -114,15 +114,15 @@
   },
   "active": "a8486168c3cf378f",
   "lastOpenFiles": [
+    "CO.程序员/FE.前端/多媒体/MediaStream.md",
+    "CO.程序员/FE.前端/基础/WebWorker.md",
+    "CO.程序员/FE.前端/多媒体/WebAudioAPI.md",
+    "CO.程序员/FE.前端/多媒体/__附件__/Untitled.png",
     "CO.程序员/FE.前端/多媒体/录音.md",
     "CO.程序员/FE.前端/多媒体/音频基础.md",
-    "CO.程序员/FE.前端/多媒体/WebAudioAPI.md",
+    "CO.程序员/FE.前端/多媒体/Analyser.md",
     "CO.程序员/FE.前端/多媒体/AudioContext.md",
     "CO.程序员/FE.前端/WebRTC/WebRTC.md",
-    "CO.程序员/FE.前端/多媒体/未命名.md",
-    "CO.程序员/FE.前端/多媒体/Web Audio API.md",
-    "CO.程序员/FE.前端/多媒体/MediaStream.md",
-    "HW.硬件/未命名.md",
-    "T.FE.前端/多媒体/Media.md"
+    "CO.程序员/FE.前端/多媒体/未命名.md"
   ]
 }
