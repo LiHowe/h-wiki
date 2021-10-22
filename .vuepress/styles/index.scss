@@ -11,7 +11,16 @@ html.dark {
   --c-brand: #EF4444;
   --c-brand-light: #F87171;
 }
+.sidebar {
+  font-size: 14px;
+  a.sidebar-item {
+    transition: transform .25s;
+    &.active {
+    }
+  }
+}
 .page {
+  font-size: 14px;;
   code {
     @apply
     leading-none
