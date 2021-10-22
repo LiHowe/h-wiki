@@ -3,7 +3,7 @@ import themeConfig from './config/themeConfig'
 import { path } from '@vuepress/utils'
 
 export default {
-  title: 'H-Wiki',
+  title: 'Howe\'s Blog',
   description: 'This is my blog',
   lang: 'zh-CN',
   bundler: '@vuepress/bundler-vite',

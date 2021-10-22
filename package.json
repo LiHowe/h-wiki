@@ -4,7 +4,7 @@
   "description": "My Blog build with VuePress",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev . --debug",
+    "dev": "vuepress dev .",
     "build": "vuepress build ."
   },
   "repository": {
@@ -35,5 +35,8 @@
     "tailwindcss": "latest",
     "vuepress": "next"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.0.2",
+  "dependencies": {
+    "axios": "^0.23.0"
+  }
 }

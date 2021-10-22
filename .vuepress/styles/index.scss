@@ -1,4 +1,122 @@
 // https://v2.vuepress.vuejs.org/zh/reference/default-theme/styles.html#palette-%E6%96%87%E4%BB%B6
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5.2/distr/fira_code.css);
 :root {
   scroll-behavior: smooth;
+  --font-family: "JetBrains Mono", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --c-brand: #3B82F6;
+  --c-brand-light: #60A5FA;
+}
+html.dark { 
+  --c-brand: #EF4444;
+  --c-brand-light: #F87171;
+}
+.sidebar {
+  font-size: 14px;
+  a.sidebar-item {
+    transition: transform .25s;
+    &.active {
+    }
+  }
+}
+.page {
+  font-size: 14px;;
+  code {
+    @apply
+    leading-none
+    text-xs;
+    font-family: 'Fira Code', monospace;
+  }
+  h1 {
+    @apply
+      leading-loose
+      font-bold
+      text-4xl
+      text-center
+      mb-2;
+  }
+  h2 {
+    @apply
+      leading-loose
+      border-b
+      border-gray-300
+      text-2xl
+      my-4
+      text-center
+      tracking-wide
+      font-bold;
+  }
+  h3 {
+    @apply
+      text-lg
+      leading-normal
+      my-3
+      font-bold;
+  }
+  a:not([aria-hidden]) {
+    @apply
+      text-blue-400
+      mx-2
+      hover:text-blue-500
+      transition-colors
+      duration-150;
+  }
+  ul {
+    @apply
+      pl-4;
+    li {
+      @apply list-disc ml-4;
+      ul {
+        li {
+          list-style: circle;
+        }
+      }
+    }
+  }
+  ol {
+    @apply pl-4;
+    li {
+      @apply list-decimal pl-2;
+      &::marker {
+        @apply font-bold;
+      }
+    }
+  }
+  table {
+    @apply w-full;
+    tr {
+       td {
+         @apply border-b border-gray-300 border-l;
+         &:last-child {
+           @apply border-r;
+         }
+       }
+    }
+    thead {
+      tr {
+        @apply
+          bg-gray-300
+          text-gray-600;
+        th {
+          @apply
+            border-r
+            border-gray-300
+            ;
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:hover {
+          @apply bg-gray-200 bg-opacity-50 transition-colors duration-200;
+        }
+        td {
+          @apply px-4 text-sm leading-loose;
+        }
+      }
+    }
+  }
+  code:not(pre code) {
+    @apply border rounded bg-gray-200 text-gray-800 px-2 py-1 mx-2 text-sm;
+  }
 }
