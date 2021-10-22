@@ -4,7 +4,7 @@
   "description": "My Blog build with VuePress",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev . --debug",
+    "dev": "vuepress dev .",
     "build": "vuepress build ."
   },
   "repository": {
