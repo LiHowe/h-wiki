@@ -7,6 +7,7 @@ export default {
   description: 'This is my blog',
   lang: 'zh-CN',
   bundler: '@vuepress/bundler-vite',
+  open: false, // 是否自动打开浏览器
   bundlerConfig: {
     viteOptions: {
       css: {
@@ -43,7 +44,8 @@ export default {
   ],
   // vuepress插件
   plugins: [
-    [require('./plugins/initPages.ts'), {}]
+    [require('./plugins/initPages.ts'), {}],
+    ['@vuepress/plugin-git', false]
   ],
   define: definitions
 }

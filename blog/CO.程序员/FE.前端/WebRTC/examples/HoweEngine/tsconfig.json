@@ -1,0 +1,12 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES6"
+  },
+  "typeAcquisition": {
+    "include": [
+      "./types/*"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Chat Demo</title>
+  <link href="/_libs/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="w-full flex">
+<!-- 如需镜像则 transform: rotateY(180deg) -->
+  <video id="localVideo" class="w-1/2" autoplay playsinline></video>
+  <video id="remoteVideo" class="w-1/2" autoplay playsinline></video>
+</div>
+
+<button class="border rounded p-2" id="call">呼叫</button>
+<button class="border rounded p-2" id="answer">接听</button>
+<button class="border rounded p-2" id="hangup">挂断</button>
+
+<script src="./index.mjs" type="module"></script>
+</body>
+</html>

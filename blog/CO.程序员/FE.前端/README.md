@@ -8,7 +8,7 @@ sidebar: false
 ### Web 基础
 
 + [Array](基础/Array.md)
-+ [Blob](基础/Blob.md)
++ [Blob](基础/Blob/README.md)
 + [Function](基础/Function.md)
 + [WebComponents](基础/WebComponents.md)
 + [WebWorker](基础/WebWorker.md)

@@ -89,7 +89,32 @@ VuePress会在 http://localhost:8080 启动一个开发服务器， 支持热重
 
 ## 主题的使用及开发
 
+在`config.ts`中配置`theme`属性来使用自定义主题
 
+自定义主题放置在`📂.vuepress/theme`文件夹下
+
+```typescript
+export default {
+  theme: path.resolve(__dirname, './theme/index.ts')
+}
+```
+
+### [开发自定义主题](https://v2.vuepress.vuejs.org/zh/reference/theme-api.html)
+
+1. 在`📂.vuepress/theme`文件夹下新建`index.ts`作为主题配置文件
+
+   ```typescript
+   import { path } from '@vuepress/utils'
+   export default {
+     name: 'vuepress-theme-demo', // 主题前缀为vuepress-theme-
+     extends: '@vuepress/theme-default', // 继承默认主题(可选)
+     layouts: path.resolve(__dirname, './layouts'), // 指定主题布局组件文件夹
+   }
+   ```
+
+2. 在`📂.vuepress/theme`下新建`layouts`文件夹来存放主题布局组件
+
+   > 自定义主题的layouts下必须含有 `Layout.vue` 和 `404.vue`
 
 ## 插件的使用及开发
 
@@ -109,5 +134,13 @@ VuePress会在 http://localhost:8080 启动一个开发服务器， 支持热重
 
 ## 常见需求以及方案
 
-### 1.覆盖默认主题样式
+### 1. 覆盖默认主题样式
+
+
+
+### 2. 使用自定义`frontmatter`变量
+
+**添加:** 在markdown文件上方的`frontmatter`区域添加自定义的变量, 如`demo: true`
+
+**使用:** 在markdown文件中使用`{{ $frontmatter.demo }}`的方式来使用
 

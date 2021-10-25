@@ -8,19 +8,24 @@
   --c-brand-light: #60A5FA;
 }
 html.dark { 
-  --c-brand: #EF4444;
-  --c-brand-light: #F87171;
+  --c-brand: #F59E0B;
+  --c-brand-light: #FBBF24;
 }
+// 导航下拉框样式
+.dropdown-wrapper .nav-dropdown {
+  box-shadow: 0px 4px 8px #1e1e1e;
+}
+// 侧边栏样式
 .sidebar {
-  font-size: 14px;
   a.sidebar-item {
     transition: transform .25s;
     &.active {
     }
   }
 }
+// 文章内容样式
 .page {
-  font-size: 14px;;
+  font-size: 15px;
   code {
     @apply
     leading-none
@@ -48,16 +53,14 @@ html.dark {
   }
   h3 {
     @apply
-      text-lg
+      text-2xl
       leading-normal
       my-3
       font-bold;
   }
   a:not([aria-hidden]) {
     @apply
-      text-blue-400
       mx-2
-      hover:text-blue-500
       transition-colors
       duration-150;
   }
