@@ -4,8 +4,8 @@
   "description": "My Blog build with VuePress",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "dev": "vuepress dev",
+    "build": "vuepress build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "next",
     "autoprefixer": "latest",
+    "clipboard": "^2.0.8",
     "fs-extra": "^10.0.0",
     "klaw-sync": "^6.0.0",
     "markdown-it-footnote": "^3.0.3",

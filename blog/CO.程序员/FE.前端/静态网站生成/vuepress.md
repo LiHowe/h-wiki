@@ -1,6 +1,6 @@
 # 使用VuePress构建个人博客
 
-本文教程使用`vuepress v2.0.0-beta.26`
+本文教程使用`vuepress v2.0.0-beta.26`([vuepress/vuepress-next](https://github.com/vuepress/vuepress-next))
 
 2.x与1.x的用法基本相近, 但是插件和主题无法共用(如Vue2.x 与 Vue3.x)
 
@@ -89,6 +89,12 @@ VuePress会在 http://localhost:8080 启动一个开发服务器， 支持热重
 
 ## 主题的使用及开发
 
+### 主题推荐
+
++ [vuepress-theme-hope](https://vuepress-theme-hope.github.io/zh/guide/get-started/intro/)
+
+
+
 在`config.ts`中配置`theme`属性来使用自定义主题
 
 自定义主题放置在`📂.vuepress/theme`文件夹下
@@ -118,7 +124,7 @@ export default {
 
 ## 插件的使用及开发
 
-#### 插件用法
+### 插件用法
 
 在`.vuepress/config.ts`文件中配置`plugins`字段来使用插件, 配置方法有以下几种
 
@@ -132,6 +138,8 @@ export default {
 
 
 
+### 组件开发
+
 ## 常见需求以及方案
 
 ### 1. 覆盖默认主题样式
@@ -143,4 +151,8 @@ export default {
 **添加:** 在markdown文件上方的`frontmatter`区域添加自定义的变量, 如`demo: true`
 
 **使用:** 在markdown文件中使用`{{ $frontmatter.demo }}`的方式来使用
+
+
+
+
 

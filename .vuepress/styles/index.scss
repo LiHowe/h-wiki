@@ -1,5 +1,10 @@
 // https://v2.vuepress.vuejs.org/zh/reference/default-theme/styles.html#palette-%E6%96%87%E4%BB%B6
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5.2/distr/fira_code.css);
+@front-face {
+  font-family: 'Fire Code';
+  src: url('../public/fonts/JetBrainsMono-Regular.ttf') format('ttf');
+  font-weight: 500;
+  font-style: normal;
+}
 :root {
   scroll-behavior: smooth;
   --font-family: "JetBrains Mono", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
