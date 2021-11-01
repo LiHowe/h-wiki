@@ -12,20 +12,20 @@
 
 `CreateApp`是Vue3的实例创建方法, 方法定义在`runtime-dom/src/index.ts`
 
-方法主要流程如下:
+方法主要调用流程如下:
 
 ```mermaid
 graph LR;
 	subgraph createApp
-	ensureRenderer --> E[createApp]
+	ensureRenderer --实际调用--> baseCreateRenderer --返回createApp--> E[调用createApp]
 	end
 ```
 
 1. 调用 `ensureRenderer` 方法来创建渲染器(单例)
 
-   创建渲染器.`runtime-core/src/renderer.ts` 的`baseCreateRenderer` 方法
+   创建渲染器.`runtime-core/src/renderer.ts` 的 `baseCreateRenderer` 方法
 
-   `baseCreateRenderer`方法主要定义了一些**补丁方法**以及**vNode操作方法**
+   `baseCreateRenderer`方法主要定义了**补丁(patch)方法**以及**一些vNode操作方法**
 
    <details>
      <summary>定义方法一览</summary>
@@ -64,28 +64,87 @@ graph LR;
 
    ![image-20211028134532060](https://i.loli.net/2021/10/28/5kteP24puZmzH9Q.png)
 
-3. 重写`mount`方法
+3. 重写第二步创建好的Vue实例对象的`mount`方法
 
    1. 调用`normalizeContainer`方法来标准化容器
    2. 如果组件对象没有定义`render`函数和`template`模板，则取容器的`innerHTML` 作为组件模板内容
    3. 清空容器内容(`innerHTML = ''`)
    4. 调用原始`mount`方法作为方法返回值
+   5. 移除容器`v-cloak`属性
+   6. 为容器设置`data-v-app`属性, 表明元素是一个Vue实例容器
 
+4. Vue实例创建完成, 等待调用`mount`方法进行挂载
 
-
-## Mount
+## Mount(原始版本)
 
 调用完`createApp`创建Vue实例后最终需要挂载到指定元素上, 调用`mount`方法并传入目标容器来进行挂载操作.
 
 ```mermaid
-graph LR
+graph TD
+	normalizeContainer --> M(调用原始mount方法)
 	subgraph mount
-	A(createVNode) --> render
+	M --> cv(createVNode)
 	end
+	subgraph createVNode
+	cv --> q{isVNode}
+	q --Y--> cloneVNode --cloned&#40克隆的VNode&#41--> hc{hasChildren} 
+	hc --Y--> normalizeChildren --> return&#32cloned
+	hc --N--> return&#32cloned
+	q --N--> isCP{isClassComponent}
+	end
+	M --> render
 	
 ```
 
 
+
+1. 创建VNode对象
+2. 将app对象存储在vNode对象上
+3. 进行渲染(调用`render`)
+4. 设置挂载标识(`isMounted`)为`true`
+5. 缓存根节点容器(`rootContainer`)
+6. 通过`__vue_app__`属性为`devtools`暴露vue实例
+
+
+
+## Render
+
+首先, 我们来看一下render方法的定义
+
+```typescript
+const render = (vnode, container, isSVG) => {
+  // 如果vnode为空， 则表明元素被清空
+  if (vnode == null) {
+    // 如果容器之前挂载过vNode，则卸载之前挂载的vNode
+    if (container._vnode) {
+      unmount(container._vnode, null, null, true);
+    }
+  }
+  else {
+    // 如果有vNode， 即容器内元素变化，打补丁(patch 方法由ensureRenderer定义)
+    patch(container._vnode || null, vnode, container, null, null, null, isSVG);
+  }
+  // 刷新后置任务
+  flushPostFlushCbs();
+  // 更新vNode绑定
+  container._vnode = vnode;
+};
+```
+
+`render`方法接收三个参数`(vnode, container, isSVG)`
+
++ vNode: 待渲染的vNode
++ container: 渲染容器
++ isSVG: 是否是SVG
+
+1. 判断是否有需要渲染的vNode, 
+
+   + 如果没有, 则卸载之前容器挂载过的vNode(如果存在的话)
+
+   + 如果有, 则调用补丁方法来为容器更新节点
+
+2. 冲洗后置任务队列(`flushPostFlushCbs`)
+3. 为容器更新`_vnode`属性
 
 ## Patch
 
@@ -101,6 +160,40 @@ graph LR
 ```
 
 
+
+1. 判断是否是相同节点, 如果相同则直接退出
+2. 如果有容器有旧节点, 并且新节点与旧节点类型不同, 则将**锚点**设置为旧节点的下一个节点并卸载旧节点
+3. 判断新节点类型, 根据不同的节点类型来进行不同处理
+   + Text: 
+   + Comment:
+   + Static:
+   + Fragment:
+   + Others:
+     + Element:
+     + Component
+       + 继承slotScopeIds
+       + 如果原容器没有节点
+         + 如果不是keepAlive, 则挂载节点(`mountComponent`)
+         + 如果是keepAlive, 则`activate`
+       + 原容器有节点, 则更新组件(`updateComponent`)
+     + Teleport:
+     + Suspense:
+
+4. 如果有`ref`则调用`setRef`来设置ref
+
+## MountComponent
+
+挂载组件方法, 方法大致流程以及操作如下
+
+1. 创建组件实例
+2. 如果是keepAlive组件则更新renderer
+3. 设置组件(`setupComponent`)
+   1. 设置`props`, `attrs`
+   2. 设置`slots`
+   3. **如果是有状态组件,且有组件有`setup`方法, 则执行`setup`**
+4. 设置渲染器影响(`setupRenderEffect`)
+   1. 定义组件更新方法
+   2. 为渲染过程创建响应式影响对象
 
 ## 响应式
 
