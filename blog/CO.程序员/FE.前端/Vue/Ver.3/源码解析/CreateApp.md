@@ -173,7 +173,7 @@ graph LR
      + Component
        + 继承slotScopeIds
        + 如果原容器没有节点
-         + 如果不是keepAlive, 则挂载节点(`mountComponent`)
+         + 如果不是keepAlive, 则挂载节点([mountComponent](##mountComponent))
          + 如果是keepAlive, 则`activate`
        + 原容器有节点, 则更新组件(`updateComponent`)
      + Teleport:
@@ -181,19 +181,108 @@ graph LR
 
 4. 如果有`ref`则调用`setRef`来设置ref
 
-## MountComponent
+## mountComponent
 
 挂载组件方法, 方法大致流程以及操作如下
 
 1. 创建组件实例
 2. 如果是keepAlive组件则更新renderer
-3. 设置组件(`setupComponent`)
+3. 设置组件([setupComponent](##setupComponent))
    1. 设置`props`, `attrs`
    2. 设置`slots`
    3. **如果是有状态组件,且有组件有`setup`方法, 则执行`setup`**
 4. 设置渲染器影响(`setupRenderEffect`)
    1. 定义组件更新方法
    2. 为渲染过程创建响应式影响对象
+
+
+
+## createComponentInstance
+
+创建组件实例方法, 组件实例的定义如下
+
+```typescript
+const instance: ComponentInternalInstance = {
+    uid: uid++,
+    vnode,
+    type,
+    parent,
+    appContext,
+    root: null!, // to be immediately set
+    next: null,
+    subTree: null!, // will be set synchronously right after creation
+    update: null!, // will be set synchronously right after creation
+    scope: new EffectScope(true /* detached */),
+    render: null,
+    proxy: null,
+    exposed: null,
+    exposeProxy: null,
+    withProxy: null,
+    provides: parent ? parent.provides : Object.create(appContext.provides),
+    accessCache: null!,
+    renderCache: [],
+
+    // local resovled assets
+    components: null,
+    directives: null,
+
+    // resolved props and emits options
+    propsOptions: normalizePropsOptions(type, appContext),
+    emitsOptions: normalizeEmitsOptions(type, appContext),
+
+    // emit
+    emit: null!, // to be set immediately
+    emitted: null,
+
+    // props default value
+    propsDefaults: EMPTY_OBJ,
+
+    // inheritAttrs
+    inheritAttrs: type.inheritAttrs,
+
+    // state
+    ctx: EMPTY_OBJ,
+    data: EMPTY_OBJ,
+    props: EMPTY_OBJ,
+    attrs: EMPTY_OBJ,
+    slots: EMPTY_OBJ,
+    refs: EMPTY_OBJ,
+    setupState: EMPTY_OBJ,
+    setupContext: null,
+
+    // suspense related
+    suspense,
+    suspenseId: suspense ? suspense.pendingId : 0,
+    asyncDep: null,
+    asyncResolved: false,
+
+    // lifecycle hooks
+    // not using enums here because it results in computed properties
+    isMounted: false,
+    isUnmounted: false,
+    isDeactivated: false,
+    bc: null,
+    c: null,
+    bm: null,
+    m: null,
+    bu: null,
+    u: null,
+    um: null,
+    bum: null,
+    da: null,
+    a: null,
+    rtg: null,
+    rtc: null,
+    ec: null,
+    sp: null
+  }
+```
+
+该方法主要定义上面👆这个对象,对以下属性赋值并将实例对象(instance)返回
+
++ ctx: `{ _: instance }`
++ root: 有父组件则使用父组件的`root`, 否则使用自己(`instance`)
++ emit: emit方法
 
 ## 响应式
 
@@ -233,28 +322,68 @@ graph LR
 
 方法定位: `packages/runtime-core/src/component.ts`
 
+该方法用于初始化组件设置
+
 `initProps`: 初始化组件的`props`和`attrs`
 
 `initSlots`: 初始化组件的插槽
 
-如果是有状态的组件, 则调用`setupStatefulComponent`
+如果是有状态的组件, 则调用[setupStatefulComponent](##setupStatefulComponent)
 
 
 
-### setupStatefulComponent
+## setupStatefulComponent
 
 方法定位: `packages/runtime-core/src/component.ts`
 
-配置有状态组件
+初始化有状态组件
 
-1. 创建渲染函数代理属性访问缓存
-2. 创建一个不被观测的组件实例上下文代理对象
-3. 如果组件有配置`setup`, 则调用实例`setup`方法
+1. 初始化渲染函数代理属性访问缓存(`accessCache`)
+2. 创建一个不被观测的组件实例上下文(`instance.ctx`)代理对象
+3. 如果组件有配置`setup`
+   1. 初始化setup上下文
+   2. 设置当前实例(开启影响范围)
+   3. 暂停跟踪
+   4. 调用实例`setup`方法
+   5. 恢复跟踪
+   6. 取消当前实例设置
+   7. 处理setup结果([handleSetupResule](##handleSetupResule))
 4. 没有配置`setup`就结束组件配置(调用`finishComponentSetup`来进行模板编译)
 
 
 
 
 
+## handleSetupResult
+
+调用[finishComponentSetup](##finishComponentSetup)
+
+## finishComponentSetup
+
+如果组件实例没定义`render`
+
+获取组件模板(`template`)以及编译器配置, 调用编译方法([compile](##compileToFunction))
 
 
+
+
+
+## compileToFunction
+
+方法位置: `packages/vue/src/index.ts`的`compileToFunction`
+
+方法接收两个参数`template(模板)`与`options(编译器选项)`
+
+1. 以模板为key查找缓存
+2. 如果模板字符串以`#`开头,则作为ID选择器进行元素查找
+   + 如果找到则使用元素的`innerHTML`作为模板
+   + 没找到则使用空字符串作为模板
+3. 调用编译方法([compile](##compile))来编译模板字符串
+
+
+
+
+
+## compile
+
+方法位置: `packages/compiler-dom/src/index.ts`
