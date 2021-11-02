@@ -360,13 +360,13 @@ const instance: ComponentInternalInstance = {
 
 ## finishComponentSetup
 
-如果组件实例没定义`render`
+1.如果组件实例没定义`render`
 
-获取组件模板(`template`)以及编译器配置, 调用编译方法([compile](##compileToFunction))
+获取组件模板(`template`)以及编译器配置, 调用编译方法([compile](##compileToFunction))将编译完成的对象作为组件的`render`方法
 
+2. 构建实例的代理对象
 
-
-
+3. 应用组件选项[applyOptions](##applyOptions)
 
 ## compileToFunction
 
@@ -387,3 +387,69 @@ const instance: ComponentInternalInstance = {
 ## compile
 
 方法位置: `packages/compiler-dom/src/index.ts`
+
+方法返回实质调用[baseCompile](##baseCompile)
+
+
+
+## baseCompile
+
+方法位置: `packages/compiler-core/src/compile.ts`
+
+1. 调用[baseParse](##baseParse)将字符串模板转化为AST(抽象语法树)
+2. 
+
+
+
+
+
+## baseParse
+
+方法位置: `packages/compiler-core/src/parse.ts`
+
+字符串模板解析方法
+
+1. 创建解析环境(`createParserContext`)
+2. 获取解析开始位置(`getCursor`)
+3. 创建根节点(`createRoot`)
+
+
+
+
+
+## parseChildren
+
+
+
+
+
+## applyOptions
+
+文件位置: `packages/runtime-core/src/componentOptions.ts`
+
+组件选项初始化顺序:
+
+1. `props(在该方法外就早已完成初始化, 待查明具体方法)`
+2. `inject`
+3. `methods`
+4. `data(直到它依赖this访问)`
+5. `computed`
+6. `watch(直到它依赖this访问)`
+
+
+
+1. 解析合并组件选项
+
+2. 检查是否有重复定义的属性
+
+3. 如果有方法(`methods`)定义, 则遍历方法为每个方法更新`this`指向(使用`bind`绑定当前组件代理对象)
+
+4. 如果有`data`方法定义, 使用`call(publicThis, publicThis)`来绑定到当前实例代理对象上?TODO
+
+5. 将`data`调用`reactive`转化为响应式对象并赋值给组件实例
+
+6. 如果有计算属性(`computed`)
+
+   如果是方法, 则更新this指向
+
+7. 如果有`watch`定义, 则调用`createWatcher`来创建`watcher`
