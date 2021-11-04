@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+const { Command } = require('commander')
+const program = new Command()
+
+program
+    .version('0.0.1')
+    .description('独立运行命令')
+    .command('run', '执行命令')
+    .command('test', '测试').alias('t')
+    .command('install [name]', '安装').alias('i')
+    .command('update', '更新', { executableFile: 'basic'})
+
+program.parse()

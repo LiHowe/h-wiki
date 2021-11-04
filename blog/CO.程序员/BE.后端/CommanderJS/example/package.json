@@ -1,0 +1,20 @@
+{
+  "name": "commander-demo",
+  "version": "1.0.0",
+  "description": "A project for learn commander",
+  "bin": {
+    "demo": "bin/demo.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "demo",
+    "commander"
+  ],
+  "author": "LiHowe",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^8.0.0"
+  }
+}
