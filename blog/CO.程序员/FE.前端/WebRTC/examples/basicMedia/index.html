@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web RTC demo</title>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="grid grid-cols-2 gap-4 text-sm">
+  <div class="display-area">
+    <video id="v" autoplay playsinline controls></video>
+    <div class="info-area">
+      <div class="video-info">
+        <p class="text-lg font-bold text-blue-600">视频信息:</p>
+      </div>
+      <div class="audio-info mt-1">
+        <p class="text-lg font-bold text-blue-600">音频信息:</p>
+      </div>
+    </div>
+    <div class="audio-area"></div>
+    <div class="snip-area"></div>
+  </div>
+  <div class="setting-area p-5 leading-6">
+
+  </div>
+</div>
+<script src="index.mjs" type="module"></script>
+</body>
+</html>

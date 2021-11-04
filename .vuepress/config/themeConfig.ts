@@ -1,6 +1,6 @@
 const contentPath = '/blog/'
-const getPath = (folderName) => {
-  return `${contentPath}${folderName}/README.md`
+const getPath = (folderName, fileName = 'README.md') => {
+  return `${contentPath}${folderName}/${fileName}`
 }
 
 const genNav = (folderName) => {
@@ -16,6 +16,7 @@ export default {
   // navbar: false,
   // sidebar: false,
   lastUpdatedText: '最后更新时间',
+  lastUpdated: false,
   contributors: false,
   docsRepo: 'https://github.com/LiHowe/h-wiki',
   notFound: [
@@ -43,6 +44,11 @@ export default {
           text: '后端',
           activeMatch: '/CO.程序员/BE.后端/*',
           link: getPath('CO.程序员/BE.后端')
+        },
+        {
+          text: '工程化',
+          activeMatch: '/CO.程序员/TE.工程化/*',
+          link: getPath('CO.程序员/TE.工程化', 'monorepo.md')
         }
       ]
     },

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Context Demo</title>
+</head>
+<body>
+<audio
+  id="audio"
+  src="../../demoAudios/99god_GALA.m4a"
+  controls
+></audio>
+<div>
+  <p>声音增益, 当前值: <span id="gainValue">1</span></p>
+  <input type="range" step="0.1" max="2" min="0">
+</div>
+
+<div>
+  <p>声波图</p>
+  <canvas id="wave" width="200" height="100"></canvas>
+</div>
+
+<script src="./index.mjs" type="module"></script>
+</body>
+</html>

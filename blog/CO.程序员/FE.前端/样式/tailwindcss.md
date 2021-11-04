@@ -1,6 +1,5 @@
 ---
 category: code
-layout: blog
 title: 初探TailwindCSS
 date: 06/08-2021 13:14
 coverImage: https://i.loli.net/2021/06/09/likAPwq4rTvBxfZ.png

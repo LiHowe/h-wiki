@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: Custom-Button</title>
+</head>
+<body>
+
+    <template id="card">
+        <div class="card">
+            <div class="card-title">
+                <span class="title-content"></span>
+            </div>
+            <div class="card-body">
+                <slot name="card-body">
+                    <span>这是默认卡片内容</span>
+                </slot>
+            </div>
+        </div>
+        <style>
+            .card {
+                border-radius: 4px;
+                overflow: hidden;
+                width: 300px;
+                border: 1px solid #e4e4e4;
+                box-shadow: 0 0 4px #d0d0d0;
+                color: rgb(94, 94, 94);
+                margin-bottom: 10px;
+            }
+            .card.plain {
+                box-shadow: none;
+            }
+            .card .card-title {
+                font-weight: bold;
+                line-height: 1.5;
+            }
+            .card .card-title.with-title {
+                border-bottom: 1px solid #e4e4e4;
+                padding: 5px;
+            }
+            .card .card-body {
+                padding: 10px;
+            }
+        </style>
+    </template>
+
+    <custom-card title="测试卡片" class="custom-card">
+        <div slot="card-body">
+            <input type="text" id="title-input" placeholder="请输入卡片标题进行修改">
+            <button id="btn_change-title">改变标题</button>
+        </div>
+    </custom-card>
+
+    <custom-card title="默认卡片"></custom-card>
+ 
+    <custom-card>
+        这段文字不会渲染
+        <div slot="card-body">这是使用了文字插槽的无title卡片</div>
+    </custom-card>
+
+    <custom-card plain>
+        <div slot="card-body">这是朴素卡片</div>
+    </custom-card>
+
+    <script src="./index.js"></script>
+</body>
+</html>

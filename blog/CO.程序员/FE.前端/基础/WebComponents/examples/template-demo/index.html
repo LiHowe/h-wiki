@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template and slots demo</title>
+</head>
+<body>
+    <template id="demo-template">
+        <p>this tag is from demo-template</p>
+        <slot name="my-slot">
+            <span>this is default slot span tag</span>
+        </slot>
+        <slot></slot>
+    </template>
+
+    <my-section></my-section>
+
+    <script>
+        customElements.define('my-section', class MySection extends HTMLElement {
+            constructor () {
+                super()
+                const template = document.querySelector('#demo-template')
+                const templateContent = template.content
+                const shadowRoot = this.attachShadow({ mode: 'open' }).appendChild(templateContent)
+            }
+        })
+    </script>
+</body>
+</html>
