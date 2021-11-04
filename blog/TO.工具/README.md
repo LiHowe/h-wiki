@@ -12,5 +12,8 @@
 
 + [假文本生成器](https://cn.lipsum.com/)
 
++ [Github Badge生成](https://shields.io/category/other)
 
 
+
+## 图表类

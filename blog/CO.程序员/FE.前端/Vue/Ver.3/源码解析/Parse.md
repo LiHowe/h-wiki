@@ -1,3 +1,9 @@
+---
+WIP: false
+---
+
+
+
 # Parse - 解析
 
 ## 解析过程
@@ -205,8 +211,8 @@ graph LR
 
 根据字符串命中不同的判断规则, 一共有以下几种解析方式
 
-+ `parseInterpolation`: 解析插值(字符串以**插值符号(`{{`)**开头)
-+ `parseBogusComment`: 解析文档声明(字符串以`<!DOCTYPE`开头), 返回注释类型节点(`NodeTypes.COMMENT`)
++ [`parseInterpolation`](###parseInterpolation - 解析插值): 解析插值(字符串以**插值符号(`{{`), 或者是用户自定义插值**开头)
++ [`parseBogusComment`](###parseBogusComment - 解析文档声明): 解析文档声明(字符串以`<!DOCTYPE`开头), 返回注释类型节点(`NodeTypes.COMMENT`)
 + `parseComment`: 解析注释(字符串以`<!--`开头), 返回注释类型节点(`NodeTypes.COMMENT`)
 + `parseCDATA`: 解析CDATA(字符串以`<!CDATA[`开头), 使用节点内容递归调用`parseChildren`, 返回模板子节点数组
 + `parseTag`: 解析HTML标签(字符串以`</`开头后接英文字母的)
@@ -223,75 +229,162 @@ graph LR
 
 ## 解析规则详情
 
+### 工具函数
+
+这些`advance`函数在解析过程中不断被用到, 用于**进行一些操作**并**更新解析指针位置**
+
++ `advanceBy`: 截取给定长度字符串(留下后面的字符串)
++ `advanceSpaces`: 截取空格
++ `advancePositionWithMutation`: 主要用于更新解析指针位置, 上面两个函数更新指针位置的操作就是通过调用该函数
+
 
 
 ### parseText - 解析文本
 
-```mermaid
-graph LR
-Start(获取结束分词类型) --> 获取字符串总长度 --> 找到模板中第一个分词位置 --> 获取游标位置 --> 获取当前游标位置文本 --> 截取指定位置字符串
-```
-
-
-
-`advanceBy`: 截取给定长度字符串(留下后面的字符串)
+1. 获取解析结束标识(`<`, `{{`)
+2. 找到字符串中**第一个**结束标识位置
+3. 截取到结束标识位置之前的字符串(通过调用`parseTextData`)
+4. 返回`NodeTypes.TEXT`类型的文本节点
 
 
 
 ### ParseElement - 解析HTML标签元素
 
 1. 获取父元素
-2. 解析标签元素[parseTag](##ParseTag - 解析标签)
+2. 解析标签元素[parseTag](###ParseTag - 解析标签)
 3. 如果元素是自闭合标签或者是空标签, 则直接返回第2步解析好的标签元素
 4. 将解析好的标签元素对象放入**祖先栈(`ancestors`)**中
-5. 调用[parseChildren](##parseChildren)来解析子元素(已解析好的元素作为父元素)
+5. 将解析好的标签元素作为参数(父元素)调用[parseChildren](##parseChildren)来解析子元素[^1]
 6. 将父标签元素出栈(`ancestors.pop()`)
 7. 将子元素赋值给解析的标签元素
 8. 设置元素位置信息`loc`
 9. 返回解析好的元素
 
-```mermaid
-graph TD
-	subgraph parseTag
-	
-	end
-	
-```
+
+
+[^1]: 不断对`ancestors`进行出栈入栈来匹配标签
+
+> 比如字符串模板为`<div><span></span></haha>`, 进行解析
+>
+> 那么`ancestors`的数据变化将会是
+>
+> 1. 解析`div`   --> [div]
+> 2. 解析`span`  --> [div,span]
+> 3. 解析`/span` --> [div]
+> 4. 解析`/haha` --> [div] => 报错, 因为 div !== haha 导致标签解析(parseTag)失败
 
 
 
 ### ParseTag - 解析标签
 
+比如`<div class="demo"></div>`
+
 1. 通过正则获取标签类型
-2. 更新并获取游标位置, 同时更新待解析字符串
+2. 更新并获取指针位置, 同时更新待解析字符串
 3. 检查是否是`<pre>`标签
 4. 解析标签属性(`parseAttributes`)
    1. 初始化属性数组
-   2. 前进游标解析字符串, 直到遇到结束标签(`>`, `/>`)
+   2. 前进指针解析字符串, 直到遇到结束标签(`>`, `/>`)
       1. 解析标签属性值[parseAttribute](##ParseAttribute - 解析HTML元素标签属性)
       2. [为`class`属性调整空格(`trim`)]( https://github.com/vuejs/vue-next/issues/4251)
       3. 将解析好的属性对象放入结果数组
-      4. 移除空格前进游标
+      4. 移除空格前进指针
    3. 返回属性数组
 5. 检查`v-pre`
-6. 根据是否是自闭合标签来将游标前进`2`或`1`
+6. 根据是否是自闭合标签来将指针前进`2`或`1`
 7. 如果标签是`slot`,`template`或者是Vue组件, 更新标签类型值
 8. 返回解析好的对象
 
 
 
+### parseAttributes - 解析HTML元素标签属性以及校验
+
+不断调用[parseAttribute]()来解析当前标签元素属性直到待解析模板长度为0或者当前标签结束(`>`, `/>`)
+
+返回解析到的属性节点数组
+
 ### ParseAttribute - 解析HTML元素标签属性
 
-1. 通过正则获取标签属性名
+1. 通过正则获取属性名
 2. 判断是否有重名属性, 有则报错
-3. 解析属性值[parseAttributeValue](##ParseAttributeValue), 如果没有值则报错
-4. 如果以`v-`等vue字段开头的属性
-   1. 待补充
-5. 返回解析结果
+3. 定义初始化属性值为`undefined`
+4. 通过正则判断是否含有属性值
+   1. 如果有, 解析模板获取属性值[parseAttributeValue](###ParseAttributeValue - 解析HTML元素标签属性值)
+   2. 如果解析属性值结果为空值, 则认为解析失败(如`class=`), 报错
+5. 处理Vue简写字段, 如[`v-`, `:`, `@`, `#`, `.`, `[`]开头的属性, 返回`NodeTypes.DIRECTIVE`类型指令节点
+6. 返回`NodeTypes.ATTRIBUTE`类型属性节点
 
 
 
 ### ParseAttributeValue - 解析HTML元素标签属性值
 
-`parseAttributeValue`: 如果有引号, 则先移动游标去除引号, 之后解析文本作为标签属性值
+```mermaid
+graph LR
+	Start(开始解析) --> J1{解析字符串是否是引号开头}
+	J1 --Y--> J2{是否有回引号}
+	J2 --Y--> P1(将回引号前的文本作为属性值解析)
+	J2 --N--> P2(将待解析文本全部作为属性值解析)
+	J1 --N--> P3(将>前的文本作为属性值解析)
+```
+
+
+
+### parseInterpolation - 解析插值
+
+1. 获取插值开闭定界符, 默认为`{{`和`}}`
+
+2. 获取定界符的位置, 截取字符串得到定界符内文本
+3. 返回`NodeTypes.INTERPOLATION`类型插值节点
+
+比如`{{ demo }}`
+
+```typescript
+return {
+    type: NodeTypes.INTERPOLATION,
+    content: {
+      type: NodeTypes.SIMPLE_EXPRESSION,
+      isStatic: false,
+      constType: ConstantTypes.NOT_CONSTANT,
+      content: 'demo',
+      loc: getSelection(context, innerStart, innerEnd)
+    },
+    loc: getSelection(context, start)
+  }
+```
+
+
+
+### parseBogusComment - 解析文档声明
+
+1. 获取标签结束符位置(`>`)
+2. 截取内容`content`
+3. 返回`NodeTypes.COMMENT`类型注释节点
+
+比如`<!DOCTYPE html>`
+
+```typescript
+return {
+  type: NodeTypes.COMMENT,
+  content: 'html',
+  loc
+}
+```
+
+
+
+### parseComment - 解析注释
+
+1. 检验是否有结束标识`-->`
+2. 截取注释内容`content`
+3. 返回`NodeTypes.COMMENT`类型注释节点
+
+比如`<!--comment-->`
+
+```typescript
+return {
+  type: NodeTypes.COMMENT,
+  content: 'comment',
+  loc
+}
+```
 
