@@ -1,6 +1,6 @@
 /**
  * @param options 插件参数
- * @parma app 
+ * @parma app
  */
 export default (options, app) => ({
   name: 'vuepress-plugin-markdown-enhance',

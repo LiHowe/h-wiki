@@ -211,7 +211,7 @@ graph LR
 
 根据字符串命中不同的判断规则, 一共有以下几种解析方式
 
-+ [`parseInterpolation`](###parseInterpolation - 解析插值): 解析插值(字符串以**插值符号(`{{`), 或者是用户自定义插值**开头)
++ [`parseInterpolation`](###parseInterpolation - 解析插值): 解析插值(字符串以**插值符号或者是用户自定义插值**开头)
 + [`parseBogusComment`](###parseBogusComment - 解析文档声明): 解析文档声明(字符串以`<!DOCTYPE`开头), 返回注释类型节点(`NodeTypes.COMMENT`)
 + `parseComment`: 解析注释(字符串以`<!--`开头), 返回注释类型节点(`NodeTypes.COMMENT`)
 + `parseCDATA`: 解析CDATA(字符串以`<!CDATA[`开头), 使用节点内容递归调用`parseChildren`, 返回模板子节点数组
@@ -241,7 +241,7 @@ graph LR
 
 ### parseText - 解析文本
 
-1. 获取解析结束标识(`<`, `{{`)
+1. 获取解析结束标识
 2. 找到字符串中**第一个**结束标识位置
 3. 截取到结束标识位置之前的字符串(通过调用`parseTextData`)
 4. 返回`NodeTypes.TEXT`类型的文本节点
@@ -331,12 +331,12 @@ graph LR
 
 ### parseInterpolation - 解析插值
 
-1. 获取插值开闭定界符, 默认为`{{`和`}}`
+1. 获取插值开闭定界符, 默认为`\{\{`, `\}\}`
 
 2. 获取定界符的位置, 截取字符串得到定界符内文本
 3. 返回`NodeTypes.INTERPOLATION`类型插值节点
 
-比如`{{ demo }}`
+比如`\{\{ demo \}\}`
 
 ```typescript
 return {

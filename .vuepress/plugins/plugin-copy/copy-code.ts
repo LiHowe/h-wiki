@@ -1,6 +1,7 @@
 import { defineClientAppSetup } from '@vuepress/client'
 import { onMounted, createApp } from 'vue'
-import CopyButton from './CopyButton'
+import CopyButton from './Button.vue'
+import { nanoid } from 'nanoid'
 
 const codeElements = () => document.querySelectorAll('div[class*="language-"]')
 // TODO: 复制代码组件实现
@@ -8,13 +9,18 @@ export default defineClientAppSetup(() => {
   onMounted(() => {
     console.log('mounted')
     setTimeout(() => {
-      console.log('genCode')
       codeElements().forEach(el => {
-        const element = document.createElement('div')
+        const uid = nanoid(4)
+        const element = document.createElement('span')
         element.style.position = 'absolute'
-        element.style.top = '0px'
-        CopyButton.mount(element)
+        element.style.right = '0px'
+        element.style.bottom = '0px'
+        element.style.zIndex = '1'
+        createApp({ ...CopyButton, props: ['uid']}, {
+          uid
+        }).mount(element)
         el.appendChild(element)
+        el.children[0].setAttribute('id', uid.toString())
       })
     }, 1000)
   })

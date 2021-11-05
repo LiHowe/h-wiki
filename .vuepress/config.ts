@@ -39,7 +39,8 @@ export default {
   plugins: [
     [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
     [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
-    ['@vuepress/plugin-git', false]
+    [path.resolve(__dirname, './plugins/plugin-mermaid/index.ts'), {}],
+    ['@vuepress/plugin-git', false],
   ],
   define: definitions
 }
