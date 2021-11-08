@@ -20,9 +20,11 @@
   "bugs": {
     "url": "https://github.com/LiHowe/h-wiki/issues"
   },
+  "workspaces": [
+    "."
+  ],
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
-    "@liradb2000/markdown-it-mermaid": "^0.4.4",
     "@types/mermaid": "^8.2.7",
     "@vuepress/bundler-vite": "next",
     "autoprefixer": "latest",
@@ -33,7 +35,6 @@
     "markdown-it-katex": "^2.0.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "mermaid": "^8.13.3",
     "nanoid": "^3.1.30",
     "postcss": "latest",
     "postcss-nested": "latest",
@@ -43,6 +44,7 @@
   },
   "packageManager": "yarn@3.0.2",
   "dependencies": {
-    "axios": "^0.23.0"
+    "axios": "^0.23.0",
+    "mermaid": "^8.13.3"
   }
 }
