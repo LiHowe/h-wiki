@@ -4,7 +4,6 @@ import CopyButton from './Button.vue'
 import { nanoid } from 'nanoid'
 
 const codeElements = () => document.querySelectorAll('div[class*="language-"]')
-// TODO: 复制代码组件实现
 export default defineClientAppSetup(() => {
   onMounted(() => {
     console.log('mounted')
