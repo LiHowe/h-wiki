@@ -124,7 +124,7 @@ async function getMedia() {
 
 + [`aspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/aspectRatio): 
 + [`facingMode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/facingMode): 前置 | 后置摄像头
-+ `frameRate`: 视频帧率
++ `frameRate`: 视频帧率, 如果不指定的话, 系统会默认与屏幕垂直同步率相同
 + `height`: 视频高度
 + `width`: 视频宽度
 

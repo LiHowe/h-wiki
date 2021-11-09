@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "My Blog build with VuePress",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build"
