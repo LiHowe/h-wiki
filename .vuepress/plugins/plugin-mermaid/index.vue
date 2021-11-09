@@ -6,11 +6,16 @@
 <script setup>
 import { decode } from './utils'
 import { nanoid } from 'nanoid'
-import { useSlots, ref, onMounted} from 'vue'
+import { useSlots, ref, onBeforeMount } from 'vue'
 
 function getMermaid () {
   return new Promise(resolve => {
+    if (window.__mermaid) {
+      resolve(window.__mermaid)
+      return
+    }
     import('mermaid').then(({ default: Mermaid }) => {
+      window && (window.__mermaid = Mermaid)
       Mermaid.mermaidAPI.initialize({
         startOnLoad: false,
         theme: 'default',
@@ -33,7 +38,7 @@ const el = ref(null)
 
 const slots = useSlots()
 
-onMounted(async () => {
+onBeforeMount(async () => {
   const Mermaid = await getMermaid()
   const content = el.value.children[0].innerHTML
   const formatted = decode(content)
