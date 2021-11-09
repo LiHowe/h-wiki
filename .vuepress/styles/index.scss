@@ -1,7 +1,13 @@
 // https://v2.vuepress.vuejs.org/zh/reference/default-theme/styles.html#palette-%E6%96%87%E4%BB%B6
-@front-face {
-  font-family: 'Fire Code';
+@font-face {
+  font-family: 'JetBrains Mono';
   src: url('../public/fonts/JetBrainsMono-Regular.ttf') format('ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fira Code';
+  src: url("../public/fonts/FiraCode-Regular.woff") format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -12,7 +18,7 @@
   --c-brand: #3B82F6;
   --c-brand-light: #60A5FA;
 }
-html.dark { 
+html.dark {
   --c-brand: #F59E0B;
   --c-brand-light: #FBBF24;
 }
@@ -35,7 +41,8 @@ html.dark {
     @apply
     leading-none
     text-xs;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Fira Code';
+    font-variant-ligatures: normal;
   }
   h1 {
     @apply
@@ -69,11 +76,14 @@ html.dark {
       transition-colors
       duration-150;
   }
+  p, ul, ol {
+    @apply leading-7;
+  }
   ul {
     @apply
       pl-4;
     li {
-      @apply list-disc ml-4;
+      @apply list-disc ml-4 mt-1.5;
       ul {
         li {
           list-style: circle;

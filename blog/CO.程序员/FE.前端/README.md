@@ -10,7 +10,7 @@ sidebar: false
 + [Array](基础/Array.md)
 + [Blob](基础/Blob/README.md)
 + [Function](基础/Function.md)
-+ [WebComponents](基础/WebComponents.md)
++ [WebComponents](基础/WebComponents/README.md)
 + [WebWorker](基础/WebWorker.md)
 
 ### WebRTC

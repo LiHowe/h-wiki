@@ -1,6 +1,5 @@
 ---
 category: code
-layout: blog
 title: Web Components
 date: 07/14-2021 19:19
 coverImage: https://i.loli.net/2021/07/14/ETVM6kWUOl2der8.png
@@ -11,8 +10,9 @@ tags:
 description: Web Components 的简单介绍以及使用
 stick: false
 wip: false
-
 ---
+
+# WebComponents
 
 Web Components主要由三项主要技术组成
 
@@ -54,6 +54,7 @@ customElements.define('uppercase-span', UppercaseSpan, { extends: 'span' })
 <!-- 或者使用下面的形式👇 -->
 <span is="uppercase-span">this sentence will be convert to uppercase</span>
 ```
+
 
 ### 生命周期钩子函数
 
