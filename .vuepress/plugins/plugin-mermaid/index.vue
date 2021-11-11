@@ -26,14 +26,6 @@ function getMermaid () {
 
 }
 
-const props = defineProps({
-  content: {
-    type: String,
-    default: '',
-    required: true
-  }
-})
-
 const el = ref(null)
 
 const slots = useSlots()
