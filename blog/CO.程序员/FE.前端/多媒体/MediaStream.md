@@ -145,11 +145,33 @@ async function getMedia() {
 
 通过上面的操作我们可以拿到用户音视频设备的数据流, 这样我们就可以使用这些数据进行加工, 录制和传输了.
 
+一个媒体流对象(`MediaStream`)中包含一个或多个媒体轨道(`MediaTrack`)
+
+操作媒体流实质上是在操作媒体轨道
+
 ```javascript
 // getMedia方法来自[1. 获取媒体权限]
 const stream = await getMedia()
 
 ```
+
+
+
+
+
+### 4. 操作媒体轨道
+
+首先, 我们先分清`constraints`, `settings`, `capabilities`这三个概念
+
++ `capabilities`: 表明当前轨道的能力范围
++ `constraints`: 表示当前用户请求设备的约束条件
++ `settings`: 表示实际上系统返回给用户的设备信息
+
+除非用户指定`exact`属性来表明特定值, 否则系统返回给用户的设备是不确定的
+
+
+
+
 
 
 
