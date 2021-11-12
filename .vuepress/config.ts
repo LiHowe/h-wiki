@@ -33,7 +33,7 @@ export default {
     ['link', {rel: 'icon', href: '/images/icon.png'}],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
     ['script', { href: '//at.alicdn.com/t/font_2339230_gyuxqs79usf.js' }],
-    // ['script', { href: 'https://cpwebassets.codepen.io/assets/embed/ei.js' }], // codepen
+    // ['script', { href: 'https://cpwebassets.codepen.io/assets/embed/ei.js', async: true }], // codepen
   ],
   // vuepress插件
   plugins: [
