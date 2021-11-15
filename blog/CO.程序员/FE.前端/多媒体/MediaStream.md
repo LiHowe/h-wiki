@@ -1,5 +1,5 @@
 ---
-WIP: true
+WIP: false
 ---
 
 
@@ -9,7 +9,7 @@ WIP: true
 MediaStream是使用WebAPI来通过浏览器获取用户的摄像头、麦克风以及屏幕展示的权限之后媒体设备所采集的音视频数据流，主要使用场景有
 1. 屏幕录制或共享（如有些面试的笔试链接）
 2. 音视频通话（如视频会议, 配合[WebRTC](CO.程序员/FE.前端/WebRTC/WebRTC.md)）
-3. 音视频录制
+3. 音视频录制编辑
 4. 语音识别(配合AI能力)
 
 ## 基本使用
@@ -262,9 +262,7 @@ async function getMedia() {
 
 #### 方法
 
-
-
-获取属性
+**获取属性**
 
 + `getCapabilities()`
 + `getConstraints()`
@@ -272,13 +270,11 @@ async function getMedia() {
 
 
 
-操作
+**操作**
 
 + `applyConstraints(constraints)`: 为轨道应用新约束条件
 + `stop()`: 停止轨道数据传输, 将轨道`readyState`置为`ended`
 + `clone()`: 创建轨道副本
-
-
 
 
 
@@ -287,21 +283,77 @@ async function getMedia() {
   Untitled</a> by Howe (<a href="https://codepen.io/lihowe">@lihowe</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-
+> 由于iframe导致权限无法获取, 请自行在浏览器中模拟或者打开新浏览器窗口至CodePen进行测试
 
 #### `constraints`, `settings`, `capabilities`的区别
 
-首先, 我们先分清`constraints`, `settings`, `capabilities`这三个概念
++ `capabilities`
 
-+ `capabilities`: 表明当前轨道的能力范围
-+ `constraints`: 表示当前用户请求设备的约束条件
-+ `settings`: 表示实际上系统返回给用户的设备信息
+  表明当前轨道的能力范围, 即, 媒体轨道可以接收的值的范围
+
++ `constraints`
+
+  表示当前用户请求设备的约束条件, 可能是模糊的或不满足轨道能力的约束条件范围
+
++ `settings`
+
+  表示实际上系统返回给用户的设备信息, 即, 当用户给予不符合轨道能力范围的约束或者模糊的约束条件时, 系统返回给用户的设备信息
 
 除非用户指定`exact`属性来表明特定值, 否则系统返回给用户的设备是不确定的
 
+让我们通过下面的例子来加深理解
 
+```javascript
+// 我们请求音频设备, 不表明约束条件
+const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true})
+```
 
+这时候我们调用音频轨道的`getConstraints()`
 
+```javascript
+mediaStream.getAudioTracks()[0].getConstraints()
+```
+
+![image-20211115103905688](https://i.loli.net/2021/11/15/mhlPtdELoXG6IzQ.png)
+
+因为我们的约束只是`audio: true`, 即没有特定约束, 所以获取约束条件返回空对象`{}`
+
+再让我们看下其他两个方法的返回值
+
+![image-20211115104334194](https://i.loli.net/2021/11/15/WNsRrF5EuJt2Z8b.png)
+
+我们看出`getSettings()`更像是约束的`exact`值
+
+![image-20211115105108031](https://i.loli.net/2021/11/15/8dJuPkC9nFs5SNm.png)
 
 ### 4. 媒体设备
+
+`MediaDevices`主要为我们提供访问连接媒体输入设备的方法
+
++ `enumerateDevices(): Promise<Array<InputDeviceInfo | MediaDeviceInfo>>`
+
+  枚举出所有可用的输入以及输出设备
+
+  ```javascript
+  const devices = await navigator.mediaDevices.enumerateDevices()
+  console.log(devices)
+  ```
+
+  ![image-20211115101222490](https://i.loli.net/2021/11/15/O8cyC5BJlsoD1HW.png)
+
++ `getSupportedConstraints()`
+
+  返回当前浏览器环境可以支持的媒体约束属性
+
+  ![image-20211115101411534](https://i.loli.net/2021/11/15/1xuUEVNP8ClcTIk.png)
+
+  返回的对象的key即为我们可以设置的[媒体设备约束参数](###媒体设备约束参数)
+
++ `getUserMedia(constraints): Promise<MediaStream>`
+
+  获取用户的相机或麦克风, 返回包含对应约束设备数据的媒体流
+
++ `getDisplayMedia(): Promise<MediaStream>`
+
+  获取用户屏幕显示内容(具体内容由用户选择决定), 移动端浏览器均不支持(*统计于2021/11*)
 
