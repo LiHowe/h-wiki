@@ -38,7 +38,7 @@ sidebar: false
 
 ### Vue
 
-+ [3.x 源码解析](./Vue/Ver.3/源码解析/README.md)
++ [3.x 源码解析](Vue/Ver.3/源码解析/README.md)
 
 ## 样式
 
