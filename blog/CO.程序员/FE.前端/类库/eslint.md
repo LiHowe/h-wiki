@@ -1,8 +1,12 @@
 # ESLint
 
-ESLint使用 Espree 解析JavaScript, 使用AST分析代码模式
+`ESLint`用于以指定代码规范来检测规范代码, 在团队协作开发的时候效果明显, 避免因为每个人代码风格不同的问题而导致开发人员阅读以及理解代码上的障碍.
+
+*ESLint使用 Espree 解析JavaScript, 使用AST分析代码模式*
 
 ## 使用
+
+### 安装
 
 ```shell
 # 全局安装
@@ -10,17 +14,70 @@ npm install eslint -g
 
 # 项目目录范围安装
 npm install eslint -D
-
-# 生成配置文件
-./node_modules/.bin/eslint --init
-
 ```
+
+
+
+### 初始化
+
+我们可以通过在项目目录下执行`eslint --init`命令来初始化项目eslint配置文件,
+
+如果没有全局安装`eslint`, 可以使用以下命令
+
+```shell
+# 使用npx
+npx eslint --init
+
+# 使用 yarn
+yarn run eslint --init
+
+# 使用node_modules下的eslint生成配置文件
+./node_modules/.bin/eslint --init
+```
+
+之后根据命令行提示一步步执行, 这里举例说明下
+
+```shell
+? How would you like to use ESLint? … 										# 你打算以下面哪种方式使用ESLint?
+  To check syntax only 																		# 仅校验语法
+❯ To check syntax and find problems												# 校验语法, 找到问题
+  To check syntax, find problems, and enforce code style	# 校验语法, 找到问题, 并且保证代码风格
+  
+? What type of modules does your project use? … 					# 你的项目是以哪种方式导入导出模块的?
+❯ JavaScript modules (import/export)
+  CommonJS (require/exports)
+  None of these
+  
+? Which framework does your project use? … 								# 你项目用了下面哪个框架?
+  React
+  Vue.js
+❯ None of these
+
+? Does your project use TypeScript? › No / Yes						# 用没用TypeScript?
+
+? Where does your code run? 															# 你的代码在哪个环境运行? (多选)
+✔ Browser
+✔ Node
+
+? What format do you want your config file to be in? 			# 你打算使用哪种文件格式来配置eslint 
+❯ JavaScript
+  YAML
+  JSON
+  
+# 上一步确认之后会下面告诉你都需要什么依赖
+The config that you've selected requires the following dependencies:
+
+@typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
+? Would you like to install them now with npm? › No / Yes	# 要不要现在就安装这些依赖嗷?
+```
+
+
 
 ESLint支持以下方式来配置
 
 1. 使用JavaScript注释
 
-2. 使用配置文件.eslintrc(.js, .yaml, .yml, ,json)
+2. 使用配置文件`.eslintrc`(无后缀, 或者 `.js`, `.yaml`, `.yml`, `.json` 格式)
 
 3. 在 package.json 中的 `eslintConfig` 字段配置
 
@@ -37,16 +94,18 @@ module.exports = {
     globals: {}, 				// 自定义全局变量
     env: {}, 						// 环境
     parser: "", 				// 解析器
-    parserOptions: {}, // 解析器配置
+    parserOptions: {}, 	// 解析器配置
     plugins: [], 				// 插件
     extends: [], 				// 预设规则
     rules: {}, 					// 校验规则
 }
 ```
 
+下面我们来看看每个属性都有什么作用
+
 ### 层叠配置 (root)
 
-ESLint在检测文件的时候会使用**离待校验文件最近**的 `.eslintrc.*` 文件来**作为最高优先级**的校验规则, 以下面的目录结构为例
+ESLint在检测文件的时候会使用**离待校验文件最近**的配置文件来**作为最高优先级**的校验规则, 以下面的目录结构为例
 
 ```text
 src
@@ -81,6 +140,8 @@ module.exports = {
 }
 ```
 
+
+
 ### 环境 (env)
 
 用于指定代码运行环境, 会支持对应环境的全局变量以及数据类型。
@@ -91,21 +152,23 @@ module.exports = {
 
 > 注意: 配置了 `ecmaVersion: 6` 不等于配置了ES6的`env`, 比如配置了 `ecmaVersion: 6` 后可以支持ES6的语法(箭头函数、解构等), 但是并不支持ES6的新增对象类型(`Promise`, `Map`, `Set`等)和全局变量定义(`const`, `let`)
 
+
+
 ### 解析器 (parserOptions)
 
 用于配置ESLint解析JavaScript时的配置
 
-- ecmaVersion : 用于配置解析器支持的语法版本, 默认ES5 ecmaVersion: 5 , 如果需要支持ES6以上JS版本则需要指定为6, 7, 8, 9, 10等
+- `ecmaVersion` : 用于配置解析器支持的语法版本, 默认ES5 ecmaVersion: 5 , 如果需要支持ES6以上JS版本则需要指定为6, 7, 8, 9, 10等
 
-- sourceType : 指定代码类型, script 或者 module 
+- `sourceType` : 指定代码类型, script 或者 module 
 
-- ecmaFeatures : 配置额外的语言特性
+- `ecmaFeatures` : 配置额外的语言特性
 
-- globalReturn : 全局作用域的return支持
+- `globalReturn` : 全局作用域的return支持
 
-- impliedStrict : 全局严格模式(ES5+)
+- `impliedStrict` : 全局严格模式(ES5+)
 
-- jsx : JSX支持
+- `jsx` : JSX文件支持
 
 
 
@@ -137,11 +200,13 @@ module.exports = {
 
 可以看出, `@typescript-eslint` 导出了5个配置文件, 所以我们在使用时, `extends` 可以在这5个中进行选择, 比如我们选择使用推荐配置: `extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended']`
 
-### extends 与 plugins 的区别
 
-1. `extends`导出的是单个`rules`, `plugins`可能导出0个或多个`rules`
-2. `extends` 中加入规则的时候会直接使用该规则, 而 `plugins` 中加入插件并不会强制使用任何规则
-3. `plugins` 中引用的`plugin`可以理解为是导入规则集合(`import rules from plugin`), 然后我们就可以在 `extends` 里面去使用继承规则
+
+> #### extends 与 plugins 的区别
+>
+> 1. `extends`导出的是单个`rules`, `plugins`可能导出0个或多个`rules`
+> 2. `extends` 中加入规则的时候会直接使用该规则, 而 `plugins` 中加入插件并不会强制使用任何规则
+> 3. `plugins` 中引用的`plugin`可以理解为是导入规则集合(`import rules from plugin`), 然后我们就可以在 `extends` 里面去使用继承规则
 
 ### 校验规则 (rules)
 
@@ -267,9 +332,9 @@ module.exports = {
 
    
 
-### 校验范围 (.eslintignore)
+### 校验范围 (ignore)
 
-我们可以通过以下几种方式来配置**无需校验**的文件
+我们可以通过以下几种方式来配置过滤**无需校验**的文件
 
 1. 在配置文件中配置 `ignorePatterns` 属性
 

@@ -6,7 +6,9 @@ WIP: true
 
 # Jest
 
-Jest `/dʒɛst/`
+Jest `/dʒɛst/` 是一款优雅、简洁的 JavaScript 测试框架。
+
+支持 [Babel](https://babeljs.io/)、[TypeScript](https://www.typescriptlang.org/)、[Node](https://nodejs.org/)、[React](https://reactjs.org/)、[Angular](https://angular.io/)、[Vue](https://vuejs.org/) 等诸多框架！
 
 ## 总结
 
@@ -15,6 +17,10 @@ Jest `/dʒɛst/`
 ### 安装
 
 `npm install -D jest` or `yarn add -D jest`
+
+`TypeScript`下安装使用`ts-jest`(`npm install -D ts-jest`)
+
+然后在`jest.config.[ts,js]`文件中设置`preset: 'ts-jest'`
 
 ### API
 
@@ -35,8 +41,8 @@ API功能主要分为三类(*仅依照本人意愿, 不代表官方意见*)
 除钩子函数外, 定义方法按照通用功能分为
 
 + basic: 方法基础体
-+ `.skip`: 注释方法, 跳过该方法, 别名为`x`
-+ `.only`: 唯一方法, 仅执行该方法, 别名为`f`
++ `.skip`: 注释方法, 用于跳过该方法, 别名前缀为`x`
++ `.only`: 唯一方法, 用于同文件下仅执行该方法, 别名前缀为`f`
 + `.each(table)`: 循环方法
 
 **在保持`.only`与`.skip`不共存的前提下**, Jest的API形式基本上保持
@@ -45,7 +51,7 @@ API功能主要分为三类(*仅依照本人意愿, 不代表官方意见*)
 
 比如`it.skip(name, fn)`, `it.skip.each(name, fn)`等
 
-详细API列表以及功能可以查看[API说明](##API说明)
+详细API列表以及功能可以查看[API说明](#API说明)
 
 
 
@@ -60,7 +66,11 @@ API功能主要分为三类(*仅依照本人意愿, 不代表官方意见*)
   <ul class="table-of-contents"><li><a href="#expectvalue"><code>expect(value)</code></a></li><li><a href="#expectextendmatchers"><code>expect.extend(matchers)</code></a></li><li><a href="#expectanything"><code>expect.anything()</code></a></li><li><a href="#expectanyconstructor"><code>expect.any(constructor)</code></a></li><li><a href="#expectarraycontainingarray"><code>expect.arrayContaining(array)</code></a></li><li><a href="#expectassertionsnumber"><code>expect.assertions(number)</code></a></li><li><a href="#expecthasassertions"><code>expect.hasAssertions()</code></a></li><li><a href="#expectnotarraycontainingarray"><code>expect.not.arrayContaining(array)</code></a></li><li><a href="#expectnotobjectcontainingobject"><code>expect.not.objectContaining(object)</code></a></li><li><a href="#expectnotstringcontainingstring"><code>expect.not.stringContaining(string)</code></a></li><li><a href="#expectnotstringmatchingstring--regexp"><code>expect.not.stringMatching(string | regexp)</code></a></li><li><a href="#expectobjectcontainingobject"><code>expect.objectContaining(object)</code></a></li><li><a href="#expectstringcontainingstring"><code>expect.stringContaining(string)</code></a></li><li><a href="#expectstringmatchingstring--regexp"><code>expect.stringMatching(string | regexp)</code></a></li><li><a href="#expectaddsnapshotserializerserializer"><code>expect.addSnapshotSerializer(serializer)</code></a></li><li><a href="#not"><code>.not</code></a></li><li><a href="#resolves"><code>.resolves</code></a></li><li><a href="#rejects"><code>.rejects</code></a></li><li><a href="#tobevalue"><code>.toBe(value)</code></a></li><li><a href="#tohavebeencalled"><code>.toHaveBeenCalled()</code></a></li><li><a href="#tohavebeencalledtimesnumber"><code>.toHaveBeenCalledTimes(number)</code></a></li><li><a href="#tohavebeencalledwitharg1-arg2-"><code>.toHaveBeenCalledWith(arg1, arg2, ...)</code></a></li><li><a href="#tohavebeenlastcalledwitharg1-arg2-"><code>.toHaveBeenLastCalledWith(arg1, arg2, ...)</code></a></li><li><a href="#tohavebeennthcalledwithnthcall-arg1-arg2-"><code>.toHaveBeenNthCalledWith(nthCall, arg1, arg2, ....)</code></a></li><li><a href="#tohavereturned"><code>.toHaveReturned()</code></a></li><li><a href="#tohavereturnedtimesnumber"><code>.toHaveReturnedTimes(number)</code></a></li><li><a href="#tohavereturnedwithvalue"><code>.toHaveReturnedWith(value)</code></a></li><li><a href="#tohavelastreturnedwithvalue"><code>.toHaveLastReturnedWith(value)</code></a></li><li><a href="#tohaventhreturnedwithnthcall-value"><code>.toHaveNthReturnedWith(nthCall, value)</code></a></li><li><a href="#tohavelengthnumber"><code>.toHaveLength(number)</code></a></li><li><a href="#tohavepropertykeypath-value"><code>.toHaveProperty(keyPath, value?)</code></a></li><li><a href="#tobeclosetonumber-numdigits"><code>.toBeCloseTo(number, numDigits?)</code></a></li><li><a href="#tobedefined"><code>.toBeDefined()</code></a></li><li><a href="#tobefalsy"><code>.toBeFalsy()</code></a></li><li><a href="#tobegreaterthannumber--bigint"><code>.toBeGreaterThan(number | bigint)</code></a></li><li><a href="#tobegreaterthanorequalnumber--bigint"><code>.toBeGreaterThanOrEqual(number | bigint)</code></a></li><li><a href="#tobelessthannumber--bigint"><code>.toBeLessThan(number | bigint)</code></a></li><li><a href="#tobelessthanorequalnumber--bigint"><code>.toBeLessThanOrEqual(number | bigint)</code></a></li><li><a href="#tobeinstanceofclass"><code>.toBeInstanceOf(Class)</code></a></li><li><a href="#tobenull"><code>.toBeNull()</code></a></li><li><a href="#tobetruthy"><code>.toBeTruthy()</code></a></li><li><a href="#tobeundefined"><code>.toBeUndefined()</code></a></li><li><a href="#tobenan"><code>.toBeNaN()</code></a></li><li><a href="#tocontainitem"><code>.toContain(item)</code></a></li><li><a href="#tocontainequalitem"><code>.toContainEqual(item)</code></a></li><li><a href="#toequalvalue"><code>.toEqual(value)</code></a></li><li><a href="#tomatchregexp--string"><code>.toMatch(regexp | string)</code></a></li><li><a href="#tomatchobjectobject"><code>.toMatchObject(object)</code></a></li><li><a href="#tomatchsnapshotpropertymatchers-hint"><code>.toMatchSnapshot(propertyMatchers?, hint?)</code></a></li><li><a href="#tomatchinlinesnapshotpropertymatchers-inlinesnapshot"><code>.toMatchInlineSnapshot(propertyMatchers?, inlineSnapshot)</code></a></li><li><a href="#tostrictequalvalue"><code>.toStrictEqual(value)</code></a></li><li><a href="#tothrowerror"><code>.toThrow(error?)</code></a></li><li><a href="#tothrowerrormatchingsnapshothint"><code>.toThrowErrorMatchingSnapshot(hint?)</code></a></li><li><a href="#tothrowerrormatchinginlinesnapshotinlinesnapshot"><code>.toThrowErrorMatchingInlineSnapshot(inlineSnapshot)</code></a></li></ul>
 </details>
 
-### Mock Functions API - 模仿方法API
+### Mock Functions API - 模拟方法API
+
+Mock方法主要用于模拟一些`jsDom`还未收录的或者当前环境没有的对象或者方法
+
+比如 `fetch` 方法
 
 
 
@@ -78,10 +88,11 @@ All files           |    48.2 |      100 |   10.52 |    48.2 |
 
 测试覆盖率指标含义如下
 
-+ `Stmts`: Statement coverage, 声明覆盖率, 是否所有的声明都被使用
-+ `Branch`: branch coverage 分支覆盖率, 是否所有的判断都执行了
-+ `Funcs`: Function coverage 方法覆盖率, 是否所有方法都被调用
-+ `Lines`: Line coverage 代码行覆盖率, 是否所有代码都执行了
++ `Stmts`: Statement coverage, 声明覆盖率(是否所有的声明都被使用)
++ `Branch`: branch coverage, 分支覆盖率(是否所有的判断都执行了)
++ `Funcs`: Function coverage, 方法覆盖率(是否所有方法都被调用)
++ `Lines`: Line coverage, 代码行覆盖率(是否所有代码都执行了)
++ `Uncovered Line`: 未覆盖到的行号
 
 
 
@@ -167,7 +178,7 @@ export default {
 
 ## 配置
 
-
+WIP...
 
 ## API说明
 
