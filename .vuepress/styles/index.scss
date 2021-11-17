@@ -1,13 +1,13 @@
 // https://v2.vuepress.vuejs.org/zh/reference/default-theme/styles.html#palette-%E6%96%87%E4%BB%B6
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('../public/fonts/JetBrainsMono-Regular.ttf') format('ttf');
+  src: url('/fonts/JetBrainsMono-Regular.ttf') format('ttf');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'Fira Code';
-  src: url("../public/fonts/FiraCode-Regular.woff") format('woff');
+  src: url("/fonts/FiraCode-Regular.woff") format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -37,10 +37,10 @@ html.dark {
 // 文章内容样式
 .page {
   font-size: 15px;
+  summary {
+    @apply cursor-pointer text-blue-500;
+  }
   code {
-    @apply
-    leading-none
-    text-xs;
     font-family: 'Fira Code';
     font-variant-ligatures: normal;
   }
@@ -94,7 +94,7 @@ html.dark {
   ol {
     @apply pl-4;
     li {
-      @apply list-decimal pl-2;
+      @apply list-decimal pl-2 mt-1.5;
       &::marker {
         @apply font-bold;
       }
@@ -135,6 +135,9 @@ html.dark {
     }
   }
   code:not(pre code) {
-    @apply border rounded bg-gray-200 text-gray-800 px-2 py-1 mx-2 text-sm;
+    @apply text-blue-500 dark:text-yellow-500 bg-transparent px-2 ;
+  }
+  hr {
+    @apply my-3;
   }
 }
