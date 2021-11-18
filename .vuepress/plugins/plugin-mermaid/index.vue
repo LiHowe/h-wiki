@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-import { decode } from './utils'
+import { htmlUnescape } from '@vuepress/shared'
 import { nanoid } from 'nanoid'
 import { useSlots, ref, onBeforeMount } from 'vue'
 
@@ -28,12 +28,10 @@ function getMermaid () {
 
 const el = ref(null)
 
-const slots = useSlots()
-
 onBeforeMount(async () => {
   const Mermaid = await getMermaid()
   const content = el.value.children[0].innerHTML
-  const formatted = decode(content)
+  const formatted = htmlUnescape(content)
   el.__origin_code = formatted
   try {
     Mermaid.mermaidAPI.render('mermaid_' + nanoid(4), formatted, svgCode => {

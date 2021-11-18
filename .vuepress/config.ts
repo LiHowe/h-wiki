@@ -40,6 +40,7 @@ export default {
     [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
     [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
     [path.resolve(__dirname, './plugins/plugin-mermaid/index.ts'), {}],
+    // ['mermaid-next', {}],
     ['@vuepress/plugin-git', false],
   ],
   define: definitions

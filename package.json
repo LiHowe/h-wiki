@@ -46,6 +46,7 @@
   "packageManager": "yarn@3.0.2",
   "dependencies": {
     "axios": "^0.23.0",
-    "mermaid": "^8.13.3"
+    "mermaid": "^8.13.3",
+    "vuepress-plugin-mermaid-next": "file:.yalc/vuepress-plugin-mermaid-next"
   }
 }

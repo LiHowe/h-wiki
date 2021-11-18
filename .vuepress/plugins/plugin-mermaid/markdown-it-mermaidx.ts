@@ -1,4 +1,4 @@
-import { encode } from './utils'
+import { htmlEscape } from '@vuepress/shared'
 
 export default (md): void => {
   const originFence = md.renderer.rules.fence.bind(md.renderer.rules)
@@ -10,7 +10,7 @@ export default (md): void => {
       return `
       <Mermaid>
         <pre>
-        ${encode(content)}
+        ${htmlEscape(content.trim())}
         </pre>
       </Mermaid>
       `
