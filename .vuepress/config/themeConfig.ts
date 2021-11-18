@@ -11,7 +11,7 @@ export default {
   logo: '/images/logo__dark.png', // Logo图片, 可以使本地图片,也可以是URL
   logoDark: '/images/logo__light.png',
   repo: 'https://github.com/LiHowe/h-wiki', // git仓库地址
-  repoLabel: 'Howe\'s Wiki', // 仓库链接文字
+  repoLabel: '⭐️ Star', // 仓库链接文字
   editLink: false, // 是否启用 编辑此页 链接。
   // navbar: false,
   // sidebar: false,
@@ -32,25 +32,14 @@ export default {
       link: getPath('AL.算法')
     },
     {
-      text: '程序员',
-      activeMatch: '/CO.程序员/',
-      children: [
-        {
-          text: '前端',
-          activeMatch: '/CO.程序员/FE.前端/*',
-          link: getPath('CO.程序员/FE.前端')
-        },
-        {
-          text: '后端',
-          activeMatch: '/CO.程序员/BE.后端/*',
-          link: getPath('CO.程序员/BE.后端')
-        },
-        {
-          text: '工程化',
-          activeMatch: '/CO.程序员/TE.工程化/*',
-          link: getPath('CO.程序员/TE.工程化', 'monorepo.md')
-        }
-      ]
+      text: '前端',
+      // activeMatch: 'FE.前端/*',
+      link: getPath('CO.程序员/FE.前端')
+    },
+    {
+      text: '后端',
+      // activeMatch: 'BE.后端/*',
+      link: getPath('CO.程序员/BE.后端')
     },
     {
       text: '硬件',

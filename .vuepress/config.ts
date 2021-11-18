@@ -24,6 +24,7 @@ export default {
   // 使用的是markdown-it来渲染的, 所以支持markdown-it的插件
   markdown: {
     lineNumbers: true, // 配置显示行号
+    anchor: false
   },
   // theme: path.resolve(__dirname, './theme/index.ts'),
   // 主题配置
@@ -32,7 +33,7 @@ export default {
   head: [
     ['link', {rel: 'icon', href: '/images/icon.png'}],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
-    ['script', { href: '//at.alicdn.com/t/font_2339230_gyuxqs79usf.js' }],
+    ['script', { src: '//at.alicdn.com/t/font_2339230_l56isvfb5i8.js' }],
   ],
   // vuepress插件
   plugins: [
