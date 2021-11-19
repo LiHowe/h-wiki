@@ -17,14 +17,14 @@ export default {
             require('autoprefixer'),
             require('postcss-nested')
           ]
-        }
+        } 
       },
-    }
+    } 
   },
   // 使用的是markdown-it来渲染的, 所以支持markdown-it的插件
   markdown: {
     lineNumbers: true, // 配置显示行号
-    anchor: false
+    // anchor: false, // 如果设置为false, 会导致默认主题的侧边栏导航失效
   },
   // theme: path.resolve(__dirname, './theme/index.ts'),
   // 主题配置
@@ -39,8 +39,13 @@ export default {
   plugins: [
     [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
     [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
-    [path.resolve(__dirname, './plugins/plugin-mermaid/index.ts'), {}],
-    // ['mermaid-next', {}],
+    // [path.resolve(__dirname, './plugins/plugin-mermaid/index.ts'), {
+    //   theme: 'base',
+    // }],
+
+    ['mermaid-next', {
+      theme: 'default',
+    }],
     ['@vuepress/plugin-git', false],
   ],
   define: definitions
