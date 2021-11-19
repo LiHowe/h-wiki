@@ -5,7 +5,7 @@ const PresetTheme = ['default', 'forest', 'dark', 'neutral', 'null', 'base']
  * @param mermaidConfig The Mermaid Plugin settings
  */
 export function mergeThemeConfig (
-  mermaidConfig: Record<string, string | number | boolean>
+  mermaidConfig: Record<string, any>
 ) {
   const theme = mermaidConfig.theme as string
   if (!theme) return mermaidConfig
@@ -16,6 +16,7 @@ export function mergeThemeConfig (
     return mermaidConfig
   }
   // if has preset themeCSS, merge
+  mermaidConfig.theme = PresetTheme[0]
   mermaidConfig.themeCSS = `
   ${MermaidTheme[theme]}
   ${mermaidConfig.themeCSS || ''}
@@ -33,6 +34,7 @@ export class MermaidTheme {
   .edgePath .path { stroke: #3b82f6 }
   .edgeLabel { color: #3b82f6 }
   .clusters rect { fill:#ffffde33 }
+  .dark .node rect,.dark .node polygon { fill: #00a001; stroke:#3b82f6; }
   `
 
   static readonly nightfall = `

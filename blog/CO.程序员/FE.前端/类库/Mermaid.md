@@ -46,6 +46,10 @@ markdown 流程图绘制库， `typora`内置支持该markdown代码块功能
 
   ![image-20211119141829798](https://i.loli.net/2021/11/19/rG9KhmL6PEOZ7vB.png)
 
++ `base`
+
+  ![image-20211119165646707](https://i.loli.net/2021/11/19/3OUho1KayAYgER9.png)
+
 + `null`
 
   禁用所有预设主题

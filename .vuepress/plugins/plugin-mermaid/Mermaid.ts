@@ -37,7 +37,7 @@ export default defineComponent({
       }
     }
     try {
-      configObj = JSON.parse(props.config?.replace(/\'/g, '\"') || '')
+      configObj = JSON.parse(props.config?.replace(/\'/g, '\"') || '{}')
     } catch (e) {
       console.error(e)
     }
