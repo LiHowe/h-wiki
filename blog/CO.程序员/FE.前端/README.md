@@ -50,23 +50,32 @@ sidebar: false
 
 
 
-## 静态网站生成
+## 静态网站构建
 
-+ [Docsify](静态网站生成/docsify.md)
-+ [Gitbook](静态网站生成/gitbook.md)
-+ [Hexo](静态网站生成/hexo.md)
-+ [Netlify](静态网站生成/netlify.md)
-+ [Nuxt-toc](静态网站生成/nuxt-toc.md)
-+ [Nuxt](静态网站生成/nuxt.md)
-+ [VuePress](静态网站生成/vuepress.md)
-+ [对比](静态网站生成/对比.md)
++ [Docsify](静态网站构建/docsify.md)
++ [Gitbook](静态网站构建/gitbook.md)
++ [Hexo](静态网站构建/hexo.md)
++ [Netlify](静态网站构建/netlify.md)
++ [Nuxt-toc](静态网站构建/nuxt-toc.md)
++ [Nuxt](静态网站构建/nuxt.md)
++ [VuePress](静态网站构建/vuepress.md)
++ [对比](静态网站构建/对比.md)
 
+
+## 工程化
+
++ [npm](../TE.工程化/npm.md)
++ [npm loader](../TE.工程化/webpack/loader.md)
++ [语义化版本](../TE.工程化/webpack/语义化版本.md)
++ [hasky](../TE.工程化/hasky.md)
++ [monorepo](../TE.工程化/monorepo.md)
++ [plop](../TE.工程化/plop.md)
 
 
 ## 类库及工具库
 
 + [ESLint](类库/Eslint.md)
-+ [FabricJS](类库/fabricJS.md)
++ [FabricJS](类库/FabricJS.md)
 + [Jest](类库/Jest.md)
 + [Prettier](类库/Prettier.md)
 + [Markdown-it](类库/Markdown-it.md)

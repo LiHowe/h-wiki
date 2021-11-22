@@ -25,7 +25,8 @@ export function mergeThemeConfig (
   return mermaidConfig
 }
 
-
+// TODO: 考虑在setup的时候生成style标签然后插入到文档中
+// TODO: 这样的弊端有哪些
 export class MermaidTheme {
   static readonly ocean = `
   .node rect, .node polygon { fill: #3b82f633; stroke:#3b82f6; }
@@ -34,7 +35,6 @@ export class MermaidTheme {
   .edgePath .path { stroke: #3b82f6 }
   .edgeLabel { color: #3b82f6 }
   .clusters rect { fill:#ffffde33 }
-  .dark .node rect,.dark .node polygon { fill: #00a001; stroke:#3b82f6; }
   `
 
   static readonly nightfall = `

@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "a8486168c3cf378f",
+        "id": "513dd843c5725719",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "blog/CO.程序员/FE.前端/基础/WebComponents/README.md",
+            "file": "blog/CO.程序员/TE.工程化/README.md",
             "mode": "source"
           }
         }
@@ -68,31 +68,15 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/CO.程序员/FE.前端/基础/WebComponents/README.md",
+                "file": "blog/CO.程序员/TE.工程化/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
+                "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
-            }
-          },
-          {
-            "id": "f9194aeef43e5583",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "e121fdedd992ee9d",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
             }
           },
           {
@@ -101,7 +85,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/CO.程序员/FE.前端/基础/WebComponents/README.md"
+                "file": "blog/CO.程序员/TE.工程化/README.md"
               }
             }
           },
@@ -113,24 +97,23 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "a8486168c3cf378f",
+  "active": "513dd843c5725719",
   "lastOpenFiles": [
-    "blog/CO.程序员/FE.前端/基础/WebComponents/README.md",
-    "blog/CO.程序员/FE.前端/基础/WebWorker.md",
-    "blog/CO.程序员/FE.前端/README.md",
-    "CO.程序员/FE.前端/多媒体/MediaStream.md",
-    "CO.程序员/FE.前端/基础/WebWorker.md",
-    "CO.程序员/FE.前端/多媒体/WebAudioAPI.md",
-    "CO.程序员/FE.前端/多媒体/__附件__/Untitled.png",
-    "CO.程序员/FE.前端/多媒体/录音.md",
-    "CO.程序员/FE.前端/多媒体/音频基础.md",
-    "CO.程序员/FE.前端/多媒体/Analyser.md"
+    "blog/CO.程序员/TE.工程化/README.md",
+    "blog/CO.程序员/BE.后端/CommanderJS/README.md",
+    "blog/CO.程序员/BE.后端/README.md",
+    "blog/CO.程序员/BE.后端/NodeJS/sequelize.md",
+    "blog/CO.程序员/BE.后端/NodeJS/cli.md",
+    "blog/CO.程序员/OT.其他/Git.md",
+    "blog/CO.程序员/OT.其他/ChromeExtension.md",
+    "blog/CO.程序员/OT.其他/正则表达式.md",
+    "blog/CO.程序员/OT.其他/未命名.md",
+    "blog/CO.程序员/FE.前端/README.md"
   ]
 }
