@@ -6,7 +6,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import Logo from '../../components/Logo.vue'
 import Nav from './Nav.vue'
 </script>

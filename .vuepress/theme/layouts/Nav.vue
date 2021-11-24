@@ -1,5 +1,11 @@
 <template>
-  <div>
-    <router-link to="/content/CO.程序员/FE.前端/多媒体/录音.md">test</router-link>
+  <div class="header-nav">
+    <nav-link v-for="nav in navbar" :key="nav.text" :data="nav" />
   </div>
 </template>
+<script lang="ts" setup>
+import NavLink from '../components/NavLink.vue'
+// @ts-ignore
+import { themeData } from '@temp/internal/themeData'
+const { navbar } = themeData
+</script>

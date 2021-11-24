@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/mermaid": "^8.2.7",
     "@vuepress/bundler-vite": "next",
+    "@vuepress/plugin-pwa": "^2.0.0-beta.27",
     "autoprefixer": "latest",
     "clipboard": "^2.0.8",
     "fs-extra": "^10.0.0",
