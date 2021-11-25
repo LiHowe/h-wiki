@@ -1,8 +1,7 @@
-import { defineComponent, h } from 'vue'
-import { onMounted, onBeforeMount } from 'vue'
+import { defineComponent, h, onMounted, onBeforeMount, onUpdated, resolveComponent } from 'vue'
 import { nanoid } from 'nanoid'
 import { mergeThemeConfig } from './theme'
-
+import ToolBar from './ToolBar'
 interface Mermaid {
   init: any
 }
@@ -28,7 +27,7 @@ export default defineComponent({
   setup(props) {
     const id = 'mermaid_' + nanoid(4)
     let configObj = {
-      startOnLoad: false,
+      startOnLoad: true,
       securityLevel: 'loose',
       themeVariables: {
         primaryColor: '#3b82f6',
@@ -49,23 +48,43 @@ export default defineComponent({
           return
         }
         import('mermaid').then(({ default: Mermaid }) => {
-          window && (window.__mermaid = Mermaid)
           Mermaid.mermaidAPI.initialize(mergeThemeConfig(configObj))
+          window && (window.__mermaid = Mermaid)
           resolve(Mermaid)
         })
       })
     }
 
-    onBeforeMount(async () => {
+    const init = async () => {
+      console.log('call render')
       try {
         (await getMermaid()).init(undefined, `#${id}`)
       } catch (err) {
         console.error(err)
       }
-    })
+    }
+
+    // dev develop
+    // @ts-ignore
+    if (__VUEPRESS_DEV__) {
+      const render = async () => {
+        //TODO: rerender may cause svg size change. I can not figure out for now
+        (await getMermaid()).mermaidAPI.render(nanoid(4), props.code, svgCode => {
+          document.querySelector(`#${id}`).innerHTML = svgCode
+        })
+      }
+      onUpdated(render)
+    }
+
+    onBeforeMount(init)
+
     return () => h('div', {
       class: 'mermaid',
-      id
-    }, props.code)
+    }, [ 
+      h(ToolBar, { target: id }),
+      h('div', {
+        id
+      }, props.code)
+    ])
   }
 })

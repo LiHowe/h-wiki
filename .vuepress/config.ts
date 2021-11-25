@@ -26,7 +26,7 @@ export default {
     lineNumbers: true, // 配置显示行号
     // anchor: false, // 如果设置为false, 会导致默认主题的侧边栏导航失效
   },
-  theme: path.resolve(__dirname, './theme/index.ts'),
+  // theme: path.resolve(__dirname, './theme/index.ts'),
   // 主题配置
   themeConfig,
   // <head>配置
