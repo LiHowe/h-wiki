@@ -2,6 +2,7 @@ function getSvg (selectorOrEl: string | SVGElement): SVGElement {
   if (!selectorOrEl) return
   let svg = null
   if (typeof selectorOrEl === 'string') {
+    // use id selector by default
     if (!selectorOrEl.startsWith('#') && !selectorOrEl.startsWith('.')) selectorOrEl = `#${selectorOrEl}`
     svg = document.querySelector(selectorOrEl)
     if (!svg) return

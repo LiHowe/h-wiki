@@ -1,4 +1,4 @@
-import { defineComponent, h, onMounted, onBeforeMount, onUpdated, resolveComponent } from 'vue'
+import { defineComponent, h, onMounted, onBeforeMount, onUpdated } from 'vue'
 import { nanoid } from 'nanoid'
 import { mergeThemeConfig } from './theme'
 import ToolBar from './ToolBar'
@@ -25,7 +25,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const id = 'mermaid_' + nanoid(4)
+    const id = 'mermaid-wrapper' + nanoid(4)
     let configObj = {
       startOnLoad: true,
       securityLevel: 'loose',
@@ -54,29 +54,26 @@ export default defineComponent({
         })
       })
     }
-
-    const init = async () => {
-      console.log('call render')
-      try {
-        (await getMermaid()).init(undefined, `#${id}`)
-      } catch (err) {
-        console.error(err)
-      }
+    // The diagrams rendered by `init` is larger than the diagrams which rendered by `render`
+    // I can not figure out for now
+    // const init = async () => {
+    //   console.log('call render')
+    //   try {
+    //     (await getMermaid()).init(undefined, `#${id}`)
+    //   } catch (err) {
+    //     console.error(err)
+    //   }
+    // }
+    const render = async () => {
+      (await getMermaid()).mermaidAPI.render(`mermaid_${nanoid(4)}`, props.code, svgCode => {
+        document.querySelector(`#${id}`).innerHTML = svgCode
+      })
     }
-
     // dev develop
     // @ts-ignore
-    if (__VUEPRESS_DEV__) {
-      const render = async () => {
-        //TODO: rerender may cause svg size change. I can not figure out for now
-        (await getMermaid()).mermaidAPI.render(nanoid(4), props.code, svgCode => {
-          document.querySelector(`#${id}`).innerHTML = svgCode
-        })
-      }
-      onUpdated(render)
-    }
+    if (__VUEPRESS_DEV__) onUpdated(render)
 
-    onBeforeMount(init)
+    onMounted(render)
 
     return () => h('div', {
       class: 'mermaid',

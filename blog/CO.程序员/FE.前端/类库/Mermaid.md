@@ -6,7 +6,22 @@ markdown 流程图绘制库， `typora`内置支持该markdown代码块功能
 
 ## 功能
 
+代码块为`mermaid`, 比如
+<pre>
+```mermaid
+flowchart LR
+  c --> aa
+  aa --> bb
+```
+</pre>
+
 ### FlowChart - 流程图
+
+```mermaid:pure
+flowchart LR
+  c --> aa
+  aa --> bb
+```
 
 ```mermaid
 flowchart LR
@@ -114,7 +129,7 @@ gantt
   Create tests for renderer           :2d
   Add to mermaid                      :1d
   Functionality added                 :milestone, 2014-01-25, 0d
- 
+
   section Documentation
   Describe gantt syntax               :active, a1, after des1, 3d
   Add gantt diagram to demo page      :after a1  , 20h

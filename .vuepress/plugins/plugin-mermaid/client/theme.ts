@@ -28,11 +28,17 @@ export function mergeThemeConfig (
   ${MermaidTheme[theme]}
   ${mermaidConfig.themeCSS || ''}
   `
-  console.log(mermaidConfig)
+  // console.log(mermaidConfig)
   return mermaidConfig
 }
 
-function generateStyle (pColor, sColor) {
+/**
+ * TODO: This function should return the string like `%%{ themeConfig }%%`
+ * @param pColor 
+ * @param sColor 
+ * @returns 
+ */
+function generateStyle (pColor, sColor): String {
   const gantt = `
 
   `
@@ -56,8 +62,6 @@ function generateStyle (pColor, sColor) {
   `
 }
 
-// TODO: 考虑在setup的时候生成style标签然后插入到文档中
-// TODO: 这样的弊端有哪些
 export class MermaidTheme {
   static readonly ocean = generateStyle(skyColors[3], skyColors[2])
 

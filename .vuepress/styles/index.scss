@@ -35,7 +35,7 @@ html.dark {
   box-shadow: 0px 4px 8px #1e1e1e;
 }
 // 侧边栏样式
-.sidebar {
+.sideb {
   a.sidebar-item {
     transition: transform .25s;
     &.active {
@@ -135,6 +135,9 @@ html.dark {
   }
   code:not(pre code) {
     @apply text-blue-500 bg-blue-300 bg-opacity-10 dark:text-yellow-500 dark:bg-yellow-800 dark:bg-opacity-10  px-2 ;
+  }
+  code .token.arrow {
+    display: inline;
   }
   hr {
     @apply my-3;
