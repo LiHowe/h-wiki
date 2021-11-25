@@ -40,7 +40,7 @@ export default {
   plugins: [
     [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
     [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
-    [path.resolve(__dirname, './plugins/plugin-mermaid/index.ts'), {
+    [path.resolve(__dirname, './plugins/plugin-mermaid/node/index.ts'), {
       theme: 'ocean',
     }],
 

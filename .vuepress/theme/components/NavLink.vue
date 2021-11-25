@@ -1,6 +1,6 @@
 <template>
   <!-- normal router link -->
-  <router-link v-if="isRouterLink" :to="nav.link" class="nav-item">
+  <router-link v-if="!isRouterLink" :to="nav.link" class="nav-item">
     {{ nav.text }}
   </router-link>
   <!-- if is website -->

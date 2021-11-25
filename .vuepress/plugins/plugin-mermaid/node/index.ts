@@ -1,4 +1,4 @@
-import MermaidPlugin from './markdown-it-mermaidx'
+import MermaidPlugin from '../client/markdown-it-mermaidx'
 import { path } from '@vuepress/utils'
 export interface MermaidConfiguration {
   theme?: string
