@@ -1,8 +1,8 @@
 import MermaidPlugin from '../client/markdown-it-mermaidx'
 import { path } from '@vuepress/utils'
+import { MermaidThemeConfig } from '../client/theme'
 export interface MermaidConfiguration {
-  theme?: string
-  securityLevel?: string
+  themeConfig?: MermaidThemeConfig
 }
 
 export default  (opt: MermaidConfiguration = {}) => ({

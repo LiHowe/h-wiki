@@ -26,7 +26,6 @@
   ],
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
-    "@types/mermaid": "^8.2.7",
     "@vuepress/bundler-vite": "next",
     "@vuepress/plugin-pwa": "^2.0.0-beta.27",
     "autoprefixer": "latest",

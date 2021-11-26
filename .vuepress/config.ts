@@ -41,7 +41,7 @@ export default {
     [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
     [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
     [path.resolve(__dirname, './plugins/plugin-mermaid/node/index.ts'), {
-      theme: 'ocean',
+      theme: 'dark',
     }],
 
     // ['mermaid-next', {

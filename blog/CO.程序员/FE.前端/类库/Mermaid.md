@@ -4,6 +4,7 @@ markdown 流程图绘制库， `typora`内置支持该markdown代码块功能
 
 [在线编辑器](https://mermaid-js.github.io/mermaid-live-editor/edit#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW0hhcmRdIC0tPnxUZXh0fCBCKFJvdW5kKVxuICAgIEIgLS0-IEN7RGVjaXNpb259XG4gICAgQyAtLT58T25lfCBEW1Jlc3VsdCAxXVxuICAgIEMgLS0-fFR3b3wgRVtSZXN1bHQgMl0iLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOnRydWV9)
 
+
 ## 功能
 
 代码块为`mermaid`, 比如
@@ -94,6 +95,9 @@ journey
 ```
 
 ### Pie Chart Diagrams - 饼图
+
+目前支持12种颜色, 超出12种类型则颜色会从第一个颜色进行循环
+因为源码颜色定义为`pie1` ~ `pie12`
 
 ```mermaid
 pie title Pets adopted by volunteers
@@ -199,4 +203,34 @@ requirementDiagram
   禁用所有预设主题
 
 
+## 源码分析
+
+### Theme
+
+`Mermaid`使用`scss`作为样式预处理器, 使用[khroma](https://github.com/fabiospampinato/khroma#readme)作为颜色计算工具
+
+`src/themes`文件夹下放置了主题定义文件
+目前预设的主题有5种
+
++ default: 默认
++ base: 基础
++ dark: 暗黑
++ forest: 雨林
++ neutral: 中性(灰不拉几的)
+
+每一个主题都有一个对应的js文件`theme-xxx`, 主题文件内基本就是大批量的颜色定义, 非常容易理解
+
+### 初始化 (initialize)
+
+方法位于`src/mermaidAPI.js`, 接收一个`options`参数
+
+```mermaid
+flowchart TD  
+  start(Set FontFamily) --> A(Set Default Options)
+  A --If in preset --> B(Get Theme Variables)
+  A -- Other Theme --> C(Use Default Theme Variables)
+  C --> D(Update Renders Config)
+  B --> D
+  D --> E(Set Log Level)
+```
 

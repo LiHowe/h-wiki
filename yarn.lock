@@ -1142,11 +1142,6 @@
   "resolved" "https://registry.nlark.com/@types/mdurl/download/@types/mdurl-1.0.2.tgz"
   "version" "1.0.2"
 
-"@types/mermaid@^8.2.7":
-  "integrity" "sha1-H5YQwkE2H2btBZHTGG4L8+0iEcg="
-  "resolved" "https://registry.nlark.com/@types/mermaid/download/@types/mermaid-8.2.7.tgz"
-  "version" "8.2.7"
-
 "@types/mime@^1":
   "integrity" "sha1-k+Jb+e51/g/YC1lLxP6w6GIRG1o="
   "resolved" "https://registry.nlark.com/@types/mime/download/@types/mime-1.3.2.tgz?cache=0&sync_timestamp=1629708374856&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fmime%2Fdownload%2F%40types%2Fmime-1.3.2.tgz"

@@ -36,7 +36,9 @@ export default defineComponent({
     })
     // TODO: Copy button
     // TODO: Convert to origin code button
-    return () => h('div', [
+    return () => h('div', {
+      class: 'mermaid-toolbar'
+    },[
       // download button
       h('button', {
         onClick: saveSVG,
