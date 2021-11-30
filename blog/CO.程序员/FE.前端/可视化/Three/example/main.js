@@ -1,5 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 // 相当于一个容器Container
 const scene = new THREE.Scene()
@@ -39,7 +40,7 @@ scene.add(torus)
 // 点光源, hex颜色表示， 相当于#FFFFFF
 const pointLight = new THREE.PointLight(0xFFFFFF)
 
-pointLight.position.set(20, 20, 20)
+pointLight.position.set(10, 10, 10)
 scene.add(pointLight)
 
 // 环境光
@@ -54,15 +55,42 @@ scene.add(pointLight)
 const lightHelper = new THREE.PointLightHelper(pointLight)
 scene.add(lightHelper)
 
-const gridHelper = new THREE.GridHelper(200, 50)
-scene.add(gridHelper)
+// 网格辅助， 可以看见水平线
+// const gridHelper = new THREE.GridHelper(200, 50)
+// scene.add(gridHelper)
 
+// 轨道控制器， 可以控制画布缩放以及整体相机角度
+const controls = new OrbitControls(camera, renderer.domElement)
+
+function addStar() {
+  const geometry = new THREE.SphereGeometry(0.25, 24, 24)
+  const material = new THREE.MeshStandardMaterial({ color:0xFFFFFF })
+  const star = new THREE.Mesh(geometry, material)
+  const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(100))
+  star.position.set(x, y, z)
+  scene.add(star)
+}
+
+Array(200).fill(0).forEach(addStar)
+
+// 添加背景图片
+const spaceTexture = new THREE.TextureLoader().load('./universe.jpg')
+scene.background = spaceTexture
+controls.autoRotate = true
+// 缩放步长
+controls.zoomSpeed = 0.1
 function anime() {
   requestAnimationFrame(anime)
   torus.rotation.x += 0.005
   torus.rotation.y += 0.005
   torus.rotation.z += 0.005
+  controls.update()
   renderer.render(scene, camera)
 }
 
+// setInterval(() => {
+//   camera.position.random()
+// }, 1000)
+
 anime()
+
