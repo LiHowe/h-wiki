@@ -7,7 +7,7 @@ export interface MermaidConfiguration {
 
 export default  (opt: MermaidConfiguration = {}) => ({
   name: 'vuepress-plugin-markdown-mermaid',
-  clientAppEnhanceFiles: path.resolve(__dirname, './enhance.ts'),
+  clientAppEnhanceFiles: path.resolve(__dirname, '../client/enhance.ts'),
   extendsMarkdown: (md: any) => {
     md.__mermaidConfig = opt
     md.use(MermaidPlugin)

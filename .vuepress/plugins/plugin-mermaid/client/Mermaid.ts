@@ -1,4 +1,4 @@
-import { defineComponent, h, onMounted, onBeforeMount, onUpdated } from 'vue'
+import { defineComponent, h, onMounted, onUpdated } from 'vue'
 import { nanoid } from 'nanoid'
 import ToolBar from './ToolBar'
 import Mermaid from 'mermaid'
@@ -19,7 +19,7 @@ export default defineComponent({
     },
     config: {
       type: String,
-      defualt: ''
+      default: ''
     }
   },
   setup(props) {
@@ -28,7 +28,7 @@ export default defineComponent({
       startOnLoad: false,
       securityLevel: 'loose'
     }
-    
+
     Mermaid.initialize(baseConfig)
 
     const render = () => {
@@ -47,10 +47,10 @@ export default defineComponent({
     } catch (e) {
       console.error(e)
     }
-    
+
     return () => h('div', {
       class: 'mermaid-wrapper',
-    }, [ 
+    }, [
       h(ToolBar, { target: id }),
       h('pre', {
         id,
