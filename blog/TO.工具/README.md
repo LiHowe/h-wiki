@@ -4,7 +4,7 @@
 
 ## 文本编辑类
 
-+ [Typora](./Typora.md)
++ [Typora(1.x后已收费)](./Typora.md)
 
 
 
