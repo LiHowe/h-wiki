@@ -12,23 +12,23 @@
 
 <CodeGroup>
 
-​	<CodeGroupItem title="npm">
+<CodeGroupItem title="npm">
 
 ```shell
 npm install --save-dev --save-exact prettier
 ```
 
-​	</CodeGroupItem>
+</CodeGroupItem>
 
 
 
-​	<CodeGroupItem title="yarn">
+<CodeGroupItem title="yarn">
 
 ```shell
 yarn add --dev --exact prettier
 ```
 
-​	</CodeGroupItem>
+</CodeGroupItem>
 
 </CodeGroup>
 
@@ -81,10 +81,10 @@ echo build > .prettierignore
 | `singleQuote`     | `boolean`         | 引号使用单引号而非双引号                           | `false`  |
 | `jsxSingleQuote`  | `boolean`         | jsx文件使用单引号                                  | `false`  |
 | `bracketSpacing`  | `boolean`         | 花括号内是否加空格, 如`{ foo: bar }`               | `true`   |
-| `trailingComma`   | `es5|none|all`    | 是否在行尾跟随逗号                                 | `es5`    |
+| `trailingComma`   | `es5,none,all`    | 是否在行尾跟随逗号                                 | `es5`    |
 | `bracketSameLine` | `boolean`         | 是否将`>`换行                                      | `false`  |
-| `arrowParens`     | `always|avoid`    | 是否为单参数箭头函数的参数添加括号<br />`(x) => x` | `always` |
-| `endOfLine`       | `lf|crlf|cr|auto` | 换行符                                             | `lf`     |
+| `arrowParens`     | `always,avoid`    | 是否为单参数箭头函数的参数添加括号<br />`(x) => x` | `always` |
+| `endOfLine`       | `lf,crlf,cr,auto` | 换行符                                             | `lf`     |
 
 
 

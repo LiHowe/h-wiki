@@ -1,6 +1,9 @@
 <template>
   <div class="button__copy" ref="btn" :data-clipboard-target="`#${uid}`">
-    {{ status ? 'Success' : 'Copy'}}
+    <!-- {{ status ? 'Success' : 'Copy'}} -->
+    <svg class="icon" aria-hidden="true" :style="{color: status ? '#00a001': '#fff'}">
+      <use :xlink:href="`#icon-${!status ? 'fuzhi' : 'check'}`"></use>
+    </svg>
   </div>
 </template>
 <script setup>
@@ -36,10 +39,10 @@ onMounted(() => {
 .button__copy {
   @apply
     cursor-pointer
-    bg-gray-500 dark:bg-gray-700 hover:bg-gray-400
+    bg-gray-700 hover:bg-gray-600
     text-gray-100 dark:text-gray-200
-    rounded text-sm shadow-md font-bold
-    absolute h-8 px-2 py-0.5 bottom-0 right-0
+    rounded text-xl shadow-md font-bold
+    absolute p-2 bottom-0 right-0
     transition-all
     duration-150
     flex items-center justify-center;

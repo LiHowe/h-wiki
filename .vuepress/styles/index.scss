@@ -22,12 +22,20 @@ html.dark {
   --c-brand: #F59E0B;
   --c-brand-light: #FBBF24;
 }
+// iconfont
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 // 导航下拉框样式
 .dropdown-wrapper .nav-dropdown {
   box-shadow: 0px 4px 8px #1e1e1e;
 }
 // 侧边栏样式
-.sidebar {
+.sideb {
   a.sidebar-item {
     transition: transform .25s;
     &.active {
@@ -79,7 +87,7 @@ html.dark {
   p, ul, ol {
     @apply leading-7;
   }
-  ul {
+  ul:not(.code-group__ul) {
     @apply
       pl-4;
     li {
@@ -88,6 +96,20 @@ html.dark {
         li {
           list-style: circle;
         }
+      }
+    }
+  }
+  // code-group
+  li.code-group__li {
+    button.code-group__nav-tab-active {
+      @apply font-bold relative z-10;
+    }
+  }
+  .code-group {
+    &__nav {
+      @apply pl-[50px] pt-0;
+      .code-group__li + .code-group__li {
+        @apply ml-2;
       }
     }
   }
@@ -102,32 +124,9 @@ html.dark {
   }
   table {
     @apply w-full;
-    tr {
-       td {
-         @apply border-b border-gray-300 border-l;
-         &:last-child {
-           @apply border-r;
-         }
-       }
-    }
-    thead {
-      tr {
-        @apply
-          bg-gray-300
-          text-gray-600;
-        th {
-          @apply
-            border-r
-            border-gray-300
-            ;
-        }
-      }
-    }
+    
     tbody {
       tr {
-        &:hover {
-          @apply bg-gray-200 bg-opacity-50 transition-colors duration-200;
-        }
         td {
           @apply px-4 text-sm leading-loose;
         }
@@ -135,7 +134,10 @@ html.dark {
     }
   }
   code:not(pre code) {
-    @apply text-blue-500 dark:text-yellow-500 bg-transparent px-2 ;
+    @apply text-blue-500 bg-blue-300 bg-opacity-10 dark:text-yellow-500 dark:bg-yellow-800 dark:bg-opacity-10  px-2 ;
+  }
+  code .token.arrow {
+    display: inline;
   }
   hr {
     @apply my-3;
