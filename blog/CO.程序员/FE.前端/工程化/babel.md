@@ -34,7 +34,7 @@ Babel可以说是大家比较属性的工具了, 但是我们经常只是走马�
 
 > 我们也可以通过[jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)这个项目来了解一下到底什么是编译器.
 >
-> 英文不好的同学可以参考[starkwang/the-super-tiny-compiler-cn](https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js)
+> 英文不好的同学可以参考[starkwang/the-super-tiny-compiler-cn](https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js)(代码较老, 较原版稍有不同, 可互相参考)
 
 
 
@@ -412,7 +412,6 @@ module.exports = () => ({
 ## 相关链接
 
 + [Core-JS](./core-js.md)
-
 + [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)
-
-+ [jamiebuilds/babel-handbook (github.com)](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md
++ [jamiebuilds/babel-handbook (github.com)](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md)
++ [AST explorer](https://astexplorer.net/)
