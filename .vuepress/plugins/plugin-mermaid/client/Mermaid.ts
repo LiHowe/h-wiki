@@ -1,7 +1,7 @@
-import { defineComponent, h, onMounted, onUpdated } from 'vue'
+import {defineComponent, h, onBeforeMount, onMounted, onUpdated} from 'vue'
 import { nanoid } from 'nanoid'
 import ToolBar from './ToolBar'
-import Mermaid from 'mermaid'
+// import Mermaid from 'mermaid'
 import { applyTheme } from './theme'
 declare global {
   interface Window {
@@ -29,16 +29,19 @@ export default defineComponent({
       securityLevel: 'loose'
     }
 
-    Mermaid.initialize(baseConfig)
-
     const render = () => {
-      Mermaid.mermaidAPI.render(`mermaid_${nanoid(4)}`, props.code, svgCode => {
+      window.__mermaid.mermaidAPI.render(`mermaid_${nanoid(4)}`, props.code, svgCode => {
         document.querySelector(`#${id}`).innerHTML = svgCode
       })
     }
     // dev develop
     // @ts-ignore
     if (__VUEPRESS_DEV__) onUpdated(render)
+
+    onBeforeMount(async () => {
+      window.__mermaid = (await import('mermaid')).default
+      window.__mermaid.initialize(baseConfig)
+    })
 
     onMounted(render)
     let themeConfig = {}
