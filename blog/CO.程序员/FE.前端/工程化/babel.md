@@ -334,7 +334,7 @@ function compiler(input) {
 + 为目标环境添加缺失特性(通过引用第三方polyfill, 如`core-js`)
 + 源码转换(codemods)
 + Babel通过语法转换器来支持最新版本的JavaScript语法, 使你的代码可以在并不支持JS新特性的环境中运行.
-+ 支持`JSX` 以及` TypeScript`等语言
++ 支持语法拓展, 支持`JSX` 以及` TypeScript`等语言
 + 支持插件化, 可以自己开发插件
 + 支持`Source map`, 可以让我们调试编译后的代码
 
@@ -344,9 +344,75 @@ function compiler(input) {
 
 
 
+### 配置 - options
+
+在项目中配置`babel.config.json`(后缀名也可是`.js`, `.cjs`, `.mjs`)
+
+详细配置项可参考[Options · Babel 中文网 (babeljs.cn)](https://www.babeljs.cn/docs/options)
+
+
+
+
+
+### 插件 - plugins
+
+插件用于转译代码, 会在`Preset`配置之前执行
+
+插件的执行顺序与其定义顺序相同
+
+
+
+使用插件:
+
+```javascript
+{
+  "plugins": [
+    "pluginA",
+    ["pluginA"],
+    ["pluginA", {}]
+  ]
+}
+```
+
+如果想自己开发插件请参考: [babel-handbook](https://github.com/thejameskyle/babel-handbook)
+
+
+
+### 预设 - presets
+
+预设是指 一组被预先设置好的`Babel插件`及`Babel Options`
+
+Babel 官方为一些常用环境提供了预设
+
++ `@babel/preset-env`: 相当常见的预设, 用于编译ES6+语法
++ `@babel/preset-typescript`: 由名字就可以看出, 为了编译`TypeScript`语法
++ `@babel/preset-react`: 为了编译`React`语法
++ `@babel/preset-flow`: 为了`Flow`语法
+
+除了这些官方提供的预设外, 开源社区也有很多开发者自己开发的优秀的开源预设
+
+
+
+使用预设:
+
+```javascript
+module.exports = () => ({
+  presets: [
+    "presetA", 										// 纯字符串
+    ["presetA"],  								// 数组包裹的字符串
+    ["presetA", {}]  							// 数组第二个参数为传给预设的参数
+  ]
+})
+```
+
+如果设置了多个预设, 预设的执行顺序为倒序执行(最后的最先执行), 比如
+
+`presets: [a, b, c]` 那么执行顺序为 `c -> b -> a`
+
 ## 相关链接
 
 + [Core-JS](./core-js.md)
 
 + [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)
 
++ [jamiebuilds/babel-handbook (github.com)](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md
