@@ -6805,6 +6805,11 @@
     "mdurl" "^1.0.1"
     "uc.micro" "^1.0.5"
 
+"marked@^4.0.6":
+  "integrity" "sha512-+H0bTf8DM8zLuFBUm/2VklxaCrwlBFgoJzHJcMZCnZ9cPgsllHwKpL6TPLdDeA38yPluMuVKOL1hO5w6HmG5Mg=="
+  "resolved" "https://registry.npmmirror.com/marked/download/marked-4.0.6.tgz"
+  "version" "4.0.6"
+
 "match-at@^0.1.0":
   "integrity" "sha1-JdBA0pF3dwTV5lVru3kjDsLeBUA="
   "resolved" "https://registry.nlark.com/match-at/download/match-at-0.1.1.tgz"
