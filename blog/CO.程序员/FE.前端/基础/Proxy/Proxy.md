@@ -1,5 +1,5 @@
 ---
-WIP: true
+WIP: false
 ---
 
 
@@ -392,13 +392,114 @@ console.log(UserProxy.length) // -> 2, 构造函数接收的参数数量
 
 
 
+### 撤销代理
+
+语法: 
+
+```javascript
+let { proxy, revoke } = Proxy.revocable(target, handler)
+```
+
++ proxy: 目标对象的代理对象
++ revoke: 关闭代理对象的函数(取消对象与代理对象间的连接)
+
+例子
+
+```javascript
+const user = {
+  name: 'howe'
+}
+const { proxy, revoke } = Proxy.revocable(user, {})
+console.log(proxy.name) // howe
+revoke()
+console.log(proxy.name) // Uncaught TypeError: Cannot perform 'get' on a proxy that has been revoked
+```
+
+revoke之后, proxy的内置属性`[[IsRevoked]]`将会被置为`true`
+
+> 我们可以通过一个`WeakMap`来存储proxy和对应的revoke函数
+>
+> ```javascript
+> const revokes = new WeakMap()
+> const user = {
+>   name: 'howe'
+> }
+> const { proxy, revoke } = Proxy.revocable(user, {})
+> revokes.set(proxy, revoke)
+> console.log(proxy.name) // howe
+> revokes.get(proxy)() // <- revoke
+> console.log(proxy.name) // Uncaught TypeError: Cannot perform 'get' on a proxy that has been revoked
+> ```
+>
+> 这样的好处是, 我们在有需要的时候能够通过proxy来找到对应的revoke函数, 而不需要一直携带revoke, 又因为使用的是`weakmap`, 不会影响垃圾回收机制.
+
+
+
 ## 总结
 
 + 代理对象相当于在原对象外面**包裹了一层对象**, 在访问或对原对象操作的时候需要经过代理层进行相应处理, 如果没有对应处理方法则会直接使用原对象的方法进行处理.
 
 + 代理对象也可以代理代理对象(套娃)
+
 + IE浏览器不支持(应该没人用IE了吧)
+
 + 代理对象会保持原对象类型
+
++ Proxy的局限性
+
+  + 在代理JS内置对象(如: `Map`, `Set`, `Date`, `Promise`等)的时候使用内置方法将会失败
+
+    ```javascript
+    const map = new Map()
+    const proxy = new Proxy(map, {})
+    proxy.set('a', 1) // Uncaught TypeError: Method Map.prototype.set called on incompatible receiver #<Map>
+    ```
+
+    解决方案:
+
+    ```javascript
+    const map = new Map()
+    const proxy = new Proxy(map, {
+      get(target, prop) {
+        let val = Reflect.get(...arguments)
+        return typeof val === 'function' ? val.bind(target) : val
+      }
+    })
+    proxy.set('a', 1)
+    console.log(proxy.get('a')) // 1
+    ```
+
+    
+
+  + 私有字段问题
+
+    ```javascript
+    class User {
+      #name = 'howe'
+      
+      getName () {
+        return this.#name
+      }
+    }
+    const user = new User()
+    const userP = new Proxy(user, {})
+    
+    console.log(user.getName()) // howe
+    console.log(userP.getName()) // Uncaught TypeError: Cannot read private member #name from an object whose class did not declare it
+    ```
+
+    解决方案同内置对象处理方法一样
+
+    ```javascript
+    const proxy = new Proxy(user, {
+      get(target, prop) {
+        let val = Reflect.get(...arguments)
+        return typeof val === 'function' ? val.bind(target) : val
+      }
+    })
+
+
++ 通过`Proxy.revocable()`方法来创建可撤销的代理
 
 
 
