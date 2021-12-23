@@ -27,9 +27,10 @@ renderer.render(scene, camera)
 
 // 新建几何体, 环结构
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
-
+const texture = new THREE.TextureLoader().load('./southeast.jpg')
+const material = new THREE.MeshBasicMaterial({ map: texture })
 // 新建材料, wireframe控制是否显示材料结构
-const material = new THREE.MeshStandardMaterial({ color: 0x0089ffe })
+// const material = new THREE.MeshStandardMaterial({ color: 0x0089ffe })
 
 // 混合几何体和材料， 做成环
 const torus = new THREE.Mesh(geometry, material)
@@ -64,6 +65,7 @@ const controls = new OrbitControls(camera, renderer.domElement)
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24)
+ 
   const material = new THREE.MeshStandardMaterial({ color:0xFFFFFF })
   const star = new THREE.Mesh(geometry, material)
   const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(100))
@@ -79,11 +81,15 @@ scene.background = spaceTexture
 controls.autoRotate = true
 // 缩放步长
 controls.zoomSpeed = 0.1
+
+
+
 function anime() {
   requestAnimationFrame(anime)
   torus.rotation.x += 0.005
   torus.rotation.y += 0.005
   torus.rotation.z += 0.005
+  // geometry.scale(1.01, 1.01, 1.01)
   controls.update()
   renderer.render(scene, camera)
 }
