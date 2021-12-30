@@ -47,6 +47,7 @@
   "dependencies": {
     "axios": "^0.23.0",
     "mermaid": "^8.13.3",
+    "vue-router": "4",
     "vuepress-plugin-mermaid-next": "^0.1.1"
   }
 }
