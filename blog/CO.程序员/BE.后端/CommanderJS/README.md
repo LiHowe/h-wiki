@@ -1,6 +1,5 @@
 ---
 category: code
-layout: blog
 title: Commander教程
 date: 06/29-2021 16:09
 coverImage: https://i.loli.net/2021/07/02/AduKHasYDtSgbMi.jpg
@@ -14,6 +13,8 @@ stick: false
 wip: false
 
 ---
+
+# CommanderJS
 
 ## 介绍
 
