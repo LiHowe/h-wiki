@@ -100,7 +100,7 @@ function traverse (path, opts = {}, ls = []) {
 }
 
 const root = resolve(__dirname, '../blog')
-
+const target = resolve(__dirname, '../docs')
 const res = traverse(root, {
   exclude: [
     '.DS_Store',
@@ -121,7 +121,7 @@ const res = traverse(root, {
 
 function run (arr) {
   arr.forEach(item => {
-    if (!item.type && item.child && item.child.length) {
+    if (!item.type) {
       run(item.child)
     } else {
       flatten(item)
@@ -130,17 +130,17 @@ function run (arr) {
 }
 
 function flatten (item) {
-  const { name, path, ext } = item
+  // const { name, path, ext } = item
   formatFrontMatter(item)
-  fs.renameSync(
-    resolve(root, path),
-    resolve(root, changeCase.pathCase(name.replace(ext, '')))
-  )
+  // fs.renameSync(
+  //   resolve(root, path),
+  //   resolve(root, changeCase.pathCase(name.replace(ext, '')) + ext)
+  // )
 }
 
 function formatFrontMatter (file) {
-  const { path, name, ext } = file
-  const { content, data } = matter.read(path)
+  let { path, name, ext } = file
+  const { content, data } = matter.read(resolve(root, path))
   const categories = path.split('/')
   categories.pop()
   data.categories = categories
@@ -150,7 +150,10 @@ function formatFrontMatter (file) {
   data.description = '暂无'
   data.wip = true
   data.top = false
-  fs.writeFileSync(path, matter(content, data))
+  if (name === 'README.md' || name === 'index.md') {
+    name = categories.reverse()[0] + ext
+  }
+  fs.writeFileSync(resolve(target, name), matter.stringify(content, data))
 }
 
 run(res)
