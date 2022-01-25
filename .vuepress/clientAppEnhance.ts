@@ -3,8 +3,8 @@
  */
 
 import { defineClientAppEnhance } from '@vuepress/client'
-import HomeLayout from './HomeLayout.vue'
+// import HomeLayout from './layouts/HomeLayout.vue'
+// import WikiHome from './layouts/WikiHome.vue'
 
 export default defineClientAppEnhance(({ app }) => {
-  app.component('HomeLayout', HomeLayout)
 })

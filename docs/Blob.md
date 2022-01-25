@@ -3,8 +3,8 @@ categories:
   - Blob
   - basic
   - frontend
-titleSlug: readme
-title: README
+titleSlug: blob
+title: 二进制及文件数据操作
 thumbnail: ''
 description: 暂无
 wip: true

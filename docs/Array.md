@@ -3,7 +3,7 @@ categories:
   - frontend
   - basic
 titleSlug: array
-title: Array
+title: Array常用方法
 thumbnail: ''
 description: 暂无
 wip: true

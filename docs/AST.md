@@ -5,7 +5,7 @@ categories:
   - Ver.3
   - 源码解析
 titleSlug: ast
-title: AST
+title: Vue AST
 thumbnail: ''
 description: 暂无
 wip: true

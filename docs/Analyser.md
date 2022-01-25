@@ -3,7 +3,7 @@ categories:
   - frontend
   - media
 titleSlug: analyser
-title: Analyser
+title: 音频分析器
 thumbnail: ''
 description: 暂无
 wip: true
