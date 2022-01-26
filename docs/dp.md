@@ -1,7 +1,9 @@
 ---
-categories: []
+categories:
+  - 算法
 titleSlug: dp
-title: dp
+title: 动态规划 DP
+series: 算法
 thumbnail: ''
 description: 暂无
 wip: true

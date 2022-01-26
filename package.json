@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build",
+    "gen:menu": "node .scripts/side-generator.js"
   },
   "repository": {
     "type": "git",

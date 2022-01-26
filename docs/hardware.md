@@ -2,7 +2,8 @@
 categories:
   - hardware
 titleSlug: readme
-title: README
+title: 目录
+series: 硬件基础
 thumbnail: ''
 description: 暂无
 wip: true

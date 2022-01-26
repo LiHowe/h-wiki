@@ -4,6 +4,7 @@ categories:
 titleSlug: chrome/extension
 title: ChromeExtension
 thumbnail: ''
+series: Chrome插件开发
 description: 暂无
 wip: true
 top: false

@@ -3,6 +3,7 @@ categories:
   - interview
 titleSlug: css
 title: css
+series: CSS基础
 thumbnail: ''
 description: 暂无
 wip: true

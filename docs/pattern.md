@@ -2,9 +2,10 @@
 categories:
   - interview
 titleSlug: ''
-title: 设计模式
+title: 目录
 thumbnail: ''
 description: 暂无
+series: 设计模式
 wip: true
 top: false
 ---

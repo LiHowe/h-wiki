@@ -5,6 +5,7 @@ categories:
   - media
 titleSlug: media/stream
 title: MediaStream
+series: Web Media
 thumbnail: ''
 description: 暂无
 wip: true

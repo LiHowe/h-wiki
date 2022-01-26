@@ -1,6 +1,6 @@
 <template>
-  <NavBar />
+  <WikiHeader />
 </template>
 <script lang="ts" setup>
-import NavBar from '@vuepress/theme-default/lib/client/components/Navbar.vue'
+import WikiHeader from './WikiHeader.vue'
 </script>

@@ -6,6 +6,7 @@ categories:
   - frontend
 titleSlug: index
 title: index
+series: 工程化
 thumbnail: ''
 description: 暂无
 top: false

@@ -5,6 +5,7 @@ titleSlug: usb
 title: USB
 thumbnail: ''
 description: 暂无
+series: 硬件基础
 wip: true
 top: false
 ---

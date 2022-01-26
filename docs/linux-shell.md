@@ -6,6 +6,7 @@ titleSlug: ''
 title: 文件操作
 thumbnail: ''
 description: 暂无
+series: Linux
 wip: true
 top: false
 ---

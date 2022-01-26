@@ -7,6 +7,7 @@ title: Prettier
 thumbnail: ''
 description: 暂无
 wip: true
+series: 工程化
 top: false
 ---
 # Prettier

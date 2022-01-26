@@ -5,6 +5,7 @@ categories:
 titleSlug: analyser
 title: 音频分析器
 thumbnail: ''
+series: Web Media
 description: 暂无
 wip: true
 top: false

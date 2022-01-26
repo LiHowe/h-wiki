@@ -7,6 +7,7 @@ categories:
 titleSlug: v/node
 title: VNode
 thumbnail: ''
+series: Vue源码解析
 description: 暂无
 wip: true
 top: false

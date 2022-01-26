@@ -5,6 +5,7 @@ categories:
   - HTML
 titleSlug: ''
 title: 鼠标事件
+series: JS基础
 thumbnail: ''
 description: 暂无
 wip: true

@@ -2,8 +2,9 @@
 categories:
   - interview
 titleSlug: html
-title: html
+title: html基础
 thumbnail: ''
+series: HTML基础
 description: 暂无
 wip: true
 top: false

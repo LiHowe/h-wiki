@@ -4,6 +4,7 @@ categories:
   - media
 titleSlug: ''
 title: 音频基础
+series: Web Media
 thumbnail: ''
 description: 暂无
 wip: true

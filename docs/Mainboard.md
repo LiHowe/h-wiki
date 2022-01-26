@@ -3,6 +3,7 @@ categories:
   - hardware
 titleSlug: ''
 title: 主板
+series: 硬件基础
 thumbnail: ''
 description: 暂无
 wip: true

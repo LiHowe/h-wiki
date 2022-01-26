@@ -6,6 +6,7 @@ categories:
   - Proxy
 titleSlug: proxy
 title: Proxy
+series: JS基础
 thumbnail: ''
 description: 暂无
 wip: true

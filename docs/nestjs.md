@@ -5,6 +5,7 @@ categories:
 titleSlug: ''
 title: 名称&对象解释
 thumbnail: ''
+series: NestJS
 description: 暂无
 wip: true
 top: false

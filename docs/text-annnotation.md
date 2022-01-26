@@ -1,7 +1,7 @@
 ---
 category: code
 layout: blog
-title: TextAnnnotation
+title: 文本标注
 date: '07/05-2021 10:19'
 coverImage: 'https://i.loli.net/2021/07/05/IowQZ1x28eJKOap.png'
 thumbnail: ''
@@ -10,6 +10,7 @@ tags:
   - Vue
   - AI
 description: 暂无
+series: 业务场景
 stick: false
 wip: true
 categories:

@@ -1,6 +1,6 @@
 ---
 category: code
-title: README
+title: WebComponents
 date: '07/14-2021 19:19'
 coverImage: 'https://i.loli.net/2021/07/14/ETVM6kWUOl2der8.png'
 thumbnail: ''
@@ -10,6 +10,7 @@ tags:
 description: 暂无
 stick: false
 wip: true
+series: Web Media
 categories:
   - WebComponents
   - basic

@@ -3,7 +3,7 @@ categories:
   - frontend
   - styles
 titleSlug: color
-title: color
+title: 颜色基础
 thumbnail: ''
 description: 暂无
 wip: true

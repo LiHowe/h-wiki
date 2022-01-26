@@ -6,6 +6,7 @@ categories:
 titleSlug: fabric/js
 title: FabricJS
 thumbnail: ''
+series: 可视化相关
 description: 暂无
 wip: true
 top: false

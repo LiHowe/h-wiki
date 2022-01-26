@@ -1,7 +1,5 @@
 ---
-category: code
-layout: blog
-title: hasky
+title: Husky基本使用
 date: '06/13-2021 18:46'
 coverImage: 'https://i.loli.net/2021/06/09/likAPwq4rTvBxfZ.png'
 tags:
@@ -9,6 +7,7 @@ tags:
   - Git
   - Tool
 description: 暂无
+series: 工程化
 stick: false
 wip: true
 categories:

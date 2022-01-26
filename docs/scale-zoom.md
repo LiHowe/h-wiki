@@ -8,6 +8,7 @@ categories:
   - styles
 titleSlug: scale/zoom
 title: Scale与Zoom
+series: CSS基础
 thumbnail: ''
 description: 暂无
 wip: true

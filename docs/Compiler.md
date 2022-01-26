@@ -5,8 +5,9 @@ categories:
   - vue
   - Ver.3
   - 源码解析
+series: Vue源码解析
 titleSlug: compiler
-title: Compiler
+title: Vue Compiler
 thumbnail: ''
 description: 暂无
 wip: true

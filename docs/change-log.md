@@ -5,6 +5,7 @@ categories:
 titleSlug: change/log
 title: ChangeLog
 thumbnail: ''
+series: 工程化
 description: 暂无
 wip: true
 top: false

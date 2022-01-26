@@ -6,6 +6,7 @@ categories:
   - 源码解析
 titleSlug: ''
 title: 内置指令
+series: Vue源码解析
 thumbnail: ''
 description: 暂无
 wip: true

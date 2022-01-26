@@ -4,6 +4,7 @@ categories:
   - basic
 titleSlug: canvas
 title: Canvas
+series: 可视化相关
 thumbnail: ''
 description: 暂无
 wip: true

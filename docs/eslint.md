@@ -5,6 +5,7 @@ categories:
 titleSlug: eslint
 title: eslint
 thumbnail: ''
+series: 工程化
 description: 暂无
 wip: true
 top: false

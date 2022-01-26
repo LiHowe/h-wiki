@@ -6,6 +6,7 @@ titleSlug: docusaurus
 title: Docusaurus
 thumbnail: ''
 description: 暂无
+series: 静态网站构建
 wip: true
 top: false
 ---

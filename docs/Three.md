@@ -4,7 +4,8 @@ categories:
   - visualization
   - frontend
 titleSlug: readme
-title: README
+title: Three.js简单使用
+series: ThreeJS
 thumbnail: ''
 description: 暂无
 wip: true

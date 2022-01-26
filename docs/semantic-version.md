@@ -5,6 +5,7 @@ categories:
   - webpack
 titleSlug: ''
 title: 语义化版本
+series: 工程化
 thumbnail: ''
 description: 暂无
 wip: true

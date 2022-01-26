@@ -5,6 +5,7 @@ categories:
 titleSlug: plop
 title: plop
 thumbnail: ''
+series: 工具库
 description: 暂无
 wip: true
 top: false

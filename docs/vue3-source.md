@@ -5,7 +5,8 @@ categories:
   - vue
   - frontend
 titleSlug: readme
-title: README
+title: 目录
+series: Vue源码解析
 thumbnail: ''
 description: 暂无
 wip: true

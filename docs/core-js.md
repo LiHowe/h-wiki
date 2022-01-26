@@ -3,7 +3,8 @@ categories:
   - frontend
   - architecture
 titleSlug: core/js
-title: core-js
+title: core-js介绍
+series: 工程化
 thumbnail: ''
 description: 暂无
 wip: true

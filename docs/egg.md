@@ -1,19 +1,14 @@
 ---
-category: code
-layout: blog
-title: egg
+title: egg的简单使用
 date: '06/10-2021 10:29'
 coverImage: 'https://i.loli.net/2021/06/09/likAPwq4rTvBxfZ.png'
-tags:
-  - Node.js
-  - BackEnd
-  - Egg.js
-  - Tutorials
 description: 暂无
-stick: false
 wip: true
-categories: []
+categories:
+  - NodeJS
+  - egg
 titleSlug: egg
+series: NodeJS
 thumbnail: ''
 top: false
 ---

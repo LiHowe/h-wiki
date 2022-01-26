@@ -4,7 +4,8 @@ categories:
   - architecture
   - webpack
 titleSlug: loader
-title: loader
+title: webpack loader
+series: Webpack
 thumbnail: ''
 description: 暂无
 wip: true

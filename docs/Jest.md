@@ -5,6 +5,7 @@ categories:
   - libs
 titleSlug: jest
 title: Jest
+series: 工程化
 thumbnail: ''
 description: 暂无
 wip: true

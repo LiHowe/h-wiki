@@ -6,6 +6,7 @@ categories:
   - 源码解析
 titleSlug: ast
 title: Vue AST
+series: Vue源码解析
 thumbnail: ''
 description: 暂无
 wip: true

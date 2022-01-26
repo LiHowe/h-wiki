@@ -5,7 +5,8 @@ categories:
   - Ver.3
   - 源码解析
 titleSlug: create/app
-title: CreateApp
+title: 待整理
+series: Vue源码解析
 thumbnail: ''
 description: 暂无
 wip: true

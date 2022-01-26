@@ -16,6 +16,7 @@ categories:
   - backend
   - nodejs
 titleSlug: sequelize
+series: NodeJS
 thumbnail: ''
 wip: true
 top: false

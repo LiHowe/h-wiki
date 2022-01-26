@@ -5,6 +5,7 @@ categories:
   - basic
 titleSlug: ''
 title: 浏览器缓存
+series: 浏览器相关
 thumbnail: ''
 description: 暂无
 wip: true

@@ -1,20 +1,12 @@
 ---
-category: code
-title: README
-date: '06/29-2021 16:09'
-coverImage: 'https://i.loli.net/2021/07/02/AduKHasYDtSgbMi.jpg'
-tags:
-  - Node.js
-  - JavaScript
-  - Tutorials
-  - API
+title: CommanderJS简单实用
 description: 暂无
-stick: false
 wip: true
 categories:
   - backend
   - commander
 titleSlug: readme
+series: 工具库
 thumbnail: ''
 top: false
 ---

@@ -41,7 +41,7 @@ onMounted(() => {
     cursor-pointer
     bg-gray-700 hover:bg-gray-600
     text-gray-100 dark:text-gray-200
-    rounded text-xl shadow-md font-bold
+    rounded text-sm shadow-md font-bold
     absolute p-2 bottom-0 right-0
     transition-all
     duration-150

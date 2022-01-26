@@ -4,6 +4,7 @@ categories:
   - basic
 titleSlug: call/apply
 title: Call-Apply
+series: JS基础
 thumbnail: ''
 description: 暂无
 wip: true

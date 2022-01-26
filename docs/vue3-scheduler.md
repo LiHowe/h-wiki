@@ -7,6 +7,7 @@ categories:
 titleSlug: ''
 title: 任务调度
 thumbnail: ''
+series: Vue源码解析
 description: 暂无
 wip: true
 top: false

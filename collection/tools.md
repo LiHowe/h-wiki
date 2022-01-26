@@ -2,7 +2,7 @@
 categories:
   - tools
 titleSlug: readme
-title: README
+title: 工具收集
 thumbnail: ''
 description: 暂无
 wip: true

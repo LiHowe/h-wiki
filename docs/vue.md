@@ -5,6 +5,7 @@ titleSlug: vue
 title: vue
 thumbnail: ''
 description: 暂无
+series: Vue
 wip: true
 top: false
 ---

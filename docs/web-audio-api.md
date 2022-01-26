@@ -5,6 +5,7 @@ categories:
   - WebAudio
 titleSlug: web/audio/api
 title: WebAudioAPI
+series: Web Media
 thumbnail: ''
 description: 暂无
 wip: true

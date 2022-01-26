@@ -6,6 +6,7 @@ categories:
 titleSlug: blob
 title: 二进制及文件数据操作
 thumbnail: ''
+series: JS基础
 description: 暂无
 wip: true
 top: false

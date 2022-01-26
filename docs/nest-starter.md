@@ -3,7 +3,8 @@ categories:
   - backend
   - nestjs
 titleSlug: starter
-title: starter
+title: NestJS的简单使用
+series: NodeJS
 thumbnail: ''
 description: 暂无
 wip: true
