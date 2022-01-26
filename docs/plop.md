@@ -14,13 +14,11 @@ top: false
 
 ## 官网
 
----
 
 [Plop: Consistency Made Simple](https://plopjs.com/)
 
 ## 使用
 
----
 
 ### 安装
 
@@ -128,7 +126,7 @@ module.exports = function(plop) {
         - template `String` : handlebars 模板，正则匹配组(capture groups)可为$1, $2等
         - templateFile `String` : handlebars 模板文件
     - custom (action function): 自定义操作
-        
+      
         ```jsx
         // 步骤1: 定义自定义action
         plop.setActionType('customAction', (answers, config, plop) => {
@@ -157,7 +155,7 @@ module.exports = function(plop) {
         	}]
         })
         ```
-        
+    
 - **force** `Boolean` : 当文件存在的时候覆盖
 - **data** `Object | Function:Object` : 传入模板的数据
 - **abortOnFail** `Boolean` : 失败的时候是否中断后续操作， 默认为 `true`
@@ -165,7 +163,6 @@ module.exports = function(plop) {
 
 ### Case Modifiers Helper (文本修饰符)
 
----
 
 - **camelCase**: changeFormatToThis
 - **snakeCase**: change_format_to_this
@@ -180,7 +177,6 @@ module.exports = function(plop) {
 
 ### 例子
 
----
 
 1. 生成Vue组件
 
@@ -281,7 +277,6 @@ export default {
 
 ## 相关链接
 
----
 
 ### plop prompts(inquirer questions)
 

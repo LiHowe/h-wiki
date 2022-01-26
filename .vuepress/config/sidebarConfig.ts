@@ -52,6 +52,10 @@ export default {
         {
           "text": "WebRTC",
           "link": "/docs/web-rtc.md"
+        },
+        {
+          "text": "<video>标签使用",
+          "link": "/docs/web-video.md"
         }
       ]
     },
@@ -185,7 +189,7 @@ export default {
         },
         {
           "text": "Husky基本使用",
-          "link": "/docs/hasky.md"
+          "link": "/docs/husky.md"
         },
         {
           "text": "Jest",
@@ -284,6 +288,10 @@ export default {
         {
           "text": "prompts",
           "link": "/docs/prompts.md"
+        },
+        {
+          "text": "Puppeteer简单使用",
+          "link": "/docs/puppeteer.md"
         }
       ]
     },
@@ -310,7 +318,11 @@ export default {
       "collapsible": true,
       "children": [
         {
-          "text": "Docker",
+          "text": "DockerFile",
+          "link": "/docs/docker-file.md"
+        },
+        {
+          "text": "Docker基础",
           "link": "/docs/docker.md"
         }
       ]
@@ -450,8 +462,16 @@ export default {
           "link": "/docs/loader.md"
         },
         {
+          "text": "如何发布npm包",
+          "link": "/docs/npm-publish.md"
+        },
+        {
           "text": "npm",
           "link": "/docs/npm.md"
+        },
+        {
+          "text": "webpack package.json配置",
+          "link": "/docs/webpack-package.md"
         }
       ]
     },
@@ -461,7 +481,25 @@ export default {
       "children": [
         {
           "text": "名称&对象解释",
+          "link": "/docs/nestjs-wiki.md"
+        },
+        {
+          "text": "NestJS简单使用",
           "link": "/docs/nestjs.md"
+        }
+      ]
+    },
+    {
+      "text": "Nginx",
+      "collapsible": true,
+      "children": [
+        {
+          "text": "Nginx安装",
+          "link": "/docs/nginx-install.md"
+        },
+        {
+          "text": "Nginx SSL配置",
+          "link": "/docs/nginx-ssl.md"
         }
       ]
     },
@@ -526,9 +564,27 @@ export default {
       ]
     },
     {
+      "text": "其他工具",
+      "collapsible": true,
+      "children": [
+        {
+          "text": "VS Code的使用及配置",
+          "link": "/docs/vscode.md"
+        }
+      ]
+    },
+    {
       "text": "Vue",
       "collapsible": true,
       "children": [
+        {
+          "text": "Vue自检清单",
+          "link": "/docs/vue-checklist.md"
+        },
+        {
+          "text": "Vue Composition API",
+          "link": "/docs/vue-composition-api.md"
+        },
         {
           "text": "VueDemi",
           "link": "/docs/vue-demi.md"

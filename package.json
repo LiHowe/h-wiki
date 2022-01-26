@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
-    "gen:menu": "node .scripts/side-generator.js"
+    "gen:menu": "node .scripts/side-generator.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "clipboard": "^2.0.8",
     "fs-extra": "^10.0.0",
     "gray-matter": "^4.0.3",
+    "husky": "^7.0.4",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-sub": "^1.0.0",

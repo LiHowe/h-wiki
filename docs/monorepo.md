@@ -12,7 +12,7 @@ description: 暂无
 top: false
 ---
 
-# MonoRepo <Badge vif="{{ $frontmatter.wip }}" type="tip" text="WIP" vertical="middle" />
+# MonoRepo 
 
 ## 什么是MonoRepo
 
@@ -110,3 +110,8 @@ lerna ls
 ## 参考链接
 
 + [Medium: Monorepos By Example](https://codeburst.io/monorepos-by-example-part-1-3a883b49047e)
++ [All in one：项目级 monorepo 策略最佳实践 - SegmentFault 思否](https://segmentfault.com/a/1190000039157365)
++ [基于lerna和yarn workspace的monorepo工作流 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/71385053)
++ [工作空间 | pnpm](https://pnpm.io/zh/workspaces)
++ [Monorepo 的这些坑，我们帮你踩过了！ - 掘金 (juejin.cn)](https://juejin.cn/post/6972139870231724045)
++ [Monorepo-多包单仓库的开发模式 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904206076248072)
