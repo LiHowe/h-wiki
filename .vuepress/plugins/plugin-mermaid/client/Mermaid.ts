@@ -30,17 +30,19 @@ export default defineComponent({
     }
 
     const render = () => {
-      window.__mermaid.mermaidAPI.render(`mermaid_${nanoid(4)}`, props.code, svgCode => {
+      window.__mermaid?.mermaidAPI.render(`mermaid_${nanoid(4)}`, props.code, svgCode => {
         document.querySelector(`#${id}`).innerHTML = svgCode
       })
     }
     // dev develop
     // @ts-ignore
-    if (__VUEPRESS_DEV__) onUpdated(render)
+    // if (__VUEPRESS_DEV__) onUpdated(render)
 
     onBeforeMount(async () => {
       window.__mermaid = (await import('mermaid')).default
+      console.log('call beforeMount', window.__mermaid)
       window.__mermaid.initialize(baseConfig)
+      render()
     })
 
     onMounted(render)

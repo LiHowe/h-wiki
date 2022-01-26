@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build",
+    "gen:menu": "node .scripts/side-generator.js"
   },
   "repository": {
     "type": "git",
@@ -27,15 +28,20 @@
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
     "@vuepress/bundler-vite": "next",
-    "@vuepress/plugin-pwa": "^2.0.0-beta.27",
+    "@vuepress/plugin-pwa": "^2.0.0-beta.35",
+    "@vuepress/shared": "^2.0.0-alpha.1",
     "autoprefixer": "latest",
+    "change-case": "^4.1.2",
     "clipboard": "^2.0.8",
     "fs-extra": "^10.0.0",
+    "gray-matter": "^4.0.3",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "nanoid": "^3.1.30",
+    "marked": "^4.0.10",
+    "nanoid": "^3.2.0",
+    "param-case": "^3.0.4",
     "postcss": "latest",
     "postcss-nested": "latest",
     "tailwindcss": "latest",
@@ -45,7 +51,9 @@
   "packageManager": "yarn@3.0.2",
   "dependencies": {
     "axios": "^0.23.0",
-    "mermaid": "^8.13.3",
-    "vuepress-plugin-mermaid-next": "^0.1.1"
+    "mermaid": "^8.13.10",
+    "nprogress": "^0.2.0",
+    "vue-router": "^4.0.12",
+    "vuepress-plugin-mermaid-next": "^0.1.3"
   }
 }

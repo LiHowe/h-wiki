@@ -16,6 +16,8 @@
  * 主要用于生成各个文件夹内的菜单
  */
 const fs = require('fs-extra')
+const matter = require('gray-matter')
+const changeCase = require('change-case')
 const {
   resolve,
   relative,
@@ -96,7 +98,10 @@ function traverse (path, opts = {}, ls = []) {
   }
   return ls
 }
-const res = traverse(resolve('../', 'blog'), {
+
+const root = resolve(__dirname, '../blog')
+const target = resolve(__dirname, '../docs')
+const res = traverse(root, {
   exclude: [
     '.DS_Store',
     '__附件__',
@@ -104,11 +109,53 @@ const res = traverse(resolve('../', 'blog'), {
     'example',
     '.git',
     '.vscode',
-    '.idea'
+    '.idea',
+    'node_modules'
   ],
   fileTypes: [
     '.md'
   ],
-  relativePath: resolve('../', 'blog')
+  relativePath: root
 })
+
+
+function run (arr) {
+  arr.forEach(item => {
+    if (!item.type) {
+      run(item.child)
+    } else {
+      flatten(item)
+    }
+  })
+}
+
+function flatten (item) {
+  // const { name, path, ext } = item
+  formatFrontMatter(item)
+  // fs.renameSync(
+  //   resolve(root, path),
+  //   resolve(root, changeCase.pathCase(name.replace(ext, '')) + ext)
+  // )
+}
+
+function formatFrontMatter (file) {
+  let { path, name, ext } = file
+  const { content, data } = matter.read(resolve(root, path))
+  const categories = path.split('/')
+  categories.pop()
+  data.categories = categories
+  data.titleSlug = changeCase.pathCase(name.replace(ext, ''))
+  data.title = name.replace(ext, '')
+  data.thumbnail = ''
+  data.description = '暂无'
+  data.wip = true
+  data.top = false
+  if (name === 'README.md' || name === 'index.md') {
+    name = categories.reverse()[0] + ext
+  }
+  fs.writeFileSync(resolve(target, name), matter.stringify(content, data))
+}
+
+run(res)
+
 console.log(JSON.stringify(res, null, 2))
