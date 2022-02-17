@@ -2,7 +2,7 @@
 categories:
 - frontend
 - basic
-titleSlug: array
+titleSlug: js-array
 title: Array常用方法
 thumbnail: ''
 series: JS基础
