@@ -18,6 +18,8 @@ top: false
 
 由于近期用到Markdown-it, 并且需要开发Markdown-it插件, 又因为网上没有比较系统和完整的相关文章(官网我又看不太懂), 所以就读一读源码来理解其工作原理, 从而能够从容地开发插件.
 
+![Markdown](/Users/howe/Downloads/Markdown.png)
+
 ## 目录结构
 
 ```txt
@@ -28,7 +30,7 @@ top: false
 |--- rules_block						块级规则
 |--- rules_core							核心规则
 |--- rules_inline						行内规则
-|--- index.js								主入口文件 😯
+|--- index.js								主入口文件 <-
 |--- parser_block.js				块解析器
 |--- parser_core.js					核心解析器
 |--- parser_inline.js				行内解析器
@@ -41,11 +43,13 @@ top: false
 
 ## 源码解析
 
-我们从入口文件 `index.js` 来入手
+先放一张MarkdownIt 的整体渲染(render)流程(使用Figma绘制)
 
-### md: MarkdownIt
+![markdownIt](https://s2.loli.net/2022/02/18/LHmJ2Cx3riMwez8.png)
 
-我们在文件中找到 `MarkdownIt` 的定义方法 
+### md: MarkdownIt - 实例化
+
+我们在 `index.js` 文件中找到 `MarkdownIt` 的定义方法 
 
 ```javascript
 function MarkdownIt(presetName, options) {
@@ -102,13 +106,14 @@ function MarkdownIt(presetName, options) {
 
 接下来我们以 `render` 函数为切入点来理解 MarkdownIt 的解析及渲染流程
 
-例如: `md.render('# demo')`
+例如: `md.render('# 一级标题')`
 
-### md.render
+### md.render - 渲染方法
 
 源码:
 
 ```javascript
+// src = '一级标题'
 MarkdownIt.prototype.render = function (src, env) {
   env = env || {};
   return this.renderer.render(
@@ -119,13 +124,15 @@ MarkdownIt.prototype.render = function (src, env) {
 };
 ```
 
-可以看到, render 方法调用了 renderer的render方法,
+可以看到, `render` 方法调用了 renderer 的 `render` 方法,
 
-入参则调用了 parse 方法来解析字符串, 我们来看下 parse 方法的定义
+入参则调用了 `parse` 方法来解析字符串, 我们来看下 `parse` 方法的定义
 
-### md.parse
+### md.parse - 解析方法
 
-源码:
+该方法用于MarkdownIt来将传入字符串解析为token的方法
+
+#### 源码
 
 ```javascript
 MarkdownIt.prototype.parse = function (src, env) {
@@ -143,6 +150,8 @@ MarkdownIt.prototype.parse = function (src, env) {
 };
 ```
 
+#### 解析过程
+
 1. 建立状态对象(state), 用于记录解析过程
 
 `state` 状态对象包含了以下属性
@@ -153,10 +162,120 @@ MarkdownIt.prototype.parse = function (src, env) {
 + `inlineMode`: 是否是行内模式
 + `md`: MarkdownIt实例
 
-2. 调用核心解析器(`parser_core`)的 `process` 方法来解析
-   1. normalize: 将换行符统一为 `\n`, 将空字符统一为 `\uFFFD`, 更新状态(`state`)
-   2. block: 如果不是inlineMode 则调用 ParserBlock 的 parse 方法来解析
-3. 
+2. **调用核心解析器(`parser_core`)的 `process` 方法来解析(分别应用以下规则)**
+   1. `normalize`: 将换行符统一为 `\n`, 将空字符统一为 `\uFFFD`, 更新状态(`state`)
+   2. **`block`: 调用 ParserBlock 的 parse 方法来进行块级元素解析**
+   3. **`inline`: 调用 ParserInline 的 parse 方法来进行行内元素解析**
+   4. `linkify`: 链接解析
+   5. `replacements`: 印刷字符替换, 比如(c) -> © 
+   6. `smartquotes`: 引号转换
+3. 返回解析好的分词数组 `tokens`
+
+#### Token - 分词
+
+在知道了解析流程之后, 我们再来看一下Token的定义.
+
+Token 定义于 `lib/token.js`
+
+```javascript
+// Token
+function Token(type, tag, nesting) {
+  this.type     = type;			// 标签类型
+  this.tag      = tag;			// HTML标签名称
+  this.attrs    = null;			// HTMl标签属性
+  this.map      = null;			// 源映射信息
+  this.nesting  = nesting;	// 标签级别. 1: 开标签  0: 自闭合标签  -1: 闭标签
+  this.level    = 0;				// 标签嵌套级别
+  this.children = null;			// 子标签
+  this.content  = '';				// 标签内容
+  this.markup   = '';				// 代码字符串和*, _形式的强调
+  this.info     = '';				// 代码块额外信息
+  this.meta     = null;			// 用于插件存放额外信息
+  this.block    = false;		// 是否是块级元素
+  this.hidden   = false;		// 元素是否隐藏
+}
+```
+
+像 `# 一级标题` 就会解析成如下内容(token内容有所缩减, 只展示了重要部分)
+
+```javascript
+[
+  {
+    type: 'heading_open',
+    tag: 'h1',
+    nesting: 1,
+    markup: '#',
+    map: [0, 1],
+    // ...
+  },
+  {
+    type: 'inline',
+    tag: '',
+    nesting: 0,
+    content: '一级标题',
+    map: [0, 1],
+    children: [
+      {
+        type: 'text',
+        tag: '',
+        content: '一级标题',
+        // ...
+      }
+    ]
+    // ...
+  },
+  {
+    type: 'heading_close',
+    tag: 'h1',
+    nesting: -1,
+    markup: '#',
+    map: null,
+    // ...
+  }
+]
+```
+
+
+
+解析过程实质上就是将待解析字符串传入各个规则中进行解析, 其中最重要的两个规则就是 `block` 和 `inline` 了.
+
+
+
+### Block规则
+
+应用block规则实质上是调用了 `md.block.parse`, 也就是 `ParserBlock` 的 `parse` 方法, 位于 `lib/parser_block.js` 中.
+
+#### 源码
+
+```javascript
+ParserBlock.prototype.parse = function (src, md, env, outTokens) {
+  var state;
+  if (!src) { return; }
+  state = new this.State(src, md, env, outTokens);	// <- 状态对象初始化
+  this.tokenize(state, state.line, state.lineMax); 	// <- 解析
+}
+```
+
+#### 解析流程
+
+> Core, Block, Inline 使用的分别是其对应的 State 对象来存储其解析过程
+
+1. 初始化状态对象(`state`)来存储解析过程中的数据, 该对象会贯穿于整个解析过程
+   1. 循环字符串初始化各个指标(`bMarks`, `eMarks`, `tShift`, `sCount`等), 并确认整个字符串行数.
+2. 执行 `ParserBlock.tokenize` 方法进行分词解析
+   1. 遍历字符串的每一行
+   2. 逐个使用**块级规则**来对每一行的字符串进行匹配解析, 如果不匹配规则, 则标记为空行.
+      1. `table`: 表格
+      2. `code`: 行代码
+      3. `fence`: 代码块
+      4. `blockquote`: 块引用
+      5. `hr`: 分隔符 `***`, `---`, `___` -> `hr`
+      6. `list`: 列表
+      7. `reference`: 注释
+      8. `html_block`: HTML块
+      9. `heading`: 标题. `#, ##...` -> `h1, h2...`
+      10. `lheading`: 标题. `---`, `===` -> `h1, h2...`
+      11. `paragraph`: 段落. line -> `p`
 
 
 

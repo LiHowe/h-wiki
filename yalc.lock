@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "vuepress-plugin-mermaid-next": {
+      "signature": "2d162b520b83b212bcd5e77545b2b096",
+      "file": true
+    }
+  }
+}

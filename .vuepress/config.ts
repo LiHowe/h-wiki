@@ -17,9 +17,9 @@ export default {
             require('autoprefixer'),
             require('postcss-nested')
           ]
-        } 
+        }
       },
-    } 
+    }
   },
   // 使用的是markdown-it来渲染的, 所以支持markdown-it的插件
   markdown: {

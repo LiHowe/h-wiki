@@ -4,7 +4,11 @@ const components = [
   {
     label: '鼠标事件',
     component: defineAsyncComponent(() => import('./components/MouseEvent.vue'))
-  }
+  },
+  {
+    label: 'Generator',
+    component: defineAsyncComponent(() => import('./components/Generator.vue'))
+  },
 ]
 
 const current = ref(0)
