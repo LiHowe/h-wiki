@@ -3,12 +3,16 @@ import { computed, defineAsyncComponent, ref } from 'vue'
 const components = [
   {
     label: '鼠标事件',
-    component: defineAsyncComponent(() => import('./components/MouseEvent.vue'))
+    component: defineAsyncComponent(() => import('./views/MouseEvent.vue'))
   },
   {
     label: 'Generator',
-    component: defineAsyncComponent(() => import('./components/Generator.vue'))
+    component: defineAsyncComponent(() => import('./views/Generator.vue'))
   },
+  {
+    label: '对象继承',
+    component: defineAsyncComponent(() => import('./views/ObjectExtends.vue'))
+  }
 ]
 
 const current = ref(0)
