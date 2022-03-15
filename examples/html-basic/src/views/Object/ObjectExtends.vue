@@ -8,7 +8,7 @@
         function A(alias = ['a', 'A']) { this.alias = alias }
         function B() {}
         B.prototype = new A() // 覆盖原型
-        B.prototype.constructor = A // 覆盖构造函数
+        B.prototype.constructor = B // 覆盖构造函数
 
         let b1 = new B()
         let b2 = new B()

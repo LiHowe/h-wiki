@@ -11,7 +11,7 @@ const components = [
   },
   {
     label: '对象继承',
-    component: defineAsyncComponent(() => import('./views/ObjectExtends.vue'))
+    component: defineAsyncComponent(() => import('./views/Object/ObjectExtends.vue'))
   }
 ]
 
