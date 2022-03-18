@@ -12,6 +12,22 @@ const components = [
   {
     label: '对象继承',
     component: defineAsyncComponent(() => import('./views/Object/ObjectExtends.vue'))
+  },
+  {
+    label: 'Call,Bind,Apply',
+    component: defineAsyncComponent(() => import('./views/Object/ObjectCallApply.vue'))
+  },
+  {
+    label: '循环对象',
+    component: defineAsyncComponent(() => import('./views/Object/ObjectKeyLoop.vue'))
+  },
+  {
+    label: '创建对象',
+    component: defineAsyncComponent(() => import('./views/Object/ObjectCreate.vue'))
+  },
+  {
+    label: '迭代器',
+    component: defineAsyncComponent(() => import('./views/Object/ObjectIterator.vue'))
   }
 ]
 
