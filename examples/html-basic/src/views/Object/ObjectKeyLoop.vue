@@ -28,6 +28,12 @@ const blocks: {
       for (let i in keys) {
         console.log(obj[keys[i]])
       }
+      for (let key in obj) {
+        console.log(obj[key])
+      }
+      for (let key of keys) {
+        console.log(obj[key])
+      }
     `
   },
   {
@@ -44,7 +50,61 @@ const blocks: {
     `
   },
   {
-    title: 'Iterator',
+    title: 'Iterator (basic - key)',
+    code: `
+      let obj = {
+        0: 'a',
+        1: 'b',
+        2: 'c'
+      }
+      obj[Symbol.iterator] = function* () {
+        for (const key in this) {
+          yield key
+        }
+      }
+      for (const key of obj) {
+        console.log(key)
+      }
+    `
+  },
+  {
+    title: 'Iterator (basic - value)',
+    code: `
+      let obj = {
+        0: 'a',
+        1: 'b',
+        2: 'c'
+      }
+      obj[Symbol.iterator] = function* () {
+        for (const key in this) {
+          yield this[key]
+        }
+      }
+      for (const value of obj) {
+        console.log(value)
+      }
+    `
+  },
+  {
+    title: 'Iterator (basic - [key, value])',
+    code: `
+      let obj = {
+        0: 'a',
+        1: 'b',
+        2: 'c'
+      }
+      obj[Symbol.iterator] = function* () {
+        for (const key in this) {
+          yield [key, this[key]]
+        }
+      }
+      for (const [key,value] of obj) {
+        console.log(key, value)
+      }
+    `
+  },
+  {
+    title: 'Iterator (Array Like)',
     code: `
     let obj = {
       0: 'a',
