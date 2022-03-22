@@ -1,47 +1,24 @@
 <script setup>
+import NavSide from './layout/NavSide.vue'
+import Content from './layout/Content.vue'
 import { computed, defineAsyncComponent, ref } from 'vue'
-const components = [
-  {
-    label: '鼠标事件',
-    component: defineAsyncComponent(() => import('./views/MouseEvent.vue'))
-  },
-  {
-    label: 'Generator',
-    component: defineAsyncComponent(() => import('./views/Generator.vue'))
-  },
-  {
-    label: '对象继承',
-    component: defineAsyncComponent(() => import('./views/Object/ObjectExtends.vue'))
-  },
-  {
-    label: 'Call,Bind,Apply',
-    component: defineAsyncComponent(() => import('./views/Object/ObjectCallApply.vue'))
-  },
-  {
-    label: '循环对象',
-    component: defineAsyncComponent(() => import('./views/Object/ObjectKeyLoop.vue'))
-  },
-  {
-    label: '创建对象',
-    component: defineAsyncComponent(() => import('./views/Object/ObjectCreate.vue'))
-  },
-  {
-    label: '迭代器',
-    component: defineAsyncComponent(() => import('./views/Object/ObjectIterator.vue'))
-  }
-]
 
-const current = ref(0)
+const currentComponent = ref({})
 
-const currentComponent = computed(() => components[current.value])
-
-function changeCurrent (i) {
-  current.value = i
+function changeNav (navItem) {
+  currentComponent.value = navItem
 }
+
 </script>
 
 <template>
-  <div class="com-selector">
+  <div class="app">
+    <NavSide class="col-span-1" @change="changeNav"/>
+    <Content class="col-span-4">
+      <component :is="currentComponent.component" />
+    </Content>
+  </div>
+  <!-- <div class="com-selector">
     <button
       class="rounded border bg-blue-500 text-white px-2 py-1"
       :class="{'bg-blue-700': i === current}"
@@ -53,5 +30,12 @@ function changeCurrent (i) {
   <div>
     <h1 class="text-center text-lg font-bold">{{ currentComponent.label }}</h1>
     <component :is="currentComponent.component" />
-  </div>
+  </div> -->
 </template>
+<style lang="postcss">
+.app {
+  @apply grid grid-cols-5 gap-2;
+  height: 100vh;
+  width: 100vw;
+}
+</style>

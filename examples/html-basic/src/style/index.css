@@ -5,3 +5,10 @@
 html, body {
   font-size: 14px;
 }
+
+.btn {
+  @apply bg-gray-300 rounded px-2 py-1 text-center cursor-pointer;
+}
+.btn + .btn {
+  @apply ml-2;
+}
