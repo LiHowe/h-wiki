@@ -1,8 +1,6 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './.vuepress/**/*.{js,ts,jsx,tsx,vue}',
-    './nuxt.config.{js}',
     './content/**/*.md'
   ],
   darkMode: 'class', // false or 'media' or 'class'

@@ -19,7 +19,7 @@ export default {
     },
     {
       "text": "Web Media",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "音频分析器",
@@ -61,7 +61,7 @@ export default {
     },
     {
       "text": "JS基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Array常用方法",
@@ -111,7 +111,7 @@ export default {
     },
     {
       "text": "Vue源码解析",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Vue AST",
@@ -169,7 +169,7 @@ export default {
     },
     {
       "text": "工程化",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "babel",
@@ -215,7 +215,7 @@ export default {
     },
     {
       "text": "Blender",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Blender基础教程",
@@ -225,7 +225,7 @@ export default {
     },
     {
       "text": "浏览器相关",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "浏览器缓存",
@@ -235,7 +235,7 @@ export default {
     },
     {
       "text": "可视化相关",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Canvas",
@@ -257,7 +257,7 @@ export default {
     },
     {
       "text": "Chrome插件开发",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "ChromeExtension",
@@ -267,7 +267,7 @@ export default {
     },
     {
       "text": "工具库",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "CommanderJS简单实用",
@@ -297,7 +297,7 @@ export default {
     },
     {
       "text": "CSS基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "css",
@@ -315,7 +315,7 @@ export default {
     },
     {
       "text": "Docker",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "DockerFile",
@@ -329,7 +329,7 @@ export default {
     },
     {
       "text": "静态网站构建",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "docsify",
@@ -367,7 +367,7 @@ export default {
     },
     {
       "text": "算法",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "动态规划 DP",
@@ -377,7 +377,7 @@ export default {
     },
     {
       "text": "NodeJS",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "egg的简单使用",
@@ -395,7 +395,7 @@ export default {
     },
     {
       "text": "硬件基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "目录",
@@ -413,7 +413,7 @@ export default {
     },
     {
       "text": "HTML基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "html基础",
@@ -423,7 +423,7 @@ export default {
     },
     {
       "text": "网络基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "HTTP-Headers",
@@ -445,7 +445,7 @@ export default {
     },
     {
       "text": "Linux",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "文件操作",
@@ -455,7 +455,7 @@ export default {
     },
     {
       "text": "Webpack",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "webpack loader",
@@ -477,7 +477,7 @@ export default {
     },
     {
       "text": "NestJS",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "名称&对象解释",
@@ -491,7 +491,7 @@ export default {
     },
     {
       "text": "Nginx",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Nginx安装",
@@ -505,7 +505,7 @@ export default {
     },
     {
       "text": "设计模式",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "目录",
@@ -515,7 +515,7 @@ export default {
     },
     {
       "text": "服务器",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Seafile",
@@ -525,7 +525,7 @@ export default {
     },
     {
       "text": "业务场景",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "文本标注",
@@ -535,7 +535,7 @@ export default {
     },
     {
       "text": "ThreeJS",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Three.js简单使用",
@@ -545,7 +545,7 @@ export default {
     },
     {
       "text": "TS基础",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "tsconfig",
@@ -555,7 +555,7 @@ export default {
     },
     {
       "text": "第三方API",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "unsplash",
@@ -565,7 +565,7 @@ export default {
     },
     {
       "text": "其他工具",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "VS Code的使用及配置",
@@ -575,7 +575,7 @@ export default {
     },
     {
       "text": "Vue",
-      "collapsible": true,
+      "collapsible": false,
       "children": [
         {
           "text": "Vue自检清单",
