@@ -24,7 +24,7 @@
     "url": "https://github.com/LiHowe/h-wiki/issues"
   },
   "workspaces": [
-    "."
+    "./*"
   ],
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
@@ -42,6 +42,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "marked": "^4.0.10",
+    "minimist": "^1.2.6",
     "nanoid": "^3.2.0",
     "param-case": "^3.0.4",
     "postcss": "latest",
