@@ -5,6 +5,8 @@ const cacheUrls = [
 
 const CACHE_NAME = 'style-v2'
 
+console.log('enter sw')
+
 self.addEventListener('install', e => {
   self.skipWaiting()
   console.log('main worker installed!', e)

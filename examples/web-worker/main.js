@@ -1,8 +1,43 @@
+const WorkerVersion = '0.0.1' // 或者请求最新
+const KEY_SERVICE_WORKER = 'key-sw'
 navigator.serviceWorker.register('./sw.js').then(function(registration) {
   console.log('ServiceWorker registration successful with scope: ', registration.scope, registration);
+
+  // 版本更新
+  // const v = localStorage.getItem(KEY_SERVICE_WORKER)
+  // if (v !== WorkerVersion) {
+  //   registration.update().then(_ => {
+  //     localStorage.setItem(KEY_SERVICE_WORKER, WorkerVersion)
+  //   })
+  // }
+
+  registration.addEventListener('updatefound', function() {
+    const installingWorker = registration.installing;
+    console.log('A new service worker is being installed:',
+      installingWorker);
+    const res = confirm('发现新的worker, 是否更新')
+    res && registration.update().then(() => {
+      console.log('worker update success!')
+      location.reload()
+    })
+  });
+
 }).catch(function(err) {
   console.log('ServiceWorker registration failed: ', err);
 });
+
+Notification.requestPermission(res => {
+  if (res === 'granted') {
+    navigator.serviceWorker.ready.then(registration => {
+      registration.showNotification('Vibration Sample', {
+        body: 'Service Worker注册成功!',
+        vibrate: [200, 100, 200, 100, 200, 100, 200],
+        tag: 'Service Notification'
+      });
+    })
+  }
+})
+
 
 const btn = document.createElement('button')
 btn.addEventListener('click', () => {
