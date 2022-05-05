@@ -19,4 +19,4 @@ jobs:
     - name: Syncing
       run: node ./.scripts/yuque-sync.js -git -t ${{secrets.YQ_TOKEN}}
 
-    - name: Formatting
+#    - name: Formatting
