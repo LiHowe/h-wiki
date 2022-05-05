@@ -1,8 +1,5 @@
 name: Sync YuQue Docs To Blog
-on:
-  push:
-    branchs:
-      - main
+on: [push]
 jobs:
   # run sync script
   sync:
@@ -14,7 +11,7 @@ jobs:
         frozen-lockfile: true
 
     - name: Install deps
-      run: npm install
+      run: cd .scripts & yarn install
 
     - name: Syncing
       run: node ./.scripts/sync/syncAction.js -git -t ${{secrets.YQ_TOKEN}}
