@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: SyncToken
     steps:
-    - use: sergioramos/yarn-actions/install@v6
+    - uses: sergioramos/yarn-actions/install@v6
       with:
         frozen-lockfile: true
 
@@ -17,6 +17,6 @@ jobs:
       run: npm install
 
     - name: Syncing
-      run: node ./.scripts/yuque-sync.js -git -t ${{secrets.YQ_TOKEN}}
+      run: node ./.scripts/sync/syncAction.js -git -t ${{secrets.YQ_TOKEN}}
 
 #    - name: Formatting
