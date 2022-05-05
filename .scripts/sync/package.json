@@ -1,9 +1,0 @@
-{
-  "name": "sync",
-  "packageManager": "yarn@3.0.2",
-  "devDependencies": {
-    "axios": "^0.27.2",
-    "dotenv": "^16.0.0",
-    "minimist": "^1.2.6"
-  }
-}

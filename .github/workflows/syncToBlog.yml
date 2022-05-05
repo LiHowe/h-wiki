@@ -10,10 +10,7 @@ jobs:
       with:
         frozen-lockfile: true
 
-    - name: Install deps
-      run: cd .scripts & yarn install
-
     - name: Syncing
-      run: node ./.scripts/sync/syncAction.js -git -t ${{secrets.YQ_TOKEN}}
+      run: yarn sync --git -t ${{secrets.YQ_TOKEN}}
 
 #    - name: Formatting

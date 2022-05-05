@@ -8,7 +8,8 @@
     "dev": "vuepress dev",
     "build": "vuepress build",
     "gen:menu": "node .scripts/side-generator.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "sync": "node .scripts/sync/syncAction.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "autoprefixer": "latest",
     "change-case": "^4.1.2",
     "clipboard": "^2.0.8",
+    "dotenv": "^16.0.0",
     "fs-extra": "^10.0.0",
     "gray-matter": "^4.0.3",
     "husky": "^7.0.4",
@@ -51,7 +53,7 @@
     "vuepress": "next",
     "vuepress-types": "^0.9.4"
   },
-  "packageManager": "yarn@3.0.2",
+  "packageManager": "yarn@3.2.0",
   "dependencies": {
     "axios": "^0.23.0",
     "highlight.js": "^11.5.0",
