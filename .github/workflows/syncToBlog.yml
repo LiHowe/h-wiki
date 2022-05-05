@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: SyncToken
     steps:
+    - uses: actions/checkout@v3
     - uses: sergioramos/yarn-actions/install@v6
       with:
         frozen-lockfile: true
