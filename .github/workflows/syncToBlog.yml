@@ -6,12 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: SyncToken
     steps:
-    - uses: actions/checkout@v3
-    - uses: sergioramos/yarn-actions/install@v6
-      with:
-        frozen-lockfile: true
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Deps
+      run: npm install
 
     - name: Syncing
-      run: yarn sync --git -t ${{secrets.YQ_TOKEN}}
-
-#    - name: Formatting
+      run: npm run sync -- --git -t ${{secrets.YQ_TOKEN}}
