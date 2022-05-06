@@ -1,4 +1,4 @@
-
+const axios = require('axios')
 let request
 
 function initRequest(token) {
@@ -77,6 +77,7 @@ function createRepo(data) {}
 
 
 module.exports = {
+  initRequest,
   request,
   getCurrentUser,
   getRepos,
