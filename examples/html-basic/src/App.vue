@@ -1,9 +1,9 @@
 <script setup>
 import NavSide from './layout/NavSide.vue'
 import Content from './layout/Content.vue'
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, defineAsyncComponent, ref, shallowRef } from 'vue'
 
-const currentComponent = ref({})
+const currentComponent = shallowRef({})
 
 function changeNav (navItem) {
   currentComponent.value = navItem

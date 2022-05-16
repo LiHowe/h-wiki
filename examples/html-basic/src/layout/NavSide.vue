@@ -59,6 +59,10 @@ const components: NavItem[] = [
   {
     label: '精准定时器',
     component: defineAsyncComponent(() => import('../views/Function/Timeout.vue'))
+  },
+  {
+    label: '模板字符串',
+    component: defineAsyncComponent(() => import('../views/TemplateString.vue'))
   }
 ]
 

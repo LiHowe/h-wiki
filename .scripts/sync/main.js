@@ -75,19 +75,46 @@ program
         description
       }
     })
-    console.log(choices)
     const response = await prompts({
       type: 'select',
       name: 'workspace',
       message: 'Choose workspace',
       choices
     })
-    console.log(response)
+
+
+    const statusFilter = await prompts({
+      type: 'multiselect',
+      name: 'status',
+      message: 'Choose Doc status',
+      choices: [
+        { title: 'draft', value: 0 },
+        { title: 'published', value: 1 },
+      ]
+    })
+
+    console.log('The Accepted status is:', statusFilter.status)
+
+    const acceptStatus = statusFilter.status
     const docs = await getDocs(response.workspace)
-    console.log(docs)
+    const docList = docs
+      .filter(doc => acceptStatus.includes(doc.view_status))
+      .map(({
+        id, title, slug, description, public, status
+      }) => ({
+        title, value: slug
+      }))
+
+    console.log('filtered docs is', docs[6], docs[7])
+    const docResponse = await prompts({
+      type: 'multiselect',
+      name: 'doc',
+      message: 'Choose doc',
+      choices: docList
+    })
+    const docDetail = await getDocDetail(response.workspace, docResponse.doc[0])
+    console.log(docDetail)
   })
-
-
 
 program.parseAsync()
 
