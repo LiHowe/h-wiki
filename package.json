@@ -29,9 +29,9 @@
   ],
   "homepage": "https://github.com/LiHowe/h-wiki#readme",
   "devDependencies": {
-    "@types/commander": "^2.12.2",
     "@types/prompts": "^2.0.14",
     "@vuepress/bundler-vite": "next",
+    "@vuepress/client": "^2.0.0-beta.45",
     "@vuepress/plugin-pwa": "^2.0.0-beta.35",
     "@vuepress/shared": "^2.0.0-alpha.1",
     "autoprefixer": "latest",
@@ -54,15 +54,16 @@
     "postcss-nested": "latest",
     "prompts": "^2.4.2",
     "tailwindcss": "latest",
-    "vuepress": "next",
-    "vuepress-types": "^0.9.4"
+    "vue": "^3.2.34",
+    "vuepress": "next"
   },
-  "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "axios": "^0.23.0",
+    "axios": "^0.27.2",
     "highlight.js": "^11.5.0",
-    "mermaid": "^8.13.10",
+    "mermaid": "^9.1.1",
     "nprogress": "^0.2.0",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vuepress-plugin-md-enhance": "2.0.0-beta.64",
+    "vuepress-plugin-mermaid-next": "^0.1.9"
   }
 }

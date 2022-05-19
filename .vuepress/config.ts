@@ -1,14 +1,16 @@
 import definitions from './config/definitions'
 import themeConfig from './config/themeConfig'
-import { path } from '@vuepress/utils'
+import { defaultTheme } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
+
+import CopyPlugin from './plugins/plugin-copy'
+import MarkdownEnhance from 'vuepress-plugin-md-enhance'
 
 export default {
   title: 'Howe\'s Wiki',
   description: 'Knowledge of all i know about',
   lang: 'zh-CN',
-  bundler: '@vuepress/bundler-vite',
-  open: false, // 是否自动打开浏览器
-  bundlerConfig: {
+  bundler: viteBundler({
     viteOptions: {
       css: {
         postcss: {
@@ -19,16 +21,18 @@ export default {
           ]
         }
       },
-    }
+    },
+    vuePluginOptions: {},
+  }),
+  dev: {
+    open: false, // 是否自动打开浏览器
   },
   // 使用的是markdown-it来渲染的, 所以支持markdown-it的插件
-  markdown: {
-    lineNumbers: true, // 配置显示行号
-    // anchor: false, // 如果设置为false, 会导致默认主题的侧边栏导航失效
-  },
-  // theme: path.resolve(__dirname, './theme/index.ts'),
-  // 主题配置
-  themeConfig,
+  // markdown: {
+  //   anchor: false, // 如果设置为false, 会导致默认主题的侧边栏导航失效
+  //   emoji: {},
+  // },
+  theme: defaultTheme(themeConfig),
   // <head>配置
   head: [
     ['link', { rel: 'manifest', href: '/manifest.webmanifest'} ],
@@ -38,16 +42,24 @@ export default {
   ],
   // vuepress插件
   plugins: [
-    [path.resolve(__dirname, './plugins/plugin-copy/index.ts'), {}],
-    [path.resolve(__dirname, './plugins/markdown-plugin.ts'), {}],
-    [path.resolve(__dirname, './plugins/plugin-mermaid/node/index.ts'), {
-      theme: 'dark',
-    }],
-
-    // ['mermaid-next', {
-    //   theme: 'default',
-    // }],
-    ['@vuepress/plugin-git', false],
+    // MermaidPlugin({}),
+    CopyPlugin({}),
+    // MarkdownPlugin({}),
+    // MPlugin(),
+    MarkdownEnhance({
+      gfm: true,
+      sup: true,
+      sub: true,
+      footnote: true,
+      lazyLoad: true,
+      tasklist: true,
+      tex: true,
+      mermaid: true,
+      flowchart: true,
+      include: {},
+      codegroup: true,
+      container: true,
+    })
   ],
   define: definitions
 }

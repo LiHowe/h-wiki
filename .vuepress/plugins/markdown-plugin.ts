@@ -2,7 +2,7 @@
  * @param options 插件参数
  * @parma app
  */
-export default (options, app) => ({
+export default (options) => ({
   name: 'vuepress-plugin-markdown-enhance',
   extendsMarkdown: md => {
     // 使用markdown-it插件 md.use(require('markdown-it-xxx'))

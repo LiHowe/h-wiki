@@ -28,7 +28,23 @@ npm install eslint -g
 npm install eslint -D
 ```
 
+:::: code-group
 
+::: code-group-item yarn
+
+```shell
+yarn add npm
+```
+
+:::
+
+::: code-group-item npm
+```shell
+npm install npm
+```
+:::
+
+::::
 
 ### 初始化
 
