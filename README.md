@@ -4,9 +4,9 @@ heroImage: https://images.unsplash.com/photo-1594031245755-1ac99bbc7a3c?ixid=Mnw
 heroText: Howe's Blog
 tagline: false
 footer: Howe | Explore World | Made with ❤️ in China · 2020 - 2022
+title: 主页
 ---
 
-<!-- 
 <img :src="url" />
 
 <script>
@@ -36,4 +36,5 @@ export default {
     margin: 0;
   }
 </style>
--->
+
+

@@ -1,13 +1,3 @@
----
-categories: []
-titleSlug: babel
-title: babel
-thumbnail: ''
-series: 工程化
-description: 暂无
-wip: true
-top: false
----
 # Babel
 
 Babel可以说是大家比较属性的工具了, 但是我们经常只是走马观花的了解一下这东西是个啥, 只知道它帮我们转换了代码(至少知道这是个编译器)
@@ -22,31 +12,21 @@ Babel可以说是大家比较属性的工具了, 但是我们经常只是走马�
 
 比如我们开发者开发的代码是`ES6`, 但是代码的目标运行环境是`ES5`
 
-
-
 👩‍💻 程序员: `const a = flag ?? 'a'`
 
 💻 ES5环境: WTF? 你说啥??? 我听不懂啊!!! ❌
 
-
-
 这时候就需要一个翻译来将我们的`ES6+`的语言翻译成环境能够听懂的, 这个翻译就称为`编译器`.
 
-
-
-👩‍💻 程序员: 小翻译, 你告诉环境 `const a = flag ?? 'a'` 
+👩‍💻 程序员: 小翻译, 你告诉环境 `const a = flag ?? 'a'`
 
 🗣 编译器: `var _flag; const a = (_flag = flag) !== null && _flag !== void 0 ? _flag : 'a';`
 
 💻 ES5环境: 👌 了解!
 
-
-
 > 我们也可以通过[jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)这个项目来了解一下到底什么是编译器.
 >
 > 英文不好的同学可以参考[starkwang/the-super-tiny-compiler-cn](https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js)(代码较老, 较原版稍有不同, 可互相参考)
-
-
 
 ## 编译器是如何工作的
 
@@ -61,21 +41,17 @@ graph LR
 	s(Code A) --tokenizer--> aa(AST A) --parser--> ab(AST B) --codeGenerator--> e(Code B)
 ```
 
-
-
 ### 解析 - tokenizer
 
 解析来说一般会分为两个阶段
 
-+ 词法分析
+*   词法分析
 
 ​	将一句话拆分成一个个单词(`Token`, 标点符号也算), 并标明每个单词的类型
 
-+ 语法分析
+*   语法分析
 
 ​	接收词法分析的结果, 分析每个单词(`Token`)间的关系, 得出语义(也就是`AST`, 抽象语法树)
-
-
 
 ```javascript
 // 词法分析器, 代码来自the-super-tiny-compiler.js
@@ -183,11 +159,9 @@ function parser(tokens) {
 }
 ```
 
-
-
 ### 转换 - parser
 
-知道了原代码的意思和结构后, 就要将每个单词及结构转换成对方能听懂的形式. 
+知道了原代码的意思和结构后, 就要将每个单词及结构转换成对方能听懂的形式.
 
 *废话: 两种语言差异性与转换的工作量基本成正比*
 
@@ -223,8 +197,6 @@ function traverser(ast, visitor) {
   traverseNode(ast, null);
 }
 ```
-
-
 
 ```javascript
 function transformer(ast) {
@@ -275,13 +247,9 @@ function transformer(ast) {
 }
 ```
 
-
-
 ### 生成 - code generator
 
 根据`转换`得到的新的`AST`来生成新的代码
-
-
 
 ```javascript
 function codeGenerator(node) {
@@ -314,8 +282,6 @@ function codeGenerator(node) {
 }
 ```
 
-
-
 ### 整合 - compiler
 
 最后写一个compiler方法将上面方法定义整合, 就完成了一个极简的编译器
@@ -330,29 +296,23 @@ function compiler(input) {
 }
 ```
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/lihowe/embed/preview/wvraMMO?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/lihowe/pen/wvraMMO">
-  Untitled</a> by Howe (<a href="https://codepen.io/lihowe">@lihowe</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
-
-
-
 ## Babel可以做什么
 
-+ 语法转换
-+ 为目标环境添加缺失特性(通过引用第三方polyfill, 如`core-js`)
-+ 源码转换(codemods)
-+ Babel通过语法转换器来支持最新版本的JavaScript语法, 使你的代码可以在并不支持JS新特性的环境中运行.
-+ 支持语法拓展, 支持`JSX` 以及` TypeScript`等语言
-+ 支持插件化, 可以自己开发插件
-+ 支持`Source map`, 可以让我们调试编译后的代码
+*   语法转换
 
+*   为目标环境添加缺失特性(通过引用第三方polyfill, 如`core-js`)
 
+*   源码转换(codemods)
+
+*   Babel通过语法转换器来支持最新版本的JavaScript语法, 使你的代码可以在并不支持JS新特性的环境中运行.
+
+*   支持语法拓展, 支持`JSX` 以及` TypeScript`等语言
+
+*   支持插件化, 可以自己开发插件
+
+*   支持`Source map`, 可以让我们调试编译后的代码
 
 ## 使用
-
-
 
 ### 配置 - options
 
@@ -360,17 +320,11 @@ function compiler(input) {
 
 详细配置项可参考[Options · Babel 中文网 (babeljs.cn)](https://www.babeljs.cn/docs/options)
 
-
-
-
-
 ### 插件 - plugins
 
 插件用于转译代码, 会在`Preset`配置之前执行
 
 插件的执行顺序与其定义顺序相同
-
-
 
 使用插件:
 
@@ -386,22 +340,21 @@ function compiler(input) {
 
 如果想自己开发插件请参考: [babel-handbook](https://github.com/thejameskyle/babel-handbook)
 
-
-
 ### 预设 - presets
 
 预设是指 一组被预先设置好的`Babel插件`及`Babel Options`
 
 Babel 官方为一些常用环境提供了预设
 
-+ `@babel/preset-env`: 相当常见的预设, 用于编译ES6+语法
-+ `@babel/preset-typescript`: 由名字就可以看出, 为了编译`TypeScript`语法
-+ `@babel/preset-react`: 为了编译`React`语法
-+ `@babel/preset-flow`: 为了`Flow`语法
+*   `@babel/preset-env`: 相当常见的预设, 用于编译ES6+语法
+
+*   `@babel/preset-typescript`: 由名字就可以看出, 为了编译`TypeScript`语法
+
+*   `@babel/preset-react`: 为了编译`React`语法
+
+*   `@babel/preset-flow`: 为了`Flow`语法
 
 除了这些官方提供的预设外, 开源社区也有很多开发者自己开发的优秀的开源预设
-
-
 
 使用预设:
 
@@ -421,7 +374,10 @@ module.exports = () => ({
 
 ## 相关链接
 
-+ [Core-JS](./core-js.md)
-+ [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)
-+ [jamiebuilds/babel-handbook (github.com)](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md)
-+ [AST explorer](https://astexplorer.net/)
+*   [Core-JS](./core-js.md)
+
+*   [jamiebuilds/the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)
+
+*   [jamiebuilds/babel-handbook (github.com)](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md)
+
+*   [AST explorer](https://astexplorer.net/)

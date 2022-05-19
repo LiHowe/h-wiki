@@ -1,0 +1,16 @@
+name: Sync YuQue Docs To Blog
+on: [push]
+jobs:
+  # run sync script
+  sync:
+    runs-on: ubuntu-latest
+    environment: SyncToken
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Deps
+      run: npm install
+
+    - name: Syncing
+      run: npm run sync -- --git -t ${{secrets.YQ_TOKEN}}

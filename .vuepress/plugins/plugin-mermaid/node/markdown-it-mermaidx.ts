@@ -7,12 +7,10 @@ export default (md: any): void => {
     const { info: languageType, content } = tokens[idx]
     if (content && languageType.trim() === 'mermaid') {
       return `
-      <ClientOnly>
         <Mermaid 
         :code="\`${htmlEscape(content.trim())}\`"
         :config="\`${JSON.stringify(md.__mermaidConfig).replace(/\"/g, '\'')}\`"
         />
-      </ClientOnly>
       `
     }
     return `${originFence(...args)}`

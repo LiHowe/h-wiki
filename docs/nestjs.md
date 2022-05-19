@@ -3,53 +3,70 @@ categories:
   - backend
   - nestjs
 titleSlug: ''
-title: 名称&对象解释
+title: NestJS简单使用
 thumbnail: ''
 series: NestJS
 description: 暂无
 wip: true
 top: false
 ---
-# NestJS名词和对象解释
 
-## Controller
+# NestJS
 
-控制器, 负责处理传入的请求和向客户端返回响应。
+中文文档: [https://docs.nestjs.cn/8/controllers](https://docs.nestjs.cn/8/controllers)
 
-## Service
+官网: [https://docs.nestjs.com/controllers](https://docs.nestjs.com/controllers)
 
-服务, 供`Controller`调用, 为其提供数据
+感觉写法跟angular有些像， nestjs后台 angular前台感觉是个不错的搭配
 
-## Interface
+学习的时候还能复习一下Angular的写法
 
-## Provider
+## 安装
 
-提供者, NestJS的基本概念, 是一类`Nest Class`的统称, 是一个使用`@Injectable()`装饰器注释的类.
+1. 安装cli并新建项目
+   
+    ```bash
+    $ npm i -g @nestjs/cli
+    $ nest new nest-demo
+    ```
+    
+2. 选择喜欢的包管理工具，然后等待安装完成
 
-`Service`, `Repository`, `Factory`, `Helper`
+![Untitled](https://s2.loli.net/2022/01/26/aQhwbixGSjuVfLt.png)
 
-## Module
+1. 安装完成后的项目结构
 
-模块, 对应一个业务模块, 其中包含业务模块的Controller, Service, Entity
+启动项目
 
-## Entity
+```bash
+yarn start
+```
 
-## DTO (Data Transfer Object)
+## CLI功能介绍
 
-数据传输对象, 用于与前端交互时传输的对象, 只包含业务需要字段
+`<>` 为必须
 
-## DAO (Data Access Object)
+`[]` 为可选
 
-数据访问对象, 对象字段数量基本上与数据库表字段保持一致
+### 新建项目
 
-## Pipe
+命令: `nest n <project-name> [options]`
 
-## Filter
+options选项:
 
-## Middleware
+- `-p` : 设置包管理器( `npm` , `yarn` , `pnpm`)
 
-## Interceptor
+- `-g` : 跳过git仓库初始化
 
-## Guard
+- `-d` : 不更改文件系统（只是告诉你会创建什么文件）
+  
+    比如 `nest n demo -d`
+    
 
-## Repository
+![Untitled 1](https://s2.loli.net/2022/01/26/v635d7snLUyMYxr.png)
+
+- `-s` : 跳过依赖安装
+- `-l [language]` : 表明项目开发语言（默认`TS` ，可选`JS`)
+- 
+
+## 模块介绍

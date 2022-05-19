@@ -29,7 +29,6 @@ npm install eslint -D
 ```
 
 
-
 ### 初始化
 
 我们可以通过在项目目录下执行`eslint --init`命令来初始化项目eslint配置文件,

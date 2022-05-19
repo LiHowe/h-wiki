@@ -11,9 +11,11 @@ wip: true
 top: false
 ---
 # Analyser
-音频分析器主要用来获取音频的`频域` 和 `时域` 数据, 便于用户进行可视化展示
+
+音频分析器主要用来获取音频的`频域` 和 `时域` 数据, 便于用户进行可视化展示`ss`
 
 ## 使用
+
 创建分析器
 
 ```javascript
@@ -24,13 +26,14 @@ analyser.fftSize = 2**11 // 设置快速傅里叶变换窗口大小, 取值为2^
 
 ```
 
-  
+
 获取频域数据
 
 + Uint8Array: `analyser.getByteFrequencyData()`
 + Float32Array: `analyser.getFloatFrequencyData()`
 
   
+
 获取时域数据
 
 + Uint8Array: `analyser.getByteTimeDomainData()`

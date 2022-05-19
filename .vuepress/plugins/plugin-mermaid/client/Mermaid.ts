@@ -36,7 +36,7 @@ export default defineComponent({
     }
     // dev develop
     // @ts-ignore
-    // if (__VUEPRESS_DEV__) onUpdated(render)
+    if (__VUEPRESS_DEV__) onUpdated(render)
 
     onBeforeMount(async () => {
       window.__mermaid = (await import('mermaid')).default

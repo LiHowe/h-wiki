@@ -10,3 +10,5 @@ dist
 yarn-error.log
 .yalc
 .yalc.lock
+.env.local
+.yarn.lock

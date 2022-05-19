@@ -1,6 +1,0 @@
-.nav {
-  display: flex;
-}
-.nav a + a{
-  margin-left: 10px;
-}
