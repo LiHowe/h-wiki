@@ -18,7 +18,6 @@ top: false
 
 由于近期用到Markdown-it, 并且需要开发Markdown-it插件, 又因为网上没有比较系统和完整的相关文章(官网我又看不太懂), 所以就读一读源码来理解其工作原理, 从而能够从容地开发插件.
 
-![Markdown](/Users/howe/Downloads/Markdown.png)
 
 ## 目录结构
 

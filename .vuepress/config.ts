@@ -39,6 +39,7 @@ export default {
     ['link', {rel: 'icon', href: '/images/icon.png'}],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css' }],
     ['script', { src: '//at.alicdn.com/t/font_2339230_l56isvfb5i8.js' }],
+    ['meta', { name: 'baidu-site-verification', content: 'code-Wfj8teutpP' }]
   ],
   // vuepress插件
   plugins: [
